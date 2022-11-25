@@ -24,7 +24,7 @@ border: none;
 background-color:#d1d1d1
 }
 #frame_8{
- background-color:#7d7d7d
+ background-color:#ffffff;
 }
 QLineEdit{
  background:transparent;
@@ -77,11 +77,13 @@ border-radius: 15px;
 
 #menuBtn:hover,#accountBtn:hover,#btnFilters:hover,#btnSort:hover,#btnAdvanced_Search:hover,#searchframe:hover,#btnDelete:hover,#btnEdit:hover,#btnImportcsv:hover,#btnExportcsv:hover,#btnLogout:hover,#btnProfile:hover{
 background-color:#ececec;
+
 }
 
 #widget_Inventory_dropdown:hover,#btnBuyStock:hover,#btnUpdateStock:hover,#btn_View_Stock:hover,#btn_view_History:hover,#btn_Report_Cost:hover{
 background-color:#ececec;
 border-top-left-radius:20px;
+
 }</string>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
@@ -160,6 +162,12 @@ border-top-left-radius:20px;
             <layout class="QHBoxLayout" name="horizontalLayout_10">
              <item>
               <widget class="QLabel" name="label_7">
+               <property name="maximumSize">
+                <size>
+                 <width>170</width>
+                 <height>150</height>
+                </size>
+               </property>
                <property name="font">
                 <font>
                  <pointsize>15</pointsize>
@@ -167,8 +175,17 @@ border-top-left-radius:20px;
                  <bold>true</bold>
                 </font>
                </property>
+               <property name="midLineWidth">
+                <number>0</number>
+               </property>
                <property name="text">
-                <string>ARM Distributions</string>
+                <string/>
+               </property>
+               <property name="pixmap">
+                <pixmap resource="Resource.qrc">:/LOGO/ARM_LOGO_Crop.png</pixmap>
+               </property>
+               <property name="scaledContents">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
@@ -242,8 +259,8 @@ border-top-left-radius:20px;
                    <string>Buy Stock</string>
                   </property>
                   <property name="icon">
-                   <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
-                    <normaloff>:/blackicons/Graphics/featherBlack/home.svg</normaloff>:/blackicons/Graphics/featherBlack/home.svg</iconset>
+                   <iconset resource="Resource.qrc">
+                    <normaloff>:/Black Icons/Graphics/featherBlack/package.svg</normaloff>:/Black Icons/Graphics/featherBlack/package.svg</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -267,8 +284,8 @@ border-top-left-radius:20px;
                    <string>Update Stock</string>
                   </property>
                   <property name="icon">
-                   <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
-                    <normaloff>:/blackicons/Graphics/featherBlack/framer.svg</normaloff>:/blackicons/Graphics/featherBlack/framer.svg</iconset>
+                   <iconset resource="Resource.qrc">
+                    <normaloff>:/Black Icons/Graphics/featherBlack/edit.svg</normaloff>:/Black Icons/Graphics/featherBlack/edit.svg</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -308,7 +325,7 @@ border-top-left-radius:20px;
                       <string/>
                      </property>
                      <property name="pixmap">
-                      <pixmap resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">:/blackicons/Graphics/featherBlack/trello.svg</pixmap>
+                      <pixmap resource="Resource.qrc">:/Black Icons/Graphics/featherBlack/trello.svg</pixmap>
                      </property>
                     </widget>
                    </item>
@@ -328,8 +345,8 @@ border-top-left-radius:20px;
                       <string>Inventory Report</string>
                      </property>
                      <property name="icon">
-                      <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
-                       <normaloff>:/blackicons/Graphics/featherBlack/chevron-right.svg</normaloff>:/blackicons/Graphics/featherBlack/chevron-right.svg</iconset>
+                      <iconset resource="Resource.qrc">
+                       <normaloff>:/Black Icons/Graphics/featherBlack/chevron-right.svg</normaloff>:/Black Icons/Graphics/featherBlack/chevron-right.svg</iconset>
                      </property>
                      <property name="checkable">
                       <bool>true</bool>
@@ -370,8 +387,8 @@ border-top-left-radius:20px;
                       <string>View History</string>
                      </property>
                      <property name="icon">
-                      <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
-                       <normaloff>:/blackicons/Graphics/featherBlack/clipboard.svg</normaloff>:/blackicons/Graphics/featherBlack/clipboard.svg</iconset>
+                      <iconset resource="Resource.qrc">
+                       <normaloff>:/Black Icons/Graphics/featherBlack/clipboard.svg</normaloff>:/Black Icons/Graphics/featherBlack/clipboard.svg</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -394,8 +411,8 @@ border-top-left-radius:20px;
                       <string>View Stock</string>
                      </property>
                      <property name="icon">
-                      <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
-                       <normaloff>:/blackicons/Graphics/featherBlack/database.svg</normaloff>:/blackicons/Graphics/featherBlack/database.svg</iconset>
+                      <iconset resource="Resource.qrc">
+                       <normaloff>:/Black Icons/Graphics/featherBlack/database.svg</normaloff>:/Black Icons/Graphics/featherBlack/database.svg</iconset>
                      </property>
                      <property name="iconSize">
                       <size>
@@ -421,8 +438,8 @@ border-top-left-radius:20px;
                    <string>Report Costs</string>
                   </property>
                   <property name="icon">
-                   <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
-                    <normaloff>:/blackicons/Graphics/featherBlack/dollar-sign.svg</normaloff>:/blackicons/Graphics/featherBlack/dollar-sign.svg</iconset>
+                   <iconset resource="Resource.qrc">
+                    <normaloff>:/Black Icons/Graphics/featherBlack/dollar-sign.svg</normaloff>:/Black Icons/Graphics/featherBlack/dollar-sign.svg</iconset>
                   </property>
                   <property name="iconSize">
                    <size>
@@ -447,7 +464,7 @@ border-top-left-radius:20px;
     <item>
      <widget class="QStackedWidget" name="mainBody">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="Home_Widget">
        <layout class="QVBoxLayout" name="verticalLayout">
@@ -493,8 +510,8 @@ border-top-left-radius:20px;
                  <string/>
                 </property>
                 <property name="icon">
-                 <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
-                  <normaloff>:/blackicons/Graphics/featherBlack/menu.svg</normaloff>:/blackicons/Graphics/featherBlack/menu.svg</iconset>
+                 <iconset resource="Resource.qrc">
+                  <normaloff>:/Black Icons/Graphics/featherBlack/menu.svg</normaloff>:/Black Icons/Graphics/featherBlack/menu.svg</iconset>
                 </property>
                 <property name="iconSize">
                  <size>
@@ -578,7 +595,7 @@ border-top-left-radius:20px;
                     <string/>
                    </property>
                    <property name="pixmap">
-                    <pixmap resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">:/blackicons/Graphics/featherBlack/search.svg</pixmap>
+                    <pixmap>:/blackicons/Graphics/featherBlack/search.svg</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -628,8 +645,8 @@ border-top-left-radius:20px;
                  <string/>
                 </property>
                 <property name="icon">
-                 <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
-                  <normaloff>:/blackicons/Graphics/featherBlack/user.svg</normaloff>:/blackicons/Graphics/featherBlack/user.svg</iconset>
+                 <iconset resource="Resource.qrc">
+                  <normaloff>:/Black Icons/Graphics/featherBlack/user.svg</normaloff>:/Black Icons/Graphics/featherBlack/user.svg</iconset>
                 </property>
                 <property name="iconSize">
                  <size>
@@ -731,7 +748,7 @@ border-top-left-radius:20px;
                     <string/>
                    </property>
                    <property name="pixmap">
-                    <pixmap resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">:/blackicons/Graphics/featherBlack/tv.svg</pixmap>
+                    <pixmap>:/blackicons/Graphics/featherBlack/tv.svg</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -819,7 +836,7 @@ border-top-left-radius:20px;
                     <string/>
                    </property>
                    <property name="pixmap">
-                    <pixmap resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">:/blackicons/Graphics/featherBlack/calendar.svg</pixmap>
+                    <pixmap>:/blackicons/Graphics/featherBlack/calendar.svg</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -907,7 +924,7 @@ border-top-left-radius:20px;
                     <string/>
                    </property>
                    <property name="pixmap">
-                    <pixmap resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">:/blackicons/Graphics/featherBlack/activity.svg</pixmap>
+                    <pixmap>:/blackicons/Graphics/featherBlack/activity.svg</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -995,7 +1012,7 @@ border-top-left-radius:20px;
                     <string/>
                    </property>
                    <property name="pixmap">
-                    <pixmap resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">:/blueicons/featherBlue/tv.svg</pixmap>
+                    <pixmap>:/blueicons/featherBlue/tv.svg</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -1073,7 +1090,7 @@ border-top-left-radius:20px;
                  <string>Filters</string>
                 </property>
                 <property name="icon">
-                 <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+                 <iconset>
                   <normaloff>:/blackicons/Graphics/featherBlack/menu.svg</normaloff>:/blackicons/Graphics/featherBlack/menu.svg</iconset>
                 </property>
                 <property name="iconSize">
@@ -1353,7 +1370,7 @@ border-top-left-radius:20px;
                     <string> Sort</string>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+                    <iconset>
                      <normaloff>:/blackicons/Graphics/featherBlack/server.svg</normaloff>:/blackicons/Graphics/featherBlack/server.svg</iconset>
                    </property>
                    <property name="iconSize">
@@ -1433,7 +1450,7 @@ border-top-left-radius:20px;
                     <string>Advanced Search    </string>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+                    <iconset>
                      <normaloff>:/Whiteicons/Graphics/featherWhite/search.svg</normaloff>:/Whiteicons/Graphics/featherWhite/search.svg</iconset>
                    </property>
                    <property name="iconSize">
@@ -1509,7 +1526,7 @@ border-top-left-radius:20px;
                      <string>Movie Name</string>
                     </property>
                     <property name="icon">
-                     <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+                     <iconset>
                       <normaloff>:/blackicons/Graphics/featherBlack/arrow-up.svg</normaloff>:/blackicons/Graphics/featherBlack/arrow-up.svg</iconset>
                     </property>
                    </column>
@@ -1523,7 +1540,7 @@ border-top-left-radius:20px;
                      <string>Duration</string>
                     </property>
                     <property name="icon">
-                     <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+                     <iconset>
                       <normaloff>:/blackicons/Graphics/featherBlack/arrow-up.svg</normaloff>:/blackicons/Graphics/featherBlack/arrow-up.svg</iconset>
                     </property>
                    </column>
@@ -1532,7 +1549,7 @@ border-top-left-radius:20px;
                      <string>Genre</string>
                     </property>
                     <property name="icon">
-                     <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+                     <iconset>
                       <normaloff>:/blackicons/Graphics/featherBlack/arrow-down.svg</normaloff>:/blackicons/Graphics/featherBlack/arrow-down.svg</iconset>
                     </property>
                    </column>
@@ -1541,7 +1558,7 @@ border-top-left-radius:20px;
                      <string>Rating</string>
                     </property>
                     <property name="icon">
-                     <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+                     <iconset>
                       <normaloff>:/blackicons/Graphics/featherBlack/arrow-up.svg</normaloff>:/blackicons/Graphics/featherBlack/arrow-up.svg</iconset>
                     </property>
                    </column>
@@ -1550,7 +1567,7 @@ border-top-left-radius:20px;
                      <string>Year</string>
                     </property>
                     <property name="icon">
-                     <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+                     <iconset>
                       <normaloff>:/blackicons/Graphics/featherBlack/arrow-down.svg</normaloff>:/blackicons/Graphics/featherBlack/arrow-down.svg</iconset>
                     </property>
                    </column>
@@ -1569,7 +1586,7 @@ border-top-left-radius:20px;
                      <string>Gross</string>
                     </property>
                     <property name="icon">
-                     <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+                     <iconset>
                       <normaloff>:/blackicons/Graphics/featherBlack/arrow-up.svg</normaloff>:/blackicons/Graphics/featherBlack/arrow-up.svg</iconset>
                     </property>
                    </column>
@@ -1578,7 +1595,7 @@ border-top-left-radius:20px;
                      <string>Votes</string>
                     </property>
                     <property name="icon">
-                     <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+                     <iconset>
                       <normaloff>:/blackicons/Graphics/featherBlack/arrow-up.svg</normaloff>:/blackicons/Graphics/featherBlack/arrow-up.svg</iconset>
                     </property>
                    </column>
@@ -1645,7 +1662,7 @@ border-top-left-radius:20px;
                     <string>Export CSV</string>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+                    <iconset>
                      <normaloff>:/blackicons/Graphics/featherBlack/download.svg</normaloff>:/blackicons/Graphics/featherBlack/download.svg</iconset>
                    </property>
                    <property name="iconSize">
@@ -1675,7 +1692,7 @@ border-top-left-radius:20px;
                     <string>Import CSV</string>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+                    <iconset>
                      <normaloff>:/blackicons/Graphics/featherBlack/external-link.svg</normaloff>:/blackicons/Graphics/featherBlack/external-link.svg</iconset>
                    </property>
                    <property name="iconSize">
@@ -1738,7 +1755,7 @@ border-top-left-radius:20px;
                     <string>Edit</string>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+                    <iconset>
                      <normaloff>:/blackicons/Graphics/featherBlack/edit-2.svg</normaloff>:/blackicons/Graphics/featherBlack/edit-2.svg</iconset>
                    </property>
                    <property name="iconSize">
@@ -1774,7 +1791,7 @@ border-top-left-radius:20px;
                     <string>Delete</string>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+                    <iconset>
                      <normaloff>:/blackicons/Graphics/featherBlack/delete.svg</normaloff>:/blackicons/Graphics/featherBlack/delete.svg</iconset>
                    </property>
                    <property name="iconSize">
@@ -1994,7 +2011,7 @@ background-color:#ececec;
                     <string/>
                    </property>
                    <property name="pixmap">
-                    <pixmap resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">:/blackicons/Graphics/featherBlack/activity.svg</pixmap>
+                    <pixmap>:/blackicons/Graphics/featherBlack/activity.svg</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -2082,7 +2099,7 @@ background-color:#ececec;
                     <string/>
                    </property>
                    <property name="pixmap">
-                    <pixmap resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">:/blackicons/Graphics/featherBlack/grid.svg</pixmap>
+                    <pixmap>:/blackicons/Graphics/featherBlack/grid.svg</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -2170,7 +2187,7 @@ background-color:#ececec;
                     <string/>
                    </property>
                    <property name="pixmap">
-                    <pixmap resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">:/blackicons/Graphics/featherBlack/clock.svg</pixmap>
+                    <pixmap>:/blackicons/Graphics/featherBlack/clock.svg</pixmap>
                    </property>
                    <property name="scaledContents">
                     <bool>true</bool>
@@ -2240,7 +2257,7 @@ background-color:#ececec;
                     <string>Update URL</string>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+                    <iconset>
                      <normaloff>:/blackicons/Graphics/featherBlack/search.svg</normaloff>:/blackicons/Graphics/featherBlack/search.svg</iconset>
                    </property>
                   </widget>
@@ -2286,7 +2303,7 @@ background-color:#ececec;
                     <string>   Start   </string>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+                    <iconset>
                      <normaloff>:/blackicons/Graphics/featherBlack/fast-forward.svg</normaloff>:/blackicons/Graphics/featherBlack/fast-forward.svg</iconset>
                    </property>
                   </widget>
@@ -2304,7 +2321,7 @@ background-color:#ececec;
                     <string> Pause   </string>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+                    <iconset>
                      <normaloff>:/blackicons/Graphics/featherBlack/pause-circle.svg</normaloff>:/blackicons/Graphics/featherBlack/pause-circle.svg</iconset>
                    </property>
                   </widget>
@@ -2322,7 +2339,7 @@ background-color:#ececec;
                     <string>Resume</string>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+                    <iconset>
                      <normaloff>:/blackicons/Graphics/featherBlack/refresh-ccw.svg</normaloff>:/blackicons/Graphics/featherBlack/refresh-ccw.svg</iconset>
                    </property>
                   </widget>
@@ -2340,7 +2357,7 @@ background-color:#ececec;
                     <string>   Stop     </string>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+                    <iconset>
                      <normaloff>:/blackicons/Graphics/featherBlack/stop-circle.svg</normaloff>:/blackicons/Graphics/featherBlack/stop-circle.svg</iconset>
                    </property>
                   </widget>
@@ -2463,7 +2480,7 @@ background-color:#ececec;
              <string/>
             </property>
             <property name="pixmap">
-             <pixmap resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">:/blackicons/Graphics/featherBlack/airplay.svg</pixmap>
+             <pixmap>:/blackicons/Graphics/featherBlack/airplay.svg</pixmap>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -2484,7 +2501,7 @@ background-color:#ececec;
              <string>My Profile</string>
             </property>
             <property name="icon">
-             <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+             <iconset>
               <normaloff>:/blackicons/Graphics/featherBlack/user.svg</normaloff>:/blackicons/Graphics/featherBlack/user.svg</iconset>
             </property>
            </widget>
@@ -2500,7 +2517,7 @@ background-color:#ececec;
              <string>Logout</string>
             </property>
             <property name="icon">
-             <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+             <iconset>
               <normaloff>:/blackicons/Graphics/featherBlack/log-out.svg</normaloff>:/blackicons/Graphics/featherBlack/log-out.svg</iconset>
             </property>
            </widget>
@@ -2526,8 +2543,7 @@ background-color:#ececec;
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
-  <include location="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc"/>
-  <include location="../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc"/>
+  <include location="Resource.qrc"/>
  </resources>
  <connections>
   <connection>
@@ -2537,12 +2553,12 @@ background-color:#ececec;
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>90</x>
-     <y>147</y>
+     <x>129</x>
+     <y>325</y>
     </hint>
     <hint type="destinationlabel">
-     <x>81</x>
-     <y>178</y>
+     <x>96</x>
+     <y>415</y>
     </hint>
    </hints>
   </connection>
