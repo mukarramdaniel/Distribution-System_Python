@@ -5,16 +5,39 @@ from PyQt5.QtWidgets import (
     QApplication, QDialog, QMainWindow, QMessageBox, QGraphicsDropShadowEffect,QMessageBox
 )
 from PyQt5.QtCore import QPropertyAnimation
+from PyQt5.QtGui import (QColor)
 
 class MainWindow(QMainWindow):
     def __init__(self,parent=None):
         QMainWindow.__init__(self)
         self.ui=Ui_MainWindow()
         self.ui.setupUi(self)
+
+        self.shadow = QGraphicsDropShadowEffect(self)
+        self.shadow.setBlurRadius(20)
+        self.shadow.setXOffset(0)
+        self.shadow.setYOffset(0)
+        self.shadow.setColor(QColor("black"))
+        self.ui.LeftMenu.setGraphicsEffect(self.shadow)
+
+        self.shadow = QGraphicsDropShadowEffect(self)
+        self.shadow.setBlurRadius(20)
+        self.shadow.setXOffset(0)
+        self.shadow.setYOffset(0)
+        self.shadow.setColor(QColor("black"))
+        self.ui.Input_Widget.setGraphicsEffect(self.shadow)
+
+        self.shadow = QGraphicsDropShadowEffect(self)
+        self.shadow.setBlurRadius(20)
+        self.shadow.setXOffset(0)
+        self.shadow.setYOffset(0)
+        self.shadow.setColor(QColor("black"))
+        self.ui.HeaderFrame_3.setGraphicsEffect(self.shadow)
+
         self.ui.btnUpdateStock.clicked.connect(lambda: self.OpenUpdatePage())
         self.ui.btnBuyStock.clicked.connect(lambda: self.OpenBuyStockPage())
         self.ui.btn_Report_Cost.clicked.connect(lambda: self.OpenReportCostPage())
-        self.ui.menuBtn.clicked.connect(lambda: self.slideLeftMenu())
+        self.ui.menuBtn_2.clicked.connect(lambda: self.slideLeftMenu())
         self.show()
     def OpenBuyStockPage(self):
         self.ui.mainBody.setCurrentIndex(0)
