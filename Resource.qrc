@@ -1,5 +1,12 @@
 <RCC>
   <qresource prefix="White Icons">
+    <file>Graphics/featherBlack/profile.png</file>
+    <file>Graphics/featherBlack/notification.png</file>
+    <file>Graphics/featherBlack/attendance.png</file>
+    <file>Graphics/featherBlack/employee.png</file>
+    <file>Graphics/featherBlack/onboarding.png</file>
+    <file>Graphics/featherBlack/dashboard.png</file>
+    <file>Graphics/featherBlack/car.png</file>
     <file>Graphics/featherWhite/activity.svg</file>
     <file>Graphics/featherWhite/airplay.svg</file>
     <file>Graphics/featherWhite/alert-circle.svg</file>
@@ -289,8 +296,7 @@
     <file>Graphics/featherWhite/zoom-out.svg</file>
   </qresource>
   <qresource prefix="LOGO">
-    <file>ARM_LOGO_Crop.png</file>
-    <file>ARM_LOGO.png</file>
+    <file>Graphics/ARM_LOGO_Crop.png</file>
   </qresource>
   <qresource prefix="Black Icons">
     <file>Graphics/featherBlack/activity.svg</file>

@@ -1,3 +1,4 @@
+
 import sys
 from Stacked_DesignUI1 import *
 from PyQt5 import QtWidgets
@@ -13,31 +14,27 @@ class MainWindow(QMainWindow):
         self.ui=Ui_MainWindow()
         self.ui.setupUi(self)
 
-        self.shadow = QGraphicsDropShadowEffect(self)
-        self.shadow.setBlurRadius(20)
-        self.shadow.setXOffset(0)
-        self.shadow.setYOffset(0)
-        self.shadow.setColor(QColor("black"))
-        self.ui.LeftMenu.setGraphicsEffect(self.shadow)
+        
 
         self.shadow = QGraphicsDropShadowEffect(self)
-        self.shadow.setBlurRadius(20)
+        self.shadow.setBlurRadius(30)
         self.shadow.setXOffset(0)
         self.shadow.setYOffset(0)
         self.shadow.setColor(QColor("black"))
         self.ui.Input_Widget.setGraphicsEffect(self.shadow)
 
         self.shadow = QGraphicsDropShadowEffect(self)
-        self.shadow.setBlurRadius(20)
+        self.shadow.setBlurRadius(30)
         self.shadow.setXOffset(0)
         self.shadow.setYOffset(0)
         self.shadow.setColor(QColor("black"))
         self.ui.HeaderFrame_3.setGraphicsEffect(self.shadow)
 
-        self.ui.btnUpdateStock.clicked.connect(lambda: self.OpenUpdatePage())
-        self.ui.btnBuyStock.clicked.connect(lambda: self.OpenBuyStockPage())
-        self.ui.btn_Report_Cost.clicked.connect(lambda: self.OpenReportCostPage())
+        #self.ui.btnUpdateStock.clicked.connect(lambda: self.OpenUpdatePage())
+        #self.ui.btnBuyStock.clicked.connect(lambda: self.OpenBuyStockPage())
+        #self.ui.btn_Report_Cost.clicked.connect(lambda: self.OpenReportCostPage())
         self.ui.menuBtn_2.clicked.connect(lambda: self.slideLeftMenu())
+        self.ui.accountBtn_3.clicked.connect(lambda: self.SlideRightMenu())
         self.show()
     def OpenBuyStockPage(self):
         self.ui.mainBody.setCurrentIndex(0)
@@ -46,20 +43,31 @@ class MainWindow(QMainWindow):
     def OpenReportCostPage(self):
         self.ui.mainBody.setCurrentIndex(2)
     def slideLeftMenu(self):
-        width=self.ui.frame_8.width()
+        width=self.ui.LeftMenu.width()
         if(width==0):
-            newWidth=200
-            self.ui.menuBtn.setIcon(QtGui.QIcon(u":/blackicons/Graphics/featherBlack/chevron-left.svg"))
+            newWidth=220
+            #self.ui.menuBtn_2.setIcon(QtGui.QIcon(u":/blackicons/Graphics/featherBlack/chevron-left.svg"))
         else:
             newWidth=0
-            self.ui.menuBtn.setIcon(QtGui.QIcon(u":/blackicons/Graphics/featherBlack/align-left.svg"))
-        self.animation = QPropertyAnimation(self.ui.frame_8, b"maximumWidth")
+            #self.ui.menuBtn.setIcon(QtGui.QIcon(u":/blackicons/Graphics/featherBlack/align-left.svg"))
+        self.animation = QPropertyAnimation(self.ui.LeftMenu, b"maximumWidth")
         self.animation.setDuration(250)
         self.animation.setStartValue(width)#Start value is the current menu width
         self.animation.setEndValue(newWidth)#end value is the new menu width
         self.animation.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
         self.animation.start()
-
+    def SlideRightMenu(self):
+        width=self.ui.profileCont.width()
+        if(width==0):
+            newWidth=105
+        else:
+            newWidth=0
+        self.animation = QPropertyAnimation(self.ui.profileCont, b"maximumWidth")
+        self.animation.setDuration(250)
+        self.animation.setStartValue(width)#Start value is the current menu width
+        self.animation.setEndValue(newWidth)#end value is the new menu width
+        self.animation.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
+        self.animation.start()
 if __name__=="__main__":
     app=QApplication(sys.argv)
     window=MainWindow()
