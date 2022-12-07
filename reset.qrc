@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="reset">
+    <file>Graphics/Login/ARM_LOGO_Crop-removebg-preview.png</file>
+    <file>Graphics/Login/output-onlinepngtools.png</file>
+    <file>Graphics/reser/icons8-forgot-password-30.png</file>
+    <file>Graphics/reser/icons8-back-arrow-30.png</file>
+  </qresource>
+</RCC>
