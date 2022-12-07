@@ -1,5 +1,11 @@
 <RCC>
   <qresource prefix="White Icons">
+    <file>Graphics/featherBlack/profits.png</file>
+    <file>Graphics/featherBlack/sales.png</file>
+    <file>Graphics/featherBlack/customer.png</file>
+    <file>Graphics/featherBlack/search.png</file>
+    <file>Graphics/featherBlack/file.png</file>
+    <file>Graphics/Dashboard_Graph.jpeg</file>
     <file>Graphics/featherBlack/logout.png</file>
     <file>Graphics/featherBlack/user.png</file>
     <file>Graphics/featherBlack/profile.png</file>
