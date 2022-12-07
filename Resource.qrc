@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="White Icons">
+    <file>Graphics/featherBlack/logout.png</file>
+    <file>Graphics/featherBlack/user.png</file>
     <file>Graphics/featherBlack/profile.png</file>
     <file>Graphics/featherBlack/notification.png</file>
     <file>Graphics/featherBlack/attendance.png</file>

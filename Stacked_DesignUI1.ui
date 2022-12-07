@@ -566,7 +566,7 @@ background-color:#f5f5f5;
        <number>1</number>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="Home_Widget">
        <property name="styleSheet">
@@ -3183,8 +3183,8 @@ background-color:#ececec;
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>100</width>
-                <height>30</height>
+                <width>231</width>
+                <height>69</height>
                </rect>
               </property>
               <attribute name="label">
@@ -3366,11 +3366,17 @@ background-color:#ececec;
               <enum>Qt::LeftToRight</enum>
              </property>
              <property name="text">
-              <string>  My Profile</string>
+              <string>My Profile</string>
              </property>
              <property name="icon">
-              <iconset>
-               <normaloff>:/blackicons/Graphics/featherBlack/user.svg</normaloff>:/blackicons/Graphics/featherBlack/user.svg</iconset>
+              <iconset resource="Resource.qrc">
+               <normaloff>:/White Icons/Graphics/featherBlack/user.png</normaloff>:/White Icons/Graphics/featherBlack/user.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
              </property>
             </widget>
            </item>
@@ -3382,11 +3388,17 @@ background-color:#ececec;
               </font>
              </property>
              <property name="text">
-              <string>  Logout</string>
+              <string>Logout</string>
              </property>
              <property name="icon">
-              <iconset>
-               <normaloff>:/blackicons/Graphics/featherBlack/log-out.svg</normaloff>:/blackicons/Graphics/featherBlack/log-out.svg</iconset>
+              <iconset resource="Resource.qrc">
+               <normaloff>:/White Icons/Graphics/featherBlack/logout.png</normaloff>:/White Icons/Graphics/featherBlack/logout.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
              </property>
             </widget>
            </item>
