@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>599</height>
+   </rect>
+  </property>
+  <property name="cursor">
+   <cursorShape>PointingHandCursor</cursorShape>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#loginFrame{
+background-image:url(:/Login/output-onlinepngtools.png);
+padding:10px 70px 15px 70px;
+}
+#emailinp{
+height:25px;
+margin-top:10px;
+border:2px solid black;
+border-radius : 6px;
+padding:5px 15px;
+}
+#passwordinp{
+height:25px;
+margin-top:10px;
+border:2px solid black;
+border-radius : 6px;
+padding:5px 15px;
+}
+#emailinp:hover{
+border:2px solid gray;
+}
+#passwordinp:hover{
+border:2px solid gray;
+}
+#emailinp:focus{
+border:2px solid blue;
+}
+#passwordinp:focus{
+border:2px solid blue;
+}
+#loginbtn{
+margin-top:15px;
+height:25px;
+width:50px;
+color:black;
+background-color:rgb(168, 168, 168);
+border-radius:5px;
+}
+#loginbtn:pressed {
+	padding-left:5px;
+	padding-top:5px;
+	background-color:rgba(112,112,112,255);
+	border-postion:calc(100% -10px)center;
+}
+#loginbtn:hover {
+	background-color:rgba(112,112,112,255);
+}
+#forgotbtn{
+margin-top:5px;
+height:20px;
+color:black;
+border-radius:0px;
+}
+#forgotbtn:pressed {
+	padding-left:5px;
+	padding-top:5px;
+	background-color:rgb(255, 0, 0);
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QFrame" name="loginFrame">
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QFormLayout" name="formLayout">
+       <item row="0" column="1">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/Login/ARM_LOGO_Crop-removebg-preview.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLabel" name="loginimg">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/Login/user (2).png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="emailinp">
+         <property name="placeholderText">
+          <string>@gmail.com</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="passwordinp">
+         <property name="echoMode">
+          <enum>QLineEdit::Password</enum>
+         </property>
+         <property name="placeholderText">
+          <string>Password</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QPushButton" name="forgotbtn">
+         <property name="text">
+          <string>Forgot your password?</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QPushButton" name="loginbtn">
+         <property name="text">
+          <string>login</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../login.qrc">
+           <normaloff>:/Login/icons8-enter-48.png</normaloff>:/Login/icons8-enter-48.png</iconset>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources>
+  <include location="../login.qrc"/>
+ </resources>
+ <connections/>
+</ui>
