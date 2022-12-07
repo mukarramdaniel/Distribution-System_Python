@@ -15,6 +15,61 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
 
         
+        self.shadow = QGraphicsDropShadowEffect(self)
+        self.shadow.setBlurRadius(20)
+        self.shadow.setXOffset(0)
+        self.shadow.setYOffset(0)
+        self.shadow.setColor(QColor("black"))
+        self.ui.Card1.setGraphicsEffect(self.shadow)
+
+        self.shadow = QGraphicsDropShadowEffect(self)
+        self.shadow.setBlurRadius(20)
+        self.shadow.setXOffset(0)
+        self.shadow.setYOffset(0)
+        self.shadow.setColor(QColor("black"))
+        self.ui.Card2.setGraphicsEffect(self.shadow)
+
+        self.shadow = QGraphicsDropShadowEffect(self)
+        self.shadow.setBlurRadius(20)
+        self.shadow.setXOffset(0)
+        self.shadow.setYOffset(0)
+        self.shadow.setColor(QColor("black"))
+        self.ui.Card3.setGraphicsEffect(self.shadow)
+
+        self.shadow = QGraphicsDropShadowEffect(self)
+        self.shadow.setBlurRadius(20)
+        self.shadow.setXOffset(0)
+        self.shadow.setYOffset(0)
+        self.shadow.setColor(QColor("black"))
+        self.ui.Card4.setGraphicsEffect(self.shadow)
+
+        self.shadow = QGraphicsDropShadowEffect(self)
+        self.shadow.setBlurRadius(20)
+        self.shadow.setXOffset(0)
+        self.shadow.setYOffset(0)
+        self.shadow.setColor(QColor("black"))
+        self.ui.widget_TopClients.setGraphicsEffect(self.shadow)
+
+        self.shadow = QGraphicsDropShadowEffect(self)
+        self.shadow.setBlurRadius(20)
+        self.shadow.setXOffset(0)
+        self.shadow.setYOffset(0)
+        self.shadow.setColor(QColor("black"))
+        self.ui.frame_TableWhatsNew.setGraphicsEffect(self.shadow)
+
+        self.shadow = QGraphicsDropShadowEffect(self)
+        self.shadow.setBlurRadius(20)
+        self.shadow.setXOffset(0)
+        self.shadow.setYOffset(0)
+        self.shadow.setColor(QColor("black"))
+        self.ui.frame_GoalsCompleted.setGraphicsEffect(self.shadow)
+
+        self.shadow = QGraphicsDropShadowEffect(self)
+        self.shadow.setBlurRadius(20)
+        self.shadow.setXOffset(0)
+        self.shadow.setYOffset(0)
+        self.shadow.setColor(QColor("black"))
+        self.ui.Account_Widget.setGraphicsEffect(self.shadow)
 
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(30)
@@ -30,18 +85,46 @@ class MainWindow(QMainWindow):
         self.shadow.setColor(QColor("black"))
         self.ui.HeaderFrame_3.setGraphicsEffect(self.shadow)
 
+        #--------------Shadow Add Vehicle--------------
+        self.shadow = QGraphicsDropShadowEffect(self)
+        self.shadow.setBlurRadius(20)
+        self.shadow.setXOffset(0)
+        self.shadow.setYOffset(0)
+        self.shadow.setColor(QColor("black"))
+        self.ui.widget_17.setGraphicsEffect(self.shadow)
+
+        self.shadow = QGraphicsDropShadowEffect(self)
+        self.shadow.setBlurRadius(20)
+        self.shadow.setXOffset(0)
+        self.shadow.setYOffset(0)
+        self.shadow.setColor(QColor("black"))
+        self.ui.widget_12.setGraphicsEffect(self.shadow)
+        #----------------------------------------------
+
         #self.ui.btnUpdateStock.clicked.connect(lambda: self.OpenUpdatePage())
         #self.ui.btnBuyStock.clicked.connect(lambda: self.OpenBuyStockPage())
         #self.ui.btn_Report_Cost.clicked.connect(lambda: self.OpenReportCostPage())
+        self.ui.menuBtn.clicked.connect(lambda: self.slideLeftMenu())
         self.ui.menuBtn_2.clicked.connect(lambda: self.slideLeftMenu())
+        self.ui.menuBtn_3.clicked.connect(lambda: self.slideLeftMenu())
+        self.ui.accountBtn.clicked.connect(lambda: self.SlideRightMenu())
+        self.ui.accountBtn_2.clicked.connect(lambda: self.SlideRightMenu())
         self.ui.accountBtn_3.clicked.connect(lambda: self.SlideRightMenu())
+        self.ui.btnAddEmployee.clicked.connect(lambda: self.OpenAddEmployee())
+        self.ui.btnDashboard.clicked.connect(lambda: self.OpenDashboardManager())
+        self.ui.btnUpdateEmployee.clicked.connect(lambda: self.OpenUpdateEmployeeManager())
+        self.ui.btn_AddVehicle.clicked.connect(lambda: self.OpenAddVehicleManager())
         self.show()
-    def OpenBuyStockPage(self):
-        self.ui.mainBody.setCurrentIndex(0)
-    def OpenUpdatePage(self):
+
+    def OpenAddVehicleManager(self):
         self.ui.mainBody.setCurrentIndex(1)
-    def OpenReportCostPage(self):
+    def OpenUpdateEmployeeManager(self):
         self.ui.mainBody.setCurrentIndex(2)
+    def OpenDashboardManager(self):
+        self.ui.mainBody.setCurrentIndex(0)
+    def OpenAddEmployee(self):
+        self.ui.mainBody.setCurrentIndex(3)
+    
     def slideLeftMenu(self):
         width=self.ui.LeftMenu.width()
         if(width==0):
