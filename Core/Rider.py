@@ -7,9 +7,4 @@ class Driver(User):
         self.resetToken=resetToken
         startLocation=[]
         fuelRecord=[]
-def main():
-    d=Driver(("1","e","e","e","re","er","er","er","re","re","er","re"),"dfsfd") 
-    d=User(Driver) 
-    print(d.age)    
-if __name__=="__main__":
-    main()
+
