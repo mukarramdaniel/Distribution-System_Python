@@ -107,15 +107,22 @@ class MainWindow(QMainWindow):
         self.ui.menuBtn.clicked.connect(lambda: self.slideLeftMenu())
         self.ui.menuBtn_2.clicked.connect(lambda: self.slideLeftMenu())
         self.ui.menuBtn_3.clicked.connect(lambda: self.slideLeftMenu())
+        self.ui.menuBtn_4.clicked.connect(lambda: self.slideLeftMenu())
+        self.ui.menuBtn_5.clicked.connect(lambda: self.slideLeftMenu())
         self.ui.accountBtn.clicked.connect(lambda: self.SlideRightMenu())
         self.ui.accountBtn_2.clicked.connect(lambda: self.SlideRightMenu())
         self.ui.accountBtn_3.clicked.connect(lambda: self.SlideRightMenu())
+        self.ui.accountBtn_4.clicked.connect(lambda: self.SlideRightMenu())
+        self.ui.accountBtn_5.clicked.connect(lambda: self.SlideRightMenu())
         self.ui.btnAddEmployee.clicked.connect(lambda: self.OpenAddEmployee())
         self.ui.btnDashboard.clicked.connect(lambda: self.OpenDashboardManager())
         self.ui.btnUpdateEmployee.clicked.connect(lambda: self.OpenUpdateEmployeeManager())
         self.ui.btn_AddVehicle.clicked.connect(lambda: self.OpenAddVehicleManager())
+        self.ui.btnCheckAttendance.clicked.connect(lambda: self.OpenCheckAttendanceManager())
         self.show()
 
+    def OpenCheckAttendanceManager(self):
+        self.ui.mainBody.setCurrentIndex(4)
     def OpenAddVehicleManager(self):
         self.ui.mainBody.setCurrentIndex(1)
     def OpenUpdateEmployeeManager(self):

@@ -194,7 +194,14 @@ border-radius:5px;
            </spacer>
           </item>
           <item>
-           <widget class="QLineEdit" name="cateogrytxt"/>
+           <widget class="QLineEdit" name="cateogrytxt">
+            <property name="maximumSize">
+             <size>
+              <width>465</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
           </item>
           <item>
            <spacer name="horizontalSpacer_4">
@@ -245,7 +252,14 @@ border-radius:5px;
            </spacer>
           </item>
           <item>
-           <widget class="QLineEdit" name="sizetxt"/>
+           <widget class="QLineEdit" name="sizetxt">
+            <property name="maximumSize">
+             <size>
+              <width>465</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
           </item>
           <item>
            <spacer name="horizontalSpacer_6">
@@ -296,7 +310,14 @@ border-radius:5px;
            </spacer>
           </item>
           <item>
-           <widget class="QLineEdit" name="quantitytxt"/>
+           <widget class="QLineEdit" name="quantitytxt">
+            <property name="maximumSize">
+             <size>
+              <width>465</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
           </item>
           <item>
            <spacer name="horizontalSpacer_8">
@@ -348,6 +369,12 @@ border-radius:5px;
           </item>
           <item>
            <widget class="QLineEdit" name="billtxt">
+            <property name="maximumSize">
+             <size>
+              <width>465</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <property name="readOnly">
              <bool>true</bool>
             </property>
@@ -402,7 +429,14 @@ border-radius:5px;
            </spacer>
           </item>
           <item>
-           <widget class="QLineEdit" name="colortxt"/>
+           <widget class="QLineEdit" name="colortxt">
+            <property name="maximumSize">
+             <size>
+              <width>465</width>
+              <height>16777215</height>
+             </size>
+            </property>
+           </widget>
           </item>
           <item>
            <spacer name="horizontalSpacer_12">
@@ -454,6 +488,12 @@ border-radius:5px;
           </item>
           <item>
            <widget class="QLineEdit" name="totaltxt">
+            <property name="maximumSize">
+             <size>
+              <width>465</width>
+              <height>16777215</height>
+             </size>
+            </property>
             <property name="readOnly">
              <bool>true</bool>
             </property>
