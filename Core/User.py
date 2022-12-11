@@ -1,4 +1,18 @@
 class User:
+    _userId=None
+    _userName=None
+    _password=None
+    _userRole=None
+    _name=None
+    _age=None
+    _contactNum=None
+    _Email=None
+    _CNIC=None
+    _BankAccount=None
+    _createdDate=None
+    _createdDate=None
+    _updatedDate=None
+    
     def __init__(self,userT):
         self.userId=userT[0]
         self.userName=userT[1]

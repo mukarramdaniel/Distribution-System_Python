@@ -5,6 +5,7 @@ class Driver(User):
         fieldArea=""
         adjList=[]
         self.resetToken=resetToken
-        startLocation=[]
+        vehicle=None#vehicle object
+        startLocation=None#location object
         fuelRecord=[]
 
