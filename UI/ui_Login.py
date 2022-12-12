@@ -287,6 +287,193 @@ class Ui_LoginWindow(object):
         self.verticalLayout_3.addWidget(self.resetframe)
         self.verticalLayout_2.addWidget(self.widget_6)
         self.loginStackedWidget.addWidget(self.Reset1)
+        self.Reset2 = QtWidgets.QWidget()
+        self.Reset2.setStyleSheet("#Reset2{\n"
+"background-image:url(:/reset/Graphics/Login/output-onlinepngtools.png);\n"
+"padding:10px;\n"
+"}\n"
+"#resetlbl{\n"
+"height:25px;\n"
+"margin-top:0px;\n"
+"}\n"
+"#codelbl , #passwordlbl , #confirmlbl{\n"
+"height:25px;\n"
+"margin-top:-5px;\n"
+"padding:5px;\n"
+"}\n"
+"#codetxt , #passwordtxt , #confirmtxt{\n"
+"height:25px;\n"
+"border:2px solid black;\n"
+"border-radius : 6px;\n"
+"padding:5px 10px;\n"
+"}\n"
+"#emailtxt:hover , #passwordtxt:hover , #confirmtxt:hover{\n"
+"border:2px solid gray;\n"
+"}\n"
+"#emailtxt:focus , #passwordfocus , #confirmtxt:focus{\n"
+"border:2px solid gray;\n"
+"}\n"
+"#backbtn_2 , #resetbtn{\n"
+"margin-top:15px;\n"
+"height:25px;\n"
+"width:50px;\n"
+"color:black;\n"
+"background-color:qlineargradient(spread:pad,x1:0,y1:0.505682,x2:1,y2:0.477,stop:0 rgba(20,47,78,20),stop:1 rgba(85,98,112,250));\n"
+"border-radius:5px;\n"
+"}\n"
+"#backbtnbtn:pressed , #resetbtn:pressed {\n"
+"    padding-left:5px;\n"
+"    padding-top:5px;\n"
+"    background-color:rgba(112,112,112,255);\n"
+"    border-postion:calc(100% -10px)center;\n"
+"}\n"
+"#backbtn:hover , resetbtn:hover {\n"
+"    background-color:rgba(112,112,112,255);\n"
+"}\n"
+"")
+        self.Reset2.setObjectName("Reset2")
+        self.horizontalLayout_9 = QtWidgets.QHBoxLayout(self.Reset2)
+        self.horizontalLayout_9.setObjectName("horizontalLayout_9")
+        self.widget_10 = QtWidgets.QWidget(self.Reset2)
+        self.widget_10.setObjectName("widget_10")
+        self.horizontalLayout_17 = QtWidgets.QHBoxLayout(self.widget_10)
+        self.horizontalLayout_17.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_17.setSpacing(0)
+        self.horizontalLayout_17.setObjectName("horizontalLayout_17")
+        self.resetframe_2 = QtWidgets.QFrame(self.widget_10)
+        self.resetframe_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.resetframe_2.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.resetframe_2.setObjectName("resetframe_2")
+        self.formLayout_2 = QtWidgets.QFormLayout(self.resetframe_2)
+        self.formLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.formLayout_2.setSpacing(6)
+        self.formLayout_2.setObjectName("formLayout_2")
+        self.logolbl_2 = QtWidgets.QLabel(self.resetframe_2)
+        self.logolbl_2.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.logolbl_2.setObjectName("logolbl_2")
+        self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.logolbl_2)
+        self.widget_11 = QtWidgets.QWidget(self.resetframe_2)
+        self.widget_11.setObjectName("widget_11")
+        self.horizontalLayout_10 = QtWidgets.QHBoxLayout(self.widget_11)
+        self.horizontalLayout_10.setObjectName("horizontalLayout_10")
+        spacerItem17 = QtWidgets.QSpacerItem(100, 20, QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_10.addItem(spacerItem17)
+        self.codelbl = QtWidgets.QLabel(self.widget_11)
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.codelbl.setFont(font)
+        self.codelbl.setObjectName("codelbl")
+        self.horizontalLayout_10.addWidget(self.codelbl)
+        spacerItem18 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_10.addItem(spacerItem18)
+        self.formLayout_2.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.widget_11)
+        self.widget_12 = QtWidgets.QWidget(self.resetframe_2)
+        self.widget_12.setObjectName("widget_12")
+        self.horizontalLayout_11 = QtWidgets.QHBoxLayout(self.widget_12)
+        self.horizontalLayout_11.setObjectName("horizontalLayout_11")
+        spacerItem19 = QtWidgets.QSpacerItem(100, 20, QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_11.addItem(spacerItem19)
+        self.codetxt = QtWidgets.QLineEdit(self.widget_12)
+        self.codetxt.setMinimumSize(QtCore.QSize(300, 0))
+        self.codetxt.setObjectName("codetxt")
+        self.horizontalLayout_11.addWidget(self.codetxt)
+        spacerItem20 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_11.addItem(spacerItem20)
+        self.formLayout_2.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.widget_12)
+        self.widget_13 = QtWidgets.QWidget(self.resetframe_2)
+        self.widget_13.setObjectName("widget_13")
+        self.horizontalLayout_12 = QtWidgets.QHBoxLayout(self.widget_13)
+        self.horizontalLayout_12.setObjectName("horizontalLayout_12")
+        spacerItem21 = QtWidgets.QSpacerItem(100, 20, QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_12.addItem(spacerItem21)
+        self.passwordlbl = QtWidgets.QLabel(self.widget_13)
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.passwordlbl.setFont(font)
+        self.passwordlbl.setObjectName("passwordlbl")
+        self.horizontalLayout_12.addWidget(self.passwordlbl)
+        spacerItem22 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_12.addItem(spacerItem22)
+        self.formLayout_2.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.widget_13)
+        self.widget_14 = QtWidgets.QWidget(self.resetframe_2)
+        self.widget_14.setObjectName("widget_14")
+        self.horizontalLayout_13 = QtWidgets.QHBoxLayout(self.widget_14)
+        self.horizontalLayout_13.setObjectName("horizontalLayout_13")
+        spacerItem23 = QtWidgets.QSpacerItem(100, 20, QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_13.addItem(spacerItem23)
+        self.passwordtxt = QtWidgets.QLineEdit(self.widget_14)
+        self.passwordtxt.setMinimumSize(QtCore.QSize(300, 0))
+        self.passwordtxt.setObjectName("passwordtxt")
+        self.horizontalLayout_13.addWidget(self.passwordtxt)
+        spacerItem24 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_13.addItem(spacerItem24)
+        self.formLayout_2.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.widget_14)
+        self.widget_15 = QtWidgets.QWidget(self.resetframe_2)
+        self.widget_15.setObjectName("widget_15")
+        self.horizontalLayout_14 = QtWidgets.QHBoxLayout(self.widget_15)
+        self.horizontalLayout_14.setObjectName("horizontalLayout_14")
+        spacerItem25 = QtWidgets.QSpacerItem(100, 20, QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_14.addItem(spacerItem25)
+        self.confirmlbl = QtWidgets.QLabel(self.widget_15)
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.confirmlbl.setFont(font)
+        self.confirmlbl.setObjectName("confirmlbl")
+        self.horizontalLayout_14.addWidget(self.confirmlbl)
+        spacerItem26 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_14.addItem(spacerItem26)
+        self.formLayout_2.setWidget(6, QtWidgets.QFormLayout.FieldRole, self.widget_15)
+        self.widget_16 = QtWidgets.QWidget(self.resetframe_2)
+        self.widget_16.setObjectName("widget_16")
+        self.horizontalLayout_15 = QtWidgets.QHBoxLayout(self.widget_16)
+        self.horizontalLayout_15.setObjectName("horizontalLayout_15")
+        spacerItem27 = QtWidgets.QSpacerItem(100, 20, QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_15.addItem(spacerItem27)
+        self.confirmtxt = QtWidgets.QLineEdit(self.widget_16)
+        self.confirmtxt.setMinimumSize(QtCore.QSize(300, 0))
+        self.confirmtxt.setObjectName("confirmtxt")
+        self.horizontalLayout_15.addWidget(self.confirmtxt)
+        spacerItem28 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_15.addItem(spacerItem28)
+        self.formLayout_2.setWidget(7, QtWidgets.QFormLayout.FieldRole, self.widget_16)
+        self.widget_17 = QtWidgets.QWidget(self.resetframe_2)
+        self.widget_17.setObjectName("widget_17")
+        self.horizontalLayout_16 = QtWidgets.QHBoxLayout(self.widget_17)
+        self.horizontalLayout_16.setObjectName("horizontalLayout_16")
+        spacerItem29 = QtWidgets.QSpacerItem(100, 20, QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_16.addItem(spacerItem29)
+        self.backbtn_2 = QtWidgets.QPushButton(self.widget_17)
+        self.backbtn_2.setMinimumSize(QtCore.QSize(100, 0))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.backbtn_2.setFont(font)
+        self.backbtn_2.setIcon(icon1)
+        self.backbtn_2.setObjectName("backbtn_2")
+        self.horizontalLayout_16.addWidget(self.backbtn_2)
+        spacerItem30 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_16.addItem(spacerItem30)
+        self.resetbtn = QtWidgets.QPushButton(self.widget_17)
+        self.resetbtn.setMinimumSize(QtCore.QSize(100, 0))
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.resetbtn.setFont(font)
+        self.resetbtn.setObjectName("resetbtn")
+        self.horizontalLayout_16.addWidget(self.resetbtn)
+        spacerItem31 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_16.addItem(spacerItem31)
+        self.formLayout_2.setWidget(8, QtWidgets.QFormLayout.FieldRole, self.widget_17)
+        self.resetlbl = QtWidgets.QLabel(self.resetframe_2)
+        self.resetlbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.resetlbl.setObjectName("resetlbl")
+        self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.resetlbl)
+        self.horizontalLayout_17.addWidget(self.resetframe_2)
+        self.horizontalLayout_9.addWidget(self.widget_10)
+        self.loginStackedWidget.addWidget(self.Reset2)
         self.gridLayout.addWidget(self.loginStackedWidget, 0, 0, 1, 1)
         LoginWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(LoginWindow)
@@ -294,7 +481,7 @@ class Ui_LoginWindow(object):
         LoginWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(LoginWindow)
-        self.loginStackedWidget.setCurrentIndex(1)
+        self.loginStackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(LoginWindow)
 
     def retranslateUi(self, LoginWindow):
@@ -309,5 +496,12 @@ class Ui_LoginWindow(object):
         self.maillbl.setText(_translate("LoginWindow", "Enter your email:"))
         self.backbtn.setText(_translate("LoginWindow", "Back"))
         self.sendbtn.setText(_translate("LoginWindow", "Send"))
+        self.logolbl_2.setText(_translate("LoginWindow", "<html><head/><body><p><img src=\":/reset/Graphics/Login/ARM_LOGO_Crop-removebg-preview.png\"/></p></body></html>"))
+        self.codelbl.setText(_translate("LoginWindow", "Enter 6-Digit code:"))
+        self.passwordlbl.setText(_translate("LoginWindow", "New Password:"))
+        self.confirmlbl.setText(_translate("LoginWindow", "Confirm Password:"))
+        self.backbtn_2.setText(_translate("LoginWindow", "Back"))
+        self.resetbtn.setText(_translate("LoginWindow", "Reset"))
+        self.resetlbl.setText(_translate("LoginWindow", "<html><head/><body><p><img src=\":/reset/Graphics/reser/icons8-forgot-password-30.png\"/></p></body></html>"))
 import login_rc
 import reset_rc

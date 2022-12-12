@@ -1,4 +1,5 @@
 import mysql.connector
+
 mydb = mysql.connector.connect(
   host="localhost",
   user="user1",
@@ -8,10 +9,9 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-sql = "INSERT INTO Employee (empID) VALUES (1)"
+mycursor.execute("SELECT userID,password,userName,name,age,contactNum,Email,Cnic,bankAccount,resetToken  FROM manager")
 
-mycursor.execute(sql)
+myresult = mycursor.fetchall()
 
-mydb.commit()
-
-print(mycursor.rowcount, "record inserted.")
+for x in :
+  print(myresult)
