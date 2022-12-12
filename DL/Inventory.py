@@ -1,10 +1,7 @@
-import copyreg
-
-
 class Inventory:
   
     def __init__(self):
-        self.size = 15
+        self.size = 13
         self.hashTable = self.createHashTable()
   
     def createHashTable(self):

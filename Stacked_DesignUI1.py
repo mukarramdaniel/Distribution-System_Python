@@ -2252,4 +2252,13 @@ class Ui_MainWindow(object):
         self.btnProfile.setText(_translate("MainWindow", "My Profile"))
         self.btnLogout.setText(_translate("MainWindow", "Logout"))
 import Resource_rc
-import resources_rc
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())

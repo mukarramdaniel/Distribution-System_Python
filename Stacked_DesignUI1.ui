@@ -1913,7 +1913,7 @@ background-color:#ececec;
                         <string>Movie Name</string>
                        </property>
                        <property name="icon">
-                        <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+                        <iconset>
                          <normaloff>:/blackicons/Graphics/featherBlack/arrow-up.svg</normaloff>:/blackicons/Graphics/featherBlack/arrow-up.svg</iconset>
                        </property>
                       </column>
@@ -1927,7 +1927,7 @@ background-color:#ececec;
                         <string>Duration</string>
                        </property>
                        <property name="icon">
-                        <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+                        <iconset>
                          <normaloff>:/blackicons/Graphics/featherBlack/arrow-up.svg</normaloff>:/blackicons/Graphics/featherBlack/arrow-up.svg</iconset>
                        </property>
                       </column>
@@ -1936,7 +1936,7 @@ background-color:#ececec;
                         <string>Genre</string>
                        </property>
                        <property name="icon">
-                        <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+                        <iconset>
                          <normaloff>:/blackicons/Graphics/featherBlack/arrow-down.svg</normaloff>:/blackicons/Graphics/featherBlack/arrow-down.svg</iconset>
                        </property>
                       </column>
@@ -1945,7 +1945,7 @@ background-color:#ececec;
                         <string>Rating</string>
                        </property>
                        <property name="icon">
-                        <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+                        <iconset>
                          <normaloff>:/blackicons/Graphics/featherBlack/arrow-up.svg</normaloff>:/blackicons/Graphics/featherBlack/arrow-up.svg</iconset>
                        </property>
                       </column>
@@ -1954,7 +1954,7 @@ background-color:#ececec;
                         <string>Year</string>
                        </property>
                        <property name="icon">
-                        <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+                        <iconset>
                          <normaloff>:/blackicons/Graphics/featherBlack/arrow-down.svg</normaloff>:/blackicons/Graphics/featherBlack/arrow-down.svg</iconset>
                        </property>
                       </column>
@@ -1973,7 +1973,7 @@ background-color:#ececec;
                         <string>Gross</string>
                        </property>
                        <property name="icon">
-                        <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+                        <iconset>
                          <normaloff>:/blackicons/Graphics/featherBlack/arrow-up.svg</normaloff>:/blackicons/Graphics/featherBlack/arrow-up.svg</iconset>
                        </property>
                       </column>
@@ -1982,7 +1982,7 @@ background-color:#ececec;
                         <string>Votes</string>
                        </property>
                        <property name="icon">
-                        <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+                        <iconset>
                          <normaloff>:/blackicons/Graphics/featherBlack/arrow-up.svg</normaloff>:/blackicons/Graphics/featherBlack/arrow-up.svg</iconset>
                        </property>
                       </column>
@@ -3993,7 +3993,7 @@ background-color:#fff;
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+                    <iconset>
                      <normaloff>:/blackicons/Graphics/featherBlack/menu.svg</normaloff>:/blackicons/Graphics/featherBlack/menu.svg</iconset>
                    </property>
                    <property name="iconSize">
@@ -4078,7 +4078,7 @@ background-color:#fff;
                        <string/>
                       </property>
                       <property name="pixmap">
-                       <pixmap resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">:/blackicons/Graphics/featherBlack/search.svg</pixmap>
+                       <pixmap>:/blackicons/Graphics/featherBlack/search.svg</pixmap>
                       </property>
                       <property name="scaledContents">
                        <bool>true</bool>
@@ -4131,7 +4131,7 @@ background-color:#fff;
                     <string/>
                    </property>
                    <property name="icon">
-                    <iconset resource="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc">
+                    <iconset>
                      <normaloff>:/blackicons/Graphics/featherBlack/user.svg</normaloff>:/blackicons/Graphics/featherBlack/user.svg</iconset>
                    </property>
                    <property name="iconSize">
@@ -4666,8 +4666,9 @@ background-color:#fff;
  </widget>
  <resources>
   <include location="Resource.qrc"/>
-  <include location="../../../Mid_Term_Project/Code_Mid_Project/cs261f22pid22/resources.qrc"/>
-  <include location="resources.qrc"/>
+  <include location="Resource.qrc"/>
+  <include location="Resource.qrc"/>
+  <include location="Resource.qrc"/>
  </resources>
  <connections>
   <connection>
