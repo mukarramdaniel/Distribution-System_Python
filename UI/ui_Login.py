@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'Login.ui'
+# Form implementation generated from reading ui file 'e:\Final Term\ARM\cs261f22finalpid05\UI\Login.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
