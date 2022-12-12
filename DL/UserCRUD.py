@@ -6,7 +6,7 @@ from Core.Manager import Manager
 # from Core.Rider import Rider
 # from Core.SaleAgent import SaleAgent
 
-class Inventory:
+class UserCRUD:
   
     def __init__(self):
         self.size = 29
