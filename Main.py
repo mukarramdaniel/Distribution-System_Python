@@ -16,6 +16,7 @@ class MainWindow(QMainWindow):
 
         self.ui.forgotbtn.clicked.connect(lambda: self.OpenForgetScreen())
         self.ui.loginbtn.clicked.connect(lambda: self.close())
+        
         self.show()
         
         
@@ -123,7 +124,8 @@ class MainWindow(QMainWindow):
         # self.ui.btnUpdateEmployee.clicked.connect(lambda: self.OpenUpdateEmployeeManager())
         # self.ui.btn_AddVehicle.clicked.connect(lambda: self.OpenAddVehicleManager())
         # self.ui.btnCheckAttendance.clicked.connect(lambda: self.OpenCheckAttendanceManager())
-        self.show()
+        # self.show()
+
     def OpenForgetScreen(self):
         self.ui.loginStackedWidget.setCurrentIndex(1)
     def OpenCheckAttendanceManager(self):
