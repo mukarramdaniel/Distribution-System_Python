@@ -16,8 +16,8 @@ class Ui_MainWindow(object):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(600, 599)
         MainWindow.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        MainWindow.setStyleSheet("#loginFrame{\n"
-"background-image:url(:/Login/output-onlinepngtools.png);\n"
+        MainWindow.setStyleSheet("#loginStackedWidgetPage1{\n"
+"background-image:url(:/reset/Graphics/Login/output-onlinepngtools.png);\n"
 "padding:10px 70px 15px 70px;\n"
 "}\n"
 "#emailinp{\n"
@@ -75,31 +75,39 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
+        self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.gridLayout.setSpacing(0)
         self.gridLayout.setObjectName("gridLayout")
-        self.loginFrame = QtWidgets.QFrame(self.centralwidget)
-        self.loginFrame.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.loginFrame.setStyleSheet("")
-        self.loginFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.loginFrame.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.loginFrame.setObjectName("loginFrame")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.loginFrame)
+        self.loginStackedWidget = QtWidgets.QStackedWidget(self.centralwidget)
+        self.loginStackedWidget.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.loginStackedWidget.setStyleSheet("")
+        self.loginStackedWidget.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.loginStackedWidget.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.loginStackedWidget.setObjectName("loginStackedWidget")
+        self.loginStackedWidgetPage1 = QtWidgets.QWidget()
+        self.loginStackedWidgetPage1.setObjectName("loginStackedWidgetPage1")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.loginStackedWidgetPage1)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.widget_5 = QtWidgets.QWidget(self.loginFrame)
+        self.widget_5 = QtWidgets.QWidget(self.loginStackedWidgetPage1)
         self.widget_5.setObjectName("widget_5")
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.widget_5)
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_5.addItem(spacerItem)
         self.label = QtWidgets.QLabel(self.widget_5)
+        self.label.setText("")
+        self.label.setPixmap(QtGui.QPixmap(":/Login/Graphics/Login/ARM_LOGO_Crop-removebg-preview.png"))
         self.label.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTop|QtCore.Qt.AlignTrailing)
         self.label.setObjectName("label")
         self.horizontalLayout_5.addWidget(self.label)
         self.verticalLayout.addWidget(self.widget_5)
-        self.loginimg = QtWidgets.QLabel(self.loginFrame)
+        self.loginimg = QtWidgets.QLabel(self.loginStackedWidgetPage1)
+        self.loginimg.setText("")
+        self.loginimg.setPixmap(QtGui.QPixmap(":/Login/Graphics/Login/user (2).png"))
         self.loginimg.setAlignment(QtCore.Qt.AlignCenter)
         self.loginimg.setObjectName("loginimg")
         self.verticalLayout.addWidget(self.loginimg)
-        self.widget = QtWidgets.QWidget(self.loginFrame)
+        self.widget = QtWidgets.QWidget(self.loginStackedWidgetPage1)
         self.widget.setObjectName("widget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.widget)
         self.horizontalLayout.setObjectName("horizontalLayout")
@@ -113,7 +121,7 @@ class Ui_MainWindow(object):
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem2)
         self.verticalLayout.addWidget(self.widget)
-        self.widget_2 = QtWidgets.QWidget(self.loginFrame)
+        self.widget_2 = QtWidgets.QWidget(self.loginStackedWidgetPage1)
         self.widget_2.setObjectName("widget_2")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.widget_2)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
@@ -127,7 +135,7 @@ class Ui_MainWindow(object):
         spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem4)
         self.verticalLayout.addWidget(self.widget_2)
-        self.widget_3 = QtWidgets.QWidget(self.loginFrame)
+        self.widget_3 = QtWidgets.QWidget(self.loginStackedWidgetPage1)
         self.widget_3.setObjectName("widget_3")
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.widget_3)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
@@ -139,7 +147,7 @@ class Ui_MainWindow(object):
         spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem6)
         self.verticalLayout.addWidget(self.widget_3)
-        self.widget_4 = QtWidgets.QWidget(self.loginFrame)
+        self.widget_4 = QtWidgets.QWidget(self.loginStackedWidgetPage1)
         self.widget_4.setObjectName("widget_4")
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.widget_4)
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
@@ -157,32 +165,149 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.widget_4)
         spacerItem9 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem9)
-        self.gridLayout.addWidget(self.loginFrame, 0, 0, 1, 1)
+        self.loginStackedWidget.addWidget(self.loginStackedWidgetPage1)
+        self.Reset1 = QtWidgets.QWidget()
+        self.Reset1.setStyleSheet("#Reset1{\n"
+"background-image:url(:/reset/Graphics/Login/output-onlinepngtools.png)\n"
+"}\n"
+"#mainlbl{\n"
+"height:25px;\n"
+"margin-top:20px;\n"
+"}\n"
+"#maillbl{\n"
+"height:25px;\n"
+"margin-top:10px;\n"
+"padding:5px 10px;\n"
+"}\n"
+"#emailtxt{\n"
+"height:25px;\n"
+"border:2px solid black;\n"
+"border-radius : 6px;\n"
+"padding:5px 10px;\n"
+"}\n"
+"#emailtxt:hover{\n"
+"border:2px solid gray;\n"
+"}\n"
+"#emailtxt:focus{\n"
+"border:2px solid gray;\n"
+"}\n"
+"#backbtn , #sendbtn{\n"
+"margin-top:15px;\n"
+"height:25px;\n"
+"width:50px;\n"
+"color:black;\n"
+"background-color:qlineargradient(spread:pad,x1:0,y1:0.505682,x2:1,y2:0.477,stop:0 rgba(20,47,78,20),stop:1 rgba(85,98,112,250));\n"
+"border-radius:5px;\n"
+"}\n"
+"#backbtnbtn:pressed , #sendbtn:pressed {\n"
+"    padding-left:5px;\n"
+"    padding-top:5px;\n"
+"    background-color:rgba(112,112,112,255);\n"
+"    border-postion:calc(100% -10px)center;\n"
+"}\n"
+"#backbtn:hover , sendbtn:hover {\n"
+"    background-color:rgba(112,112,112,255);\n"
+"}\n"
+"")
+        self.Reset1.setObjectName("Reset1")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.Reset1)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.widget_6 = QtWidgets.QWidget(self.Reset1)
+        self.widget_6.setObjectName("widget_6")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.widget_6)
+        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_3.setSpacing(0)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.resetframe = QtWidgets.QFrame(self.widget_6)
+        self.resetframe.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.resetframe.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.resetframe.setObjectName("resetframe")
+        self.formLayout = QtWidgets.QFormLayout(self.resetframe)
+        self.formLayout.setObjectName("formLayout")
+        self.logolbl = QtWidgets.QLabel(self.resetframe)
+        self.logolbl.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTrailing|QtCore.Qt.AlignVCenter)
+        self.logolbl.setObjectName("logolbl")
+        self.formLayout.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.logolbl)
+        self.mainlbl = QtWidgets.QLabel(self.resetframe)
+        self.mainlbl.setAlignment(QtCore.Qt.AlignCenter)
+        self.mainlbl.setObjectName("mainlbl")
+        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.mainlbl)
+        self.widget_7 = QtWidgets.QWidget(self.resetframe)
+        self.widget_7.setObjectName("widget_7")
+        self.horizontalLayout_6 = QtWidgets.QHBoxLayout(self.widget_7)
+        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
+        spacerItem10 = QtWidgets.QSpacerItem(100, 20, QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_6.addItem(spacerItem10)
+        self.maillbl = QtWidgets.QLabel(self.widget_7)
+        font = QtGui.QFont()
+        font.setBold(True)
+        font.setWeight(75)
+        self.maillbl.setFont(font)
+        self.maillbl.setObjectName("maillbl")
+        self.horizontalLayout_6.addWidget(self.maillbl)
+        spacerItem11 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_6.addItem(spacerItem11)
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.widget_7)
+        self.widget_8 = QtWidgets.QWidget(self.resetframe)
+        self.widget_8.setMinimumSize(QtCore.QSize(300, 0))
+        self.widget_8.setObjectName("widget_8")
+        self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.widget_8)
+        self.horizontalLayout_7.setObjectName("horizontalLayout_7")
+        spacerItem12 = QtWidgets.QSpacerItem(100, 20, QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_7.addItem(spacerItem12)
+        self.emailtxt = QtWidgets.QLineEdit(self.widget_8)
+        self.emailtxt.setMinimumSize(QtCore.QSize(300, 0))
+        self.emailtxt.setObjectName("emailtxt")
+        self.horizontalLayout_7.addWidget(self.emailtxt)
+        spacerItem13 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_7.addItem(spacerItem13)
+        self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.widget_8)
+        self.widget_9 = QtWidgets.QWidget(self.resetframe)
+        self.widget_9.setObjectName("widget_9")
+        self.horizontalLayout_8 = QtWidgets.QHBoxLayout(self.widget_9)
+        self.horizontalLayout_8.setObjectName("horizontalLayout_8")
+        spacerItem14 = QtWidgets.QSpacerItem(100, 20, QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_8.addItem(spacerItem14)
+        self.backbtn = QtWidgets.QPushButton(self.widget_9)
+        self.backbtn.setMinimumSize(QtCore.QSize(100, 0))
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(":/reset/Graphics/reser/icons8-back-arrow-30.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.backbtn.setIcon(icon1)
+        self.backbtn.setObjectName("backbtn")
+        self.horizontalLayout_8.addWidget(self.backbtn)
+        spacerItem15 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_8.addItem(spacerItem15)
+        self.sendbtn = QtWidgets.QPushButton(self.widget_9)
+        self.sendbtn.setMinimumSize(QtCore.QSize(100, 0))
+        self.sendbtn.setObjectName("sendbtn")
+        self.horizontalLayout_8.addWidget(self.sendbtn)
+        spacerItem16 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_8.addItem(spacerItem16)
+        self.formLayout.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.widget_9)
+        self.verticalLayout_3.addWidget(self.resetframe)
+        self.verticalLayout_2.addWidget(self.widget_6)
+        self.loginStackedWidget.addWidget(self.Reset1)
+        self.gridLayout.addWidget(self.loginStackedWidget, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
+        self.loginStackedWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "<html><head/><body><p><img src=\":/Login/ARM_LOGO_Crop-removebg-preview.png\"/></p></body></html>"))
-        self.loginimg.setText(_translate("MainWindow", "<html><head/><body><p><img src=\":/Login/user (2).png\"/></p></body></html>"))
         self.emailinp.setPlaceholderText(_translate("MainWindow", "@gmail.com"))
         self.passwordinp.setPlaceholderText(_translate("MainWindow", "Password"))
         self.forgotbtn.setText(_translate("MainWindow", "Forgot your password?"))
         self.loginbtn.setText(_translate("MainWindow", "login"))
+        self.logolbl.setText(_translate("MainWindow", "<html><head/><body><p><img src=\":/reset/Graphics/Login/ARM_LOGO_Crop-removebg-preview.png\"/></p></body></html>"))
+        self.mainlbl.setText(_translate("MainWindow", "<html><head/><body><p><img src=\":/reset/Graphics/reser/icons8-forgot-password-30.png\"/></p></body></html>"))
+        self.maillbl.setText(_translate("MainWindow", "Enter your email:"))
+        self.backbtn.setText(_translate("MainWindow", "Back"))
+        self.sendbtn.setText(_translate("MainWindow", "Send"))
 import login_rc
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec_())
+import reset_rc
