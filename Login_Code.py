@@ -11,6 +11,7 @@ from PyQt5.QtCore import QPropertyAnimation
 from PyQt5.QtGui import (QColor)
 import re  #imported to validate he email
 from Manager_UI import ManaMainWindow
+from Inventory_Code import InventoryMainWindow
 import os
 from email.message import EmailMessage
 import smtplib
@@ -46,6 +47,8 @@ class MainWindow(QMainWindow):
             if(retrive!=None):
                 if(retrive.userRole==0):
                     self.Open_Manager_Window()
+                elif(retrive.userRole==1):
+                    self.Open_Inventory_Window()
         else:
             QMessageBox.warning(self,'Error','Incorrect Email and Password')
             self.ui.emailinp.clear()
@@ -117,6 +120,9 @@ class MainWindow(QMainWindow):
         self.ui=ManaMainWindow()
         #self.ui.setupUi(self.MainWindow)
         #self.MainWindow.show()
+    def Open_Inventory_Window(self):
+        self.MainWindow = QtWidgets.QMainWindow()
+        self.ui=InventoryMainWindow()
     def OpenForgetScreen(self):
         self.ui.loginStackedWidget.setCurrentIndex(1)
     def Open_newpassword_Screen(self):
