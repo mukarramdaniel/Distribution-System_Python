@@ -123,24 +123,39 @@ class ManaMainWindow(QMainWindow):
         self.ui.accountBtn_5.clicked.connect(lambda: self.SlideRightMenu())
         self.ui.btnAddEmployee.clicked.connect(lambda: self.OpenAddEmployee())
         self.ui.btnDashboard.clicked.connect(lambda: self.OpenDashboardManager())
-        self.ui.btnUpdateEmployee.clicked.connect(lambda: self.OpenUpdateEmployeeManager(2))
+        self.ui.btnUpdateEmployee.clicked.connect(lambda: self.OpenUpdateEmployee())
         self.ui.btn_AddVehicle.clicked.connect(lambda: self.OpenAddVehicleManager())
         self.ui.btnCheckAttendance.clicked.connect(lambda: self.OpenCheckAttendanceManager())
         self.ui.btn_AddEmployee.clicked.connect(lambda: self.Add_Employee())
         self.ui.btn_GeneratePassword.clicked.connect(lambda: self.generate_password(8,self.ui.txt_Passsword))
-        self.ui.btn_UpdateDetails.clicked.connect(lambda: self.show_employee())
-        self.ui.btn_Update.clickd.connect(lambda: self.update_employee())
+        self.ui.btn_UpdateDetails.clicked.connect(lambda: self.ShowToUpdateEmployee())
+        self.ui.btn_Update.clicked.connect(lambda: self.update_employee(self.updateEmpObj))
+        self.ui.Update_tableWidget.verticalHeader().sectionClicked.connect(lambda: self.getTableRow())
+        
+        
         
         self.show()
-        
+    def getTableRow(self):
+         
+        tableRow=self.ui.Update_tableWidget.currentRow()
+        userName=self.ui.Update_tableWidget.item(tableRow,7)
+        self.updateEmpObj=self.userDL.getUserReturn(userName.text())
+  
     def OpenCheckAttendanceManager(self):
         self.ui.mainBody.setCurrentIndex(4)
     def OpenAddVehicleManager(self):
         self.ui.mainBody.setCurrentIndex(1)
+    def OpenUpdateEmployee(self ):
+        self.ui.mainBody.setCurrentIndex(2) 
+        self.loadUpdate_tableWidget()   
     def OpenUpdateEmployeeManager(self ,n):
         self.ui.mainBody.setCurrentIndex(n)
     def OpenDashboardManager(self):
         self.ui.mainBody.setCurrentIndex(0)
+    def ShowToUpdateEmployee(self):
+        self.ui.mainBody.setCurrentIndex(3)
+        self.EditToUpdate_employee(self.updateEmpObj)
+        
     def OpenAddEmployee(self):
         self.ui.mainBody.setCurrentIndex(3)
     
@@ -216,14 +231,14 @@ class ManaMainWindow(QMainWindow):
             self.userDL.setUser(Employee_username,sales_agent)
             QMessageBox.information(self,"ADDED" ,"Employee Added")
             self.clear_screen()
-    def show_employee (self, employee) :
+    def EditToUpdate_employee (self, employee) :
         self.ui.txt_Name_2.setText(employee.name) 
         self.ui.txt_CNIC.setText(str(employee.CNIC))
         self.ui.txt_Age_2.setText(str(employee.age))
         self.ui.txt_Email_2.setText(employee.Email)
         self.ui.txt_PhonoNumber.setText(str(employee.contactNum))
         self.ui.txt_BankAccount_2.setText(str(employee.BankAccount))
-        self.ui.lineEdit_7.setText(str(employee.salary)) 
+        self.ui.lineEdit_7.setText(str(employee.getSalary())) 
     def update_employee (self,employee) :
         employee.name = self.ui.txt_Name_2.text() 
         employee.CNIC = self.ui.txt_CNIC.text()
@@ -231,9 +246,32 @@ class ManaMainWindow(QMainWindow):
         employee.Email = self.ui.txt_Email_2.text()
         employee.contactNum = self.ui.txt_PhonoNumber.text()
         employee.BankAccount = self.ui.txt_BankAccount_2.text()
-        employee.salary = self.ui.lineEdit_7.text()
+        employee.setSalary(self.ui.lineEdit_7.text())
         employee.updatedDate = date.today()
-    def 
+    def loadUpdate_tableWidget(self):
+        
+        hashtable=self.userDL.getHashTable()
+        row=0
+        userRole=""
+        for bucket in hashtable:
+            for user in bucket:
+                if(user!=None and user[1].userRole!=0):
+                    self.ui.Update_tableWidget.setItem(row, 0, QtWidgets.QTableWidgetItem(str(user[1].userId)))
+                    self.ui.Update_tableWidget.setItem(row, 1, QtWidgets.QTableWidgetItem(user[1].name))
+                    self.ui.Update_tableWidget.setItem(row, 2, QtWidgets.QTableWidgetItem(user[1].CNIC))
+                    if(user[1].userRole==1):
+                        userRole="Inventory Supervisor"
+                    elif(user[1].userRole==2):
+                        userRole="Sales Agent"
+                    elif(user[1].userRole==3):
+                        userRole="Rider"
+                    self.ui.Update_tableWidget.setItem(row, 4, QtWidgets.QTableWidgetItem(userRole))
+                    self.ui.Update_tableWidget.setItem(row, 5, QtWidgets.QTableWidgetItem(user[1].contactNum))
+                    self.ui.Update_tableWidget.setItem(row, 6, QtWidgets.QTableWidgetItem(str(user[1].age)))
+                    self.ui.Update_tableWidget.setItem(row, 3, QtWidgets.QTableWidgetItem(user[1].Email))
+                    self.ui.Update_tableWidget.setItem(row, 7, QtWidgets.QTableWidgetItem(user[1].userName))
+                    
+                    row=row+1
 if __name__=="__main__":
     app=QApplication(sys.argv)
     window=ManaMainWindow()

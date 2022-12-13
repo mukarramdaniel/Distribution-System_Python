@@ -65,9 +65,10 @@ class Inventory:
 
         myresult = mycursor.fetchall()
         for x in myresult:
-            prodCategory=x[1]
+            prodCategory=x[0]
           
             shoe=Shoe(x[1],x[2],x[3],x[4],x[5],x[6],x[0])
+            pro=ProducList(prodCategory,shoe)
             
            # print(self.verify(userName,"admin"))
         mydb.close()

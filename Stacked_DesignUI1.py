@@ -1315,7 +1315,7 @@ class Ui_MainWindow(object):
         self.Update_tableWidget.setAlternatingRowColors(True)
         self.Update_tableWidget.setGridStyle(QtCore.Qt.DashDotLine)
         self.Update_tableWidget.setRowCount(20)
-        self.Update_tableWidget.setColumnCount(7)
+        self.Update_tableWidget.setColumnCount(8)
         self.Update_tableWidget.setObjectName("Update_tableWidget")
         item = QtWidgets.QTableWidgetItem()
         font = QtGui.QFont()
@@ -1366,6 +1366,13 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         item.setFont(font)
         self.Update_tableWidget.setHorizontalHeaderItem(6, item)
+        item = QtWidgets.QTableWidgetItem()
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        item.setFont(font)
+        self.Update_tableWidget.setHorizontalHeaderItem(7, item)
         self.Update_tableWidget.horizontalHeader().setStretchLastSection(True)
         self.verticalLayout_70.addWidget(self.Update_tableWidget)
         self.verticalLayout_22.addWidget(self.widget_Update)
@@ -2291,7 +2298,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.LeftMenu.setCurrentIndex(0)
-        self.mainBody.setCurrentIndex(1)
+        self.mainBody.setCurrentIndex(2)
         self.btn_AccountFinanace.toggled['bool'].connect(self.widget_13.setVisible) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -2394,13 +2401,15 @@ class Ui_MainWindow(object):
         item = self.Update_tableWidget.horizontalHeaderItem(2)
         item.setText(_translate("MainWindow", "CNIC"))
         item = self.Update_tableWidget.horizontalHeaderItem(3)
-        item.setText(_translate("MainWindow", "Status"))
-        item = self.Update_tableWidget.horizontalHeaderItem(4)
-        item.setText(_translate("MainWindow", "New Column"))
-        item = self.Update_tableWidget.horizontalHeaderItem(5)
-        item.setText(_translate("MainWindow", "Age"))
-        item = self.Update_tableWidget.horizontalHeaderItem(6)
         item.setText(_translate("MainWindow", "Email"))
+        item = self.Update_tableWidget.horizontalHeaderItem(4)
+        item.setText(_translate("MainWindow", "Status"))
+        item = self.Update_tableWidget.horizontalHeaderItem(5)
+        item.setText(_translate("MainWindow", "Phone Number"))
+        item = self.Update_tableWidget.horizontalHeaderItem(6)
+        item.setText(_translate("MainWindow", "Age"))
+        item = self.Update_tableWidget.horizontalHeaderItem(7)
+        item.setText(_translate("MainWindow", "Username"))
         self.btn_UpdateDetails.setText(_translate("MainWindow", "Update Details"))
         self.btn_Delete.setText(_translate("MainWindow", "     Delete"))
         self.appHeader_10.setText(_translate("MainWindow", "Update Employee"))
@@ -2475,3 +2484,13 @@ class Ui_MainWindow(object):
         self.btnProfile.setText(_translate("MainWindow", "My Profile"))
         self.btnLogout.setText(_translate("MainWindow", "Logout"))
 import Resource_rc
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
