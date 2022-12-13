@@ -1,7 +1,6 @@
 class ProducList:
-    def __init__(self,category,ShoeList,productID) -> None:
-        self.productID=productID
-        self.category=category
+    def __init__(self,ShoeList,OrderID) -> None:
+        self.OrderID=OrderID
         self.ShoeList=ShoeList
     def addShoeInList(self,shoe):
         self.ShoeList.append(shoe)
