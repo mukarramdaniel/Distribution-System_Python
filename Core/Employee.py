@@ -1,4 +1,4 @@
-import User
+from Core.User import User
 class Employee(User):
     _salary = None
     def __init__(self,userT,salary) -> None:
