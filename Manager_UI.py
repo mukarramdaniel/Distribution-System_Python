@@ -180,7 +180,7 @@ class ManaMainWindow(QMainWindow):
         self.ui.txt_Age.clear()
         self.ui.txt_Cnic.clear()
         self.ui.txt_Email.clear()
-        self.ui.txt_PhoneNo.clear()
+        self.ui.txt_PhoneNumber.clear()
         self.ui.txt_BankAccount.clear()
         self.ui.spinBox_Salary.clear()
         self.ui.txt_Passsword.clear()
@@ -191,7 +191,7 @@ class ManaMainWindow(QMainWindow):
         Employee_Age =self.ui.txt_Age.text()
         Employee_CNIC =self.ui.txt_Cnic.text()
         Employee_Email =self.ui.txt_Email.text()
-        Employee_PhoneNo =self.ui.txt_PhoneNo.text()
+        Employee_PhoneNo =self.ui.txt_PhoneNumber.text()
         Employee_BankAccount =self.ui.txt_BankAccount.text()
         Employee_Status =self.ui.cmb_Employee.currentText()
         Employee_Salary =self.ui.spinBox_Salary.text()
@@ -202,19 +202,17 @@ class ManaMainWindow(QMainWindow):
         if(Employee_Status=="Inventory Supervisor"):
             inventory_supervisor = InventorySupervisor.InventorySupervisor(my_user,Employee_Salary,Employee_createDate)
             self.userDL.setUser(Employee_username,inventory_supervisor)
-            u=self.userDL.getUserReturn("rayan")
-            print(u.Email)
+            QMessageBox.information(self,"ADDED" ,"Employee Added")
             self.clear_screen()
         if(Employee_Status=="Rider"):
             rider = Rider.Driver(my_user,Employee_Salary)
             self.userDL.setUser(Employee_username,rider)
-           # QMessageBox.information(self,"ADDED")
-           
+            QMessageBox.information(self,"ADDED" ,"Employee Added")
             self.clear_screen()
         if(Employee_Status=="Sales Agent"):
             sales_agent = SaleAgent.SaleAgent(my_user,Employee_Salary,Employee_createDate)
             self.userDL.setUser(Employee_username,sales_agent)
-            QMessageBox.information(self,"ADDED")
+            QMessageBox.information(self,"ADDED" ,"Employee Added")
             self.clear_screen()
 
 
