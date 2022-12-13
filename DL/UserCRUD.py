@@ -16,6 +16,8 @@ class UserCRUD:
   
     def createHashTable(self):
         return [[] for _ in range(self.size)]
+    def getHashTable(self):
+        return self.hashTable
     def setUser(self,key,value):
         keyFound = False
         hashedKey = hash(key) % self.size
@@ -109,7 +111,7 @@ class UserCRUD:
         )
 
         mycursor = mydb.cursor()
-
+        othercursor=mydb.cursor()
         mycursor.execute("SELECT userID,userName,password,userRole,name,age,contactNum,Email,Cnic,bankAccount,resetToken,created_on,update_on  FROM manager")
 
         myresult = mycursor.fetchall()
@@ -119,18 +121,15 @@ class UserCRUD:
             
             self.setUser(userName,user)
         
-        mycursor.execute("SELECT userID,userName,password,userRole,name,age,contactNum,Email,Cnic,bankAccount,resetToken,created_on,update_on,dateTime  FROM employee")
-        myEmployee=mycursor.fetchall()
+        othercursor.execute("SELECT userID,userName,password,userRole,name,age,contactNum,Email,Cnic,bankAccount,resetToken,created_on,update_on,dateTime  FROM employee")
+        myEmployee=othercursor.fetchall()
         for x in myEmployee:
-            userName=x[1]
-            if(userName==1):
+            userName1=x[1]
+            if(int(x[3])==1):
                 user=InventorySupervisor((x[0],x[1],x[2],x[3],x[4],x[5],x[6],x[7],x[8],x[9],x[11],x[12]),x[10],x[13])
-            if(userName==2):
+            if(int(x[3])==2):
                 user=SaleAgent((x[0],x[1],x[2],x[3],x[4],x[5],x[6],x[7],x[8],x[9],x[11],x[12]),x[10],x[13])
-            self.setUser(userName,user)
+            self.setUser(userName1,user)
         mydb.close()
         
-v=UserCRUD()
-v.readFromTable()
-u=v.getUserReturn('mukarramali623@gmail.com')  
-print(u.name)     
+   

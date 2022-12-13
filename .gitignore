@@ -1,0 +1,5 @@
+
+*.pyc
+Core/__pycache__/InventorySupervisor.cpython-310.pyc
+DL/__pycache__/UserCRUD.cpython-310.pyc
+*.pyc

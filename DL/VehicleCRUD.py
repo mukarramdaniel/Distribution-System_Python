@@ -1,6 +1,6 @@
 import sys
 sys.path.insert(1,"Core.Vehicle")
-from Core.Vehicle import *
+from Core.Vehicle import Vehicle
 
 class Node:
     def __init__(self,val):
