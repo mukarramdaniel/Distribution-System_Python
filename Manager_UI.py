@@ -127,6 +127,8 @@ class ManaMainWindow(QMainWindow):
         self.ui.btn_AddVehicle.clicked.connect(lambda: self.OpenAddVehicleManager())
         self.ui.btnCheckAttendance.clicked.connect(lambda: self.OpenCheckAttendanceManager())
         self.ui.btn_AddEmployee.clicked.connect(lambda: self.Add_Employee())
+        self.ui.btn_GeneratePassword.clicked.connect(lambda: self.generate_password(8,self.ui.txt_Passsword))
+        
         self.show()
         
     def OpenCheckAttendanceManager(self):
@@ -170,30 +172,29 @@ class ManaMainWindow(QMainWindow):
         start = 10**(n-1)
         end = (10**n)-1
         code = randint(start,end)
-        a.settext(code)
+        a.setText(str(code))
     #def generate_userID() :
     def clear_screen (self) :
-        self.ui.txt_Name.setClear()
-        self.ui.txt_Name.setClear()
-        self.ui.txt_Age.setClear()
-        self.ui.txt_Cnic.setClear()
-        self.ui.txt_Email.setClear()
-        self.ui.txt_PhoneNumber.setClear()
-        self.ui.txt_BankAccount.setClear()
-        self.ui.spinBox_Salary.setClear()
-        self.ui.txt_Passsword.setClear()
+        self.ui.txt_Name.clear()
+        self.ui.txt_Name.clear()
+        self.ui.txt_Age.clear()
+        self.ui.txt_Cnic.clear()
+        self.ui.txt_Email.clear()
+        self.ui.txt_PhoneNo.clear()
+        self.ui.txt_BankAccount.clear()
+        self.ui.spinBox_Salary.clear()
+        self.ui.txt_Passsword.clear()
     def Add_Employee(self):
-        Employee_userID = "UI0001"
+        Employee_userID = "3"
         Employee_Name =self.ui.txt_Name.text()
         Employee_username = self.ui.txt_Name.text()
         Employee_Age =self.ui.txt_Age.text()
         Employee_CNIC =self.ui.txt_Cnic.text()
         Employee_Email =self.ui.txt_Email.text()
-        Employee_PhoneNo =self.ui.txt_PhoneNumber.text()
+        Employee_PhoneNo =self.ui.txt_PhoneNo.text()
         Employee_BankAccount =self.ui.txt_BankAccount.text()
         Employee_Status =self.ui.cmb_Employee.currentText()
         Employee_Salary =self.ui.spinBox_Salary.text()
-        self.ui.btn_GeneratePassword.clicked.connect(self.generate_password(8,self.ui.txt_Passsword))
         Employee_password = self.ui.txt_Passsword.text()
         Employee_createDate = date.today()
         Employee_updateDate = date.today()
@@ -201,12 +202,14 @@ class ManaMainWindow(QMainWindow):
         if(Employee_Status=="Inventory Supervisor"):
             inventory_supervisor = InventorySupervisor.InventorySupervisor(my_user,Employee_Salary,Employee_createDate)
             self.userDL.setUser(Employee_username,inventory_supervisor)
-            QMessageBox.information(self,"ADDED")
+            u=self.userDL.getUserReturn("rayan")
+            print(u.Email)
             self.clear_screen()
         if(Employee_Status=="Rider"):
             rider = Rider.Driver(my_user,Employee_Salary)
             self.userDL.setUser(Employee_username,rider)
-            QMessageBox.information(self,"ADDED")
+           # QMessageBox.information(self,"ADDED")
+           
             self.clear_screen()
         if(Employee_Status=="Sales Agent"):
             sales_agent = SaleAgent.SaleAgent(my_user,Employee_Salary,Employee_createDate)
