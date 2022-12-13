@@ -1,3 +1,7 @@
+import sys
+sys.path.insert(1,"Core")
+from Core.Shoe import Shoe
+from Core.ProductList import ProducList
 class Inventory:
   
     def __init__(self):
@@ -6,22 +10,13 @@ class Inventory:
   
     def createHashTable(self):
         return [[] for _ in range(self.size)]
-    def update(self,key,value):
+    def setProduct(self,key,value):
         keyFound = False
         hashedKey = hash(key) % self.size
         bucket = self.hashTable[hashedKey]
-        for index, record in enumerate(bucket):
-            recordKey, recordValue = record
-            if recordKey == key and recordValue==value:
-                keyFound = True
-                break
-  
-        if keyFound:
-            bucket[index] = (key,value)
-        else:
-            bucket.append((key,value))
-    @staticmethod
-    def getItem(self, key,value):
+        bucket.append((key,value))
+        
+    def getItem(self, key,size,color,price):
         
         hashed_key = hash(key) % self.size
           
@@ -31,7 +26,7 @@ class Inventory:
         for index, record in enumerate(bucket):
             record_key, record_val = record
               
-            if record_key == key and record_val==value:
+            if record_key == key and record_val.getShoeSize()==size and record_val.getColor()==color and record_val.getBuyPrice()==price:
                 found_key = True
                 break
   
@@ -39,7 +34,6 @@ class Inventory:
             return record_val
         else:
             return None
-    @staticmethod
     def deleteItem(self, key, value):
         
         hashed_key = hash(key) % self.size
@@ -56,4 +50,24 @@ class Inventory:
         if found_key:
             bucket.pop(index)
         return
+    def readFromTable(self):
+        import mysql.connector
+        mydb = mysql.connector.connect(
+        host="localhost",
+        user="user1",
+        password="Rosepetal514@",
+        database="dbarm"
+        )
 
+        mycursor = mydb.cursor()
+
+        mycursor.execute("SELECT prodID,prodCategory,buyPrice,profitMargin,shoeSize,sellPrice,color")
+
+        myresult = mycursor.fetchall()
+        for x in myresult:
+            prodCategory=x[1]
+          
+            shoe=Shoe(x[1],x[2],x[3],x[4],x[5],x[6],x[0])
+            
+           # print(self.verify(userName,"admin"))
+        mydb.close()

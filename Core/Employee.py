@@ -1,6 +1,7 @@
 import User
 class Employee(User):
-    def __init__(self,userT,resetToken) -> None:
+    _salary = None
+    def __init__(self,userT,salary) -> None:
         super().__init__(userT)
-        self.resetToken=resetToken
+        self.resetToken=salary
             
