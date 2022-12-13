@@ -1,6 +1,5 @@
 import sys
-sys.path.insert(1,"E:\Final Term\ARM\cs261f22finalpid05")
-sys.path.insert(1,"E:\Final Term\ARM\cs261f22finalpid05\Core")
+sys.path.insert(1,"Core")
 
 from Core.Manager import Manager
 # from Core.Rider import Rider
@@ -39,6 +38,23 @@ class UserCRUD:
             record_key, record_val = record
               
             if record_key == key and record_val==value:
+                found_key = True
+                break
+  
+        if found_key:
+            return record_val
+        else:
+            return None
+    def getUserReturn(self, key):
+        hashed_key = hash(key) % self.size
+          
+        bucket = self.hashTable[hashed_key]
+  
+        found_key = False
+        for index, record in enumerate(bucket):
+            record_key, record_val = record
+              
+            if record_key == key:
                 found_key = True
                 break
   
@@ -100,3 +116,4 @@ class UserCRUD:
             user=Manager((x[0],x[1],x[2],userRole,x[3],x[4],x[5],x[6],x[7],x[8],x[10],x[11]),x[9])
             self.setUser(userName,user)
            # print(self.verify(userName,"admin"))
+        mydb.close()

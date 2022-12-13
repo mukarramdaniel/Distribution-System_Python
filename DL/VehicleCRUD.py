@@ -1,3 +1,6 @@
+import sys
+sys.path.insert(2,"Core.Vehicle")
+
 class Node:
     def __init__(self,val):
         self.data=val
@@ -16,7 +19,7 @@ class Doubly_Linked_List:
         self.head=New_Node
         New_Node.prev=None
 
-    def Insert_at_End(self,val):
+    def Insert(self,val):
         New_Node=Node(val)
         last=self.head
         New_Node.next=None
@@ -66,14 +69,31 @@ class Doubly_Linked_List:
         while(node!=None):
             print(" {}".format(node.data))
             node=node.next
+    def loadFromTable(self):
+        import mysql.connector
+        mydb = mysql.connector.connect(
+        host="localhost",
+        user="user1",
+        password="Rosepetal514@",
+        database="dbarm"
+        )
 
-if __name__ == "__main__":
-    list1=Doubly_Linked_List()
-    list1.Insert_at_Head(10)
-    list1.Insert_at_End(9)
-    list1.Insert_btw_Nodes(list1.head, 50)
-    #list1.Insert_at_End(6)
-    #list1.Insert_btw_Nodes(list1.head.next, 8)
-    list1.Print_List(list1.head)
-    list1.Delete(50)
-    list1.Print_List(list1.head)
+        mycursor = mydb.cursor()
+
+        mycursor.execute("SELECT userID,userName,password,name,age,contactNum,Email,Cnic,bankAccount,resetToken,created_on,update_on  FROM manager")
+
+        myresult = mycursor.fetchall()
+        for x in myresult:
+            
+        mydb.close()
+
+# if __name__ == "__main__":
+#     list1=Doubly_Linked_List()
+#     list1.Insert_at_Head(10)
+#     list1.Insert_at_End(9)
+#     list1.Insert_btw_Nodes(list1.head, 50)
+#     #list1.Insert_at_End(6)
+#     #list1.Insert_btw_Nodes(list1.head.next, 8)
+#     list1.Print_List(list1.head)
+#     list1.Delete(50)
+#     list1.Print_List(list1.head)
