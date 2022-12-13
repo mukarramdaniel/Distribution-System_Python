@@ -7,14 +7,21 @@ from PyQt5.QtWidgets import (
 )
 from PyQt5.QtCore import QPropertyAnimation
 from PyQt5.QtGui import (QColor)
-import re  #imported to validate the email
+import re
+from Core import User, InventorySupervisor, Rider , SaleAgent
+from DL.UserCRUD import UserCRUD
+from random import randint
+from datetime import date
+
+
 
 class ManaMainWindow(QMainWindow):
     def __init__(self,parent=None):
         QMainWindow.__init__(self)
         self.ui=Ui_MainWindow()
         self.ui.setupUi(self)
-    
+        self.userDL = UserCRUD()
+        self.userDL.readFromTable()
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(20)
         self.shadow.setXOffset(0)
@@ -119,6 +126,7 @@ class ManaMainWindow(QMainWindow):
         self.ui.btnUpdateEmployee.clicked.connect(lambda: self.OpenUpdateEmployeeManager())
         self.ui.btn_AddVehicle.clicked.connect(lambda: self.OpenAddVehicleManager())
         self.ui.btnCheckAttendance.clicked.connect(lambda: self.OpenCheckAttendanceManager())
+        self.ui.btn_AddEmployee.clicked.connect(lambda: self.Add_Employee())
         self.show()
         
     def OpenCheckAttendanceManager(self):
@@ -158,19 +166,54 @@ class ManaMainWindow(QMainWindow):
         self.animation.setEndValue(newWidth)#end value is the new menu width
         self.animation.setEasingCurve(QtCore.QEasingCurve.Type.InOutQuart)
         self.animation.start()
-    
+    def generate_password (self,n,a) :
+        start = 10**(n-1)
+        end = (10**n)-1
+        code = randint(start,end)
+        a.settext(code)
+    #def generate_userID() :
+    def clear_screen (self) :
+        self.ui.txt_Name.setClear()
+        self.ui.txt_Name.setClear()
+        self.ui.txt_Age.setClear()
+        self.ui.txt_Cnic.setClear()
+        self.ui.txt_Email.setClear()
+        self.ui.txt_PhoneNumber.setClear()
+        self.ui.txt_BankAccount.setClear()
+        self.ui.spinBox_Salary.setClear()
+        self.ui.txt_Passsword.setClear()
     def Add_Employee(self):
-        Employee_Name=self.ui.txt_Name.text()
-        Employee_Age=self.ui.txt_Age.text()
-        Employee_CNIC=self.ui.txt_Cnic.text()
-        Employee_Email=self.ui.txt_Email.text()
-        Employee_PhoneNo=self.ui.txt_PhoneNumber.text()
-        Employee_BankAccount=self.ui.txt_BankAccount.text()
-        Employee_Status=self.ui.cmb_Employee.currentText()
-        Employee_Salary=self.ui.spinBox_Salary.text()
-        
+        Employee_userID = "UI0001"
+        Employee_Name =self.ui.txt_Name.text()
+        Employee_username = self.ui.txt_Name.text()
+        Employee_Age =self.ui.txt_Age.text()
+        Employee_CNIC =self.ui.txt_Cnic.text()
+        Employee_Email =self.ui.txt_Email.text()
+        Employee_PhoneNo =self.ui.txt_PhoneNumber.text()
+        Employee_BankAccount =self.ui.txt_BankAccount.text()
+        Employee_Status =self.ui.cmb_Employee.currentText()
+        Employee_Salary =self.ui.spinBox_Salary.text()
+        self.ui.btn_GeneratePassword.clicked.connect(self.generate_password(8,self.ui.txt_Passsword))
+        Employee_password = self.ui.txt_Passsword.text()
+        Employee_createDate = date.today()
+        Employee_updateDate = date.today()
+        my_user = (Employee_userID ,Employee_username,Employee_password,Employee_Status,Employee_Name,Employee_Age,Employee_PhoneNo,Employee_Email,Employee_CNIC,Employee_BankAccount,Employee_createDate , Employee_updateDate)
         if(Employee_Status=="Inventory Supervisor"):
-            pass
+            inventory_supervisor = InventorySupervisor.InventorySupervisor(my_user,Employee_Salary,Employee_createDate)
+            self.userDL.setUser(Employee_username,inventory_supervisor)
+            QMessageBox.information(self,"ADDED")
+            self.clear_screen()
+        if(Employee_Status=="Rider"):
+            rider = Rider.Driver(my_user,Employee_Salary)
+            self.userDL.setUser(Employee_username,rider)
+            QMessageBox.information(self,"ADDED")
+            self.clear_screen()
+        if(Employee_Status=="Sales Agent"):
+            sales_agent = SaleAgent.SaleAgent(my_user,Employee_Salary,Employee_createDate)
+            self.userDL.setUser(Employee_username,sales_agent)
+            QMessageBox.information(self,"ADDED")
+            self.clear_screen()
+
 
 if __name__=="__main__":
     app=QApplication(sys.argv)
