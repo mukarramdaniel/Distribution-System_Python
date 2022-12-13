@@ -123,11 +123,13 @@ class ManaMainWindow(QMainWindow):
         self.ui.accountBtn_5.clicked.connect(lambda: self.SlideRightMenu())
         self.ui.btnAddEmployee.clicked.connect(lambda: self.OpenAddEmployee())
         self.ui.btnDashboard.clicked.connect(lambda: self.OpenDashboardManager())
-        self.ui.btnUpdateEmployee.clicked.connect(lambda: self.OpenUpdateEmployeeManager())
+        self.ui.btnUpdateEmployee.clicked.connect(lambda: self.OpenUpdateEmployeeManager(2))
         self.ui.btn_AddVehicle.clicked.connect(lambda: self.OpenAddVehicleManager())
         self.ui.btnCheckAttendance.clicked.connect(lambda: self.OpenCheckAttendanceManager())
         self.ui.btn_AddEmployee.clicked.connect(lambda: self.Add_Employee())
         self.ui.btn_GeneratePassword.clicked.connect(lambda: self.generate_password(8,self.ui.txt_Passsword))
+        self.ui.btn_UpdateDetails.clicked.connect(lambda: self.show_employee())
+        self.ui.btn_Update.clickd.connect(lambda: self.update_employee())
         
         self.show()
         
@@ -135,8 +137,8 @@ class ManaMainWindow(QMainWindow):
         self.ui.mainBody.setCurrentIndex(4)
     def OpenAddVehicleManager(self):
         self.ui.mainBody.setCurrentIndex(1)
-    def OpenUpdateEmployeeManager(self):
-        self.ui.mainBody.setCurrentIndex(2)
+    def OpenUpdateEmployeeManager(self ,n):
+        self.ui.mainBody.setCurrentIndex(n)
     def OpenDashboardManager(self):
         self.ui.mainBody.setCurrentIndex(0)
     def OpenAddEmployee(self):
@@ -214,8 +216,24 @@ class ManaMainWindow(QMainWindow):
             self.userDL.setUser(Employee_username,sales_agent)
             QMessageBox.information(self,"ADDED" ,"Employee Added")
             self.clear_screen()
-
-
+    def show_employee (self, employee) :
+        self.ui.txt_Name_2.setText(employee.name) 
+        self.ui.txt_CNIC.setText(str(employee.CNIC))
+        self.ui.txt_Age_2.setText(str(employee.age))
+        self.ui.txt_Email_2.setText(employee.Email)
+        self.ui.txt_PhonoNumber.setText(str(employee.contactNum))
+        self.ui.txt_BankAccount_2.setText(str(employee.BankAccount))
+        self.ui.lineEdit_7.setText(str(employee.salary)) 
+    def update_employee (self,employee) :
+        employee.name = self.ui.txt_Name_2.text() 
+        employee.CNIC = self.ui.txt_CNIC.text()
+        employee.age = self.ui.txt_Age_2.text()
+        employee.Email = self.ui.txt_Email_2.text()
+        employee.contactNum = self.ui.txt_PhonoNumber.text()
+        employee.BankAccount = self.ui.txt_BankAccount_2.text()
+        employee.salary = self.ui.lineEdit_7.text()
+        employee.updatedDate = date.today()
+    def 
 if __name__=="__main__":
     app=QApplication(sys.argv)
     window=ManaMainWindow()
