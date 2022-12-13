@@ -1,5 +1,9 @@
 <RCC>
   <qresource prefix="White Icons">
+    <file>Graphics/featherBlack/checking-attendance.png</file>
+    <file>Graphics/featherBlack/checkout.png</file>
+    <file>Graphics/featherBlack/shopping-cart.png</file>
+    <file>Graphics/featherBlack/warehouse.png</file>
     <file>Graphics/featherBlack/editing.png</file>
     <file>Graphics/featherBlack/bin.png</file>
     <file>Graphics/featherBlack/profits.png</file>
