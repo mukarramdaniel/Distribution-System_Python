@@ -1,11 +1,14 @@
 from User import User;
-class Driver(User):
+class Rider(User):
     def __init__(self,userT,resetToken):
         super().__init__(userT)
-        fieldArea=""
-        adjList=[]
-        self.resetToken=resetToken
-        vehicle=None#vehicle object
-        startLocation=None#location object
-        fuelRecord=[]
+        self._fieldArea=""
+        self._adjList=[]
+        self._resetToken=resetToken
+        self._vehicle=None#vehicle object
+        self._startLocation=None#location object
+        self._fuelRecord=[]
+    def __init__(self,userT,resetToken,fieldArea,vehicle,startLocation)
+        super().__init__(userT)
+    
 
