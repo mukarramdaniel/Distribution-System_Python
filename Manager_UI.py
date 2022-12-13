@@ -130,7 +130,6 @@ class ManaMainWindow(QMainWindow):
     def OpenDashboardManager(self):
         self.ui.mainBody.setCurrentIndex(0)
     def OpenAddEmployee(self):
-        QMessageBox.information(self, 'Info', 'Ok jee')
         self.ui.mainBody.setCurrentIndex(3)
     
     def slideLeftMenu(self):
@@ -159,6 +158,20 @@ class ManaMainWindow(QMainWindow):
         self.animation.setEndValue(newWidth)#end value is the new menu width
         self.animation.setEasingCurve(QtCore.QEasingCurve.Type.InOutQuart)
         self.animation.start()
+    
+    def Add_Employee(self):
+        Employee_Name=self.ui.txt_Name.text()
+        Employee_Age=self.ui.txt_Age.text()
+        Employee_CNIC=self.ui.txt_Cnic.text()
+        Employee_Email=self.ui.txt_Email.text()
+        Employee_PhoneNo=self.ui.txt_PhoneNumber.text()
+        Employee_BankAccount=self.ui.txt_BankAccount.text()
+        Employee_Status=self.ui.cmb_Employee.currentText()
+        Employee_Salary=self.ui.spinBox_Salary.text()
+        
+        if(Employee_Status=="Inventory Supervisor"):
+            pass
+
 if __name__=="__main__":
     app=QApplication(sys.argv)
     window=ManaMainWindow()
