@@ -496,6 +496,12 @@ class Ui_MainWindow(object):
         self.verticalLayout_47.addWidget(self.frame_15)
         self.verticalLayout_42.addWidget(self.widget_41)
         self.LeftMenu.addWidget(self.InventorySupervisor_SideBar)
+        self.SalesAgent_SideBar = QtWidgets.QWidget()
+        self.SalesAgent_SideBar.setObjectName("SalesAgent_SideBar")
+        self.widget_69 = QtWidgets.QWidget(self.SalesAgent_SideBar)
+        self.widget_69.setGeometry(QtCore.QRect(70, 170, 120, 80))
+        self.widget_69.setObjectName("widget_69")
+        self.LeftMenu.addWidget(self.SalesAgent_SideBar)
         self.horizontalLayout.addWidget(self.LeftMenu)
         self.mainBody = QtWidgets.QStackedWidget(self.centralwidget)
         self.mainBody.setFrameShadow(QtWidgets.QFrame.Plain)
@@ -2881,7 +2887,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.LeftMenu.setCurrentIndex(1)
+        self.LeftMenu.setCurrentIndex(0)
         self.mainBody.setCurrentIndex(0)
         self.btn_AccountFinanace.toggled['bool'].connect(self.widget_13.setVisible) # type: ignore
         self.btn_InventoryReport.toggled['bool'].connect(self.widget_43.setVisible) # type: ignore
