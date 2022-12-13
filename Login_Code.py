@@ -15,6 +15,7 @@ import os
 from email.message import EmailMessage
 import smtplib
 from random import randint
+
 class MainWindow(QMainWindow):
     code = 0
     def __init__(self,parent=None):
@@ -28,7 +29,7 @@ class MainWindow(QMainWindow):
         self.ui.backbtn.clicked.connect(lambda: self.BactTo_Login(0))
         self.ui.sendbtn.clicked.connect(lambda: self.send_resetmail(self.ui.emailtxt.text() , 6))
         self.ui.resetbtn.clicked.connect(lambda: self.create_newpassword(self.ui.passwordtxt.text() , self.ui.emailtxt.text()))
-        self.ui.backbtn_2.clicked.connect(lambda: self.BackTo_Login(1))
+        self.ui.backbtn_2.clicked.connect(lambda: self.BactTo_Login(0))
         self.show()
     
     
@@ -60,27 +61,35 @@ class MainWindow(QMainWindow):
     def send_resetmail(self , email , n) :
         start = 10**(n-1)
         end = (10**n)-1
-        code = randint(start,end)
+        self.code = randint(start,end)
         email_sender = "rasheedrayan514@gmail.com"
         email_password = 'zpzsrqeasritevbu'
-        email_receiver = self.validate_email(email) 
+        email_flag = self.validate_email(email) 
+        if(email_flag):
+            getuser = self.user.getUserReturn(email)
+            
+            if(getuser!=None):
+                email_receiver=email
+                subject = "Forget Password"
+                body = '''
+                Dear User,
+                Your new password of the account is '''+str(self.code)+'''Enter this now to have access to your account.
+                Regards,
+                ARM limited
+                '''
+                em = EmailMessage()
+                em['from'] = email_sender
+                em['to'] = email_receiver
+                em['Subject'] = subject
+                em.set_content(body)
+                with smtplib.SMTP_SSL('smtp.gmail.com' , 465 ) as smtp:
+                    smtp.login(email_sender , email_password)
+                    smtp.sendmail(email_sender , email_receiver , em.as_string())
+                self.Open_newpassword_Screen()
 
-        subject = "Forget Password"
-        body = '''
-        Dear User,
-        Your new password of the account is '''+str(code)+'''Enter this now to have access to your account.
-        Regards,
-        ARM limited
-        '''
-        em = EmailMessage()
-        em['from'] = email_sender
-        em['to'] = email_receiver
-        em['Subject'] = subject
-        em.set_content(body)
-        with smtplib.SMTP_SSL('smtp.gmail.com' , 465 ) as smtp:
-            smtp.login(email_sender , email_password)
-            smtp.sendmail(email_sender , email_receiver , em.as_string())
-        self.Open_newpassword_Screen()
+            
+            
+        
     def validate_email(self,email) :
         regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
         if (re.search(regex,email)):
@@ -93,6 +102,7 @@ class MainWindow(QMainWindow):
                 if (password == self.ui.confirmtxt.text()):
                     changed_user = self.user.getUserReturn(email)
                     changed_user.password = password
+                    self.BactTo_Login(0)
                     #update()
                 else :
                     QMessageBox.warning(self,'Error','Password must be same')

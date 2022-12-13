@@ -1,5 +1,6 @@
 import sys
-sys.path.insert(2,"Core.Vehicle")
+sys.path.insert(1,"Core.Vehicle")
+from Core.Vehicle import *
 
 class Node:
     def __init__(self,val):
@@ -80,11 +81,11 @@ class Doubly_Linked_List:
 
         mycursor = mydb.cursor()
 
-        mycursor.execute("SELECT userID,userName,password,name,age,contactNum,Email,Cnic,bankAccount,resetToken,created_on,update_on  FROM manager")
+        mycursor.execute("SELECT model,number,fuelAverage,riderID  FROM manager")
 
         myresult = mycursor.fetchall()
         for x in myresult:
-            
+            vehicle=Vehicle(x[0],x[1],x[2],x[3])
         mydb.close()
 
 # if __name__ == "__main__":
