@@ -1050,24 +1050,38 @@ background-color:#ececec;
                  </item>
                  <item>
                   <widget class="QWidget" name="widget_55" native="true">
-                   <layout class="QVBoxLayout" name="verticalLayout_54">
+                   <layout class="QGridLayout" name="gridLayout">
                     <property name="bottomMargin">
                      <number>15</number>
                     </property>
-                    <item>
+                    <item row="0" column="0">
                      <widget class="QTableWidget" name="Table_BuyCart">
+                      <property name="autoFillBackground">
+                       <bool>true</bool>
+                      </property>
+                      <property name="autoScrollMargin">
+                       <number>16</number>
+                      </property>
                       <property name="alternatingRowColors">
                        <bool>true</bool>
                       </property>
                       <property name="rowCount">
-                       <number>5</number>
+                       <number>10</number>
                       </property>
                       <attribute name="horizontalHeaderDefaultSectionSize">
                        <number>130</number>
                       </attribute>
                       <attribute name="horizontalHeaderStretchLastSection">
+                       <bool>false</bool>
+                      </attribute>
+                      <attribute name="verticalHeaderStretchLastSection">
                        <bool>true</bool>
                       </attribute>
+                      <row/>
+                      <row/>
+                      <row/>
+                      <row/>
+                      <row/>
                       <row/>
                       <row/>
                       <row/>

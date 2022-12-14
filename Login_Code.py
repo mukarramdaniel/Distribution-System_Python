@@ -118,6 +118,7 @@ class MainWindow(QMainWindow):
     def Open_Manager_Window(self):
         self.MainWindow = QtWidgets.QMainWindow()
         self.ui=ManaMainWindow()
+        self.close()
         #self.ui.setupUi(self.MainWindow)
         #self.MainWindow.show()
     def Open_Inventory_Window(self):

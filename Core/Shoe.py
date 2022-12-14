@@ -1,5 +1,5 @@
 class Shoe:
-   
+    
     def __init__(self,category,buyPrice,profitMargin,shoeSize,selPrice,color,prodID) -> None:
         self.__prodID=prodID
         self.__category=category
