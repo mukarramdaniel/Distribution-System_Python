@@ -9,9 +9,10 @@ from PyQt5.QtGui import (QColor)
 import re
 from Core.Shoe import Shoe
 from Core.ProductList import ProducList
+from DL.StockOrder_DL import StockOrder_DL
 from DL.Inventory import Inventory
 from random import randint
-from datetime import date
+from datetime import datetime
 
 
 
@@ -20,6 +21,10 @@ class InventoryMainWindow(QMainWindow):
         QMainWindow.__init__(self)
         self.ui=Ui_MainWindow()
         self.ui.setupUi(self)
+        inventory=Inventory()
+        inventory.readFromTable()
+        self.orderStockDL=StockOrder_DL()
+        self.orderStockDL.loadFromTable()
         self.temp_OrderList=[]
         self.total = 0
         #self.prodList=ProducList()
@@ -30,39 +35,62 @@ class InventoryMainWindow(QMainWindow):
         self.ui.btn_Update_Stock.clicked.connect(lambda: self.OpenPages(1))
         self.ui.btn_ViewStock.clicked.connect(lambda: self.OpenPages(2))
         self.ui.btn_AddtoCart.clicked.connect(lambda: self.AddToCart_Stock())
+        self.ui.btn_RequestOrder.clicked.connect(lambda: self.orderStockFromCart())
+        
+        
         self.show()
-
+    def orderStockFromCart(self):
+        now = datetime.now()
+        date = now.strftime("%d-%m-%Y %H:%M:%S")
+        order=ProducList(self.orderStockDL.generateOrderID(),date,self.temp_OrderList)
+        self.orderStockDL.Insert_at_Head(order)
+        self.emptyTableAndList()
+    def emptyTableAndList(self):
+        self.ui.Table_BuyCartStock.clearSpans()
+        self.temp_OrderList.clear()
     def OpenPages(self,idx):
+        self.ui.btn_CheckIn.setEnabled(0)
         self.ui.mainBody.setCurrentIndex(idx)
-    
+        self.ui.table_UpdateStockLoad()
+    def table_UpdateStockLoad(self):
+        if(self.orderStockDL.getDLinklist().data.getStatus()==0):
+            
     def AddToCart_Stock(self):
         Product_Category=self.ui.cmb_Category.currentText()
         Product_Quantity=self.ui.spb_Quantity.text()
         Product_Size=self.ui.spb_Size.text()
         Product_Color=self.ui.cmb_Color.currentText()
         Product_Price=self.ui.txt_PriceperShoes.text()
-        
-        prodID="001"
-        
+        prodID=self.generateProdID()
+        self.clearField()
         for i in range(int(Product_Quantity)):
-            shoe = Shoe(Product_Category, Product_Price, 0 , Product_Size, 0 , Product_Color, prodID)
+            shoe = Shoe(Product_Category, Product_Price, 0 , Product_Size, 0 , Product_Color, prodID,"men")
             self.temp_OrderList.append(shoe)
-            #self.total = self.total + Pro
         self.loadUpdate_tableWidget()
         
         #ProducList(shoe, prodID)
         #self.ShoesDL.setProduct(Product_Category, shoe)
         QMessageBox.information(self,"ADDED" ,"Product Added")
+    def clearField(self):
+        self.ui.cmb_Category.clearEditText()
+        self.ui.spb_Quantity.cleanText()
+        self.ui.spb_Size.cleanText()
+        self.ui.cmb_Color.clearEditText()
+        self.ui.txt_PriceperShoes.clear()
+    def generateProdID(self):
+        import random
+        return "%0.12d" % random.randint(0,999999999999)
+
     def loadUpdate_tableWidget(self):
         row=0
-        self.ui.Table_BuyCart.setRowCount(len(self.temp_OrderList))
+        self.ui.Table_BuyCartStock.setRowCount(len(self.temp_OrderList))
         for prod in self.temp_OrderList:
 
-            self.ui.Table_BuyCart.setItem(row, 0, QtWidgets.QTableWidgetItem(str(prod.getprodID())))
-            self.ui.Table_BuyCart.setItem(row, 1, QtWidgets.QTableWidgetItem(str(prod.getProductCategory())))
-            self.ui.Table_BuyCart.setItem(row, 2, QtWidgets.QTableWidgetItem(str(prod.getShoeSize())))
-            self.ui.Table_BuyCart.setItem(row, 3, QtWidgets.QTableWidgetItem(prod.getColor()))
-            self.ui.Table_BuyCart.setItem(row, 4, QtWidgets.QTableWidgetItem(str(prod.getBuyPrice())))
+            self.ui.Table_BuyCartStock.setItem(row, 0, QtWidgets.QTableWidgetItem(str(prod.getprodID())))
+            self.ui.Table_BuyCartStock.setItem(row, 1, QtWidgets.QTableWidgetItem(str(prod.getProductCategory())))
+            self.ui.Table_BuyCartStock.setItem(row, 2, QtWidgets.QTableWidgetItem(str(prod.getShoeSize())))
+            self.ui.Table_BuyCartStock.setItem(row, 3, QtWidgets.QTableWidgetItem(prod.getColor()))
+            self.ui.Table_BuyCartStock.setItem(row, 4, QtWidgets.QTableWidgetItem(str(prod.getBuyPrice())))
             row=row+1
     def create_object(self, temp_OrderList):
         order_obj= ProducList(temp_OrderList, "001")

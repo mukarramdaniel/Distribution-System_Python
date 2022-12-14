@@ -596,7 +596,7 @@ background-color:#ececec;
        <number>1</number>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="page_BuyStock">
        <property name="styleSheet">
@@ -842,7 +842,7 @@ background-color:#ececec;
                     </font>
                    </property>
                    <property name="text">
-                    <string>Price</string>
+                    <string>Buy Price(shoe)</string>
                    </property>
                   </widget>
                  </item>
@@ -868,6 +868,11 @@ background-color:#ececec;
                    </property>
                    <item>
                     <property name="text">
+                     <string>Bonega Shoes</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
                      <string>Pumpy</string>
                     </property>
                    </item>
@@ -879,6 +884,61 @@ background-color:#ececec;
                    <item>
                     <property name="text">
                      <string>Sneakers</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Canvas Shoes</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>High Ankle</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Rivet High Shoes</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Slip-on Shoes</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Leisure Sport Shoes</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>ShellToe Boots</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Formal Shoes</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Leather Shoes</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Slippers</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Padded Shoes</string>
+                    </property>
+                   </item>
+                   <item>
+                    <property name="text">
+                     <string>Wrestling Shoes</string>
                     </property>
                    </item>
                   </widget>
@@ -1044,7 +1104,7 @@ background-color:#ececec;
                     </font>
                    </property>
                    <property name="text">
-                    <string>View Cart:</string>
+                    <string>Cart:</string>
                    </property>
                   </widget>
                  </item>
@@ -1055,7 +1115,7 @@ background-color:#ececec;
                      <number>15</number>
                     </property>
                     <item row="0" column="0">
-                     <widget class="QTableWidget" name="Table_BuyCart">
+                     <widget class="QTableWidget" name="Table_BuyCartStock">
                       <property name="autoFillBackground">
                        <bool>true</bool>
                       </property>
@@ -1109,7 +1169,7 @@ background-color:#ececec;
                       </column>
                       <column>
                        <property name="text">
-                        <string>Total</string>
+                        <string>Price</string>
                        </property>
                       </column>
                      </widget>
@@ -1897,40 +1957,7 @@ background-color:qlineargradient(spread:pad,x1:0,y1:0.505682,x2:1,y2:0.477,stop:
                    </column>
                    <column>
                     <property name="text">
-                     <string>Available Quantity</string>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <weight>75</weight>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                   </column>
-                   <column>
-                    <property name="text">
                      <string>Selling Price</string>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <weight>75</weight>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                   </column>
-                   <column>
-                    <property name="text">
-                     <string>Order Date</string>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <weight>75</weight>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                   </column>
-                   <column>
-                    <property name="text">
-                     <string>Delivery Date</string>
                     </property>
                     <property name="font">
                      <font>

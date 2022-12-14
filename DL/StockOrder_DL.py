@@ -1,6 +1,7 @@
 import sys
-sys.path.insert(1,"Core.Vehicle")
-from Core.Vehicle import Vehicle
+sys.path.insert(2,"Core")
+from Core import Shoe
+from Core.ProductList import ProducList
 
 class Node:
     def __init__(self,val):
@@ -8,12 +9,10 @@ class Node:
         self.next=None
         self.prev=None
 
-class VehicleCRUD:
+class StockOrder_DL:
     def __init__(self):
         self.head=None
-        self.linklist=[]
-    def addToList(self,val):
-        self.linklist.append(val)
+   
     def Insert_at_Head(self,val): # insert at head
         New_Node=Node(val)
         New_Node.next=self.head
@@ -68,11 +67,13 @@ class VehicleCRUD:
             start.prev.next=start.next
             start.next.prev=start.prev
             
-
+    def getDLinklist(self):
+        return self.head
     def Print_List(self,node):
         while(node!=None):
             print(" {}".format(node.data))
             node=node.next
+        
     def loadFromTable(self):
         import mysql.connector
         mydb = mysql.connector.connect(
@@ -82,24 +83,36 @@ class VehicleCRUD:
         database="dbarm"
         )
 
-        mycursor = mydb.cursor()
+        mycursor = mydb.cursor()    
 
-        mycursor.execute("SELECT model,number,fuelAverage,riderID  FROM vehicle")
-        DlinkList=VehicleCRUD()
+        mycursor.execute("SELECT prodCategory,buyPrice,profitMargin,shoeSize,selPrice,color,prodID,type,orderID,date FROM stock_order_crud")
+
         myresult = mycursor.fetchall()
-        for x in myresult:
-            vehicle=Vehicle(x[0],x[1],x[2])
-            vehicle.setRider(x[3])
-            self.addToList(vehicle)
-        mydb.close()
-
-# if __name__ == "__main__":
-#     list1=VehicleCRUD()
-#     list1.Insert_at_Head(10)
-#     list1.Insert_at_End(9)
-#     list1.Insert_btw_Nodes(list1.head, 50)
-#     #list1.Insert_at_End(6)
-#     #list1.Insert_btw_Nodes(list1.head.next, 8)
-#     list1.Print_List(list1.head)
-#     list1.Delete(50)
-#     list1.Print_List(list1.head)
+        id=1
+        date=""
+        temp=[]
+        while(True):
+            flag=False
+            
+            temp.clear()
+            for x in myresult:
+                if(x[8]==id):
+                    flag=True
+                    date=x[9]
+                    shoe=Shoe.Shoe(x[0],x[1],x[2],x[3],x[4],x[5],x[6],x[7])
+                    temp.append(shoe)
+            if(flag):
+                order=ProducList(id,date,temp)
+                self.Insert_at_Head(order) 
+            if(flag==False):
+                break
+            id +=1       
+            mydb.close()
+    def generateOrderID(self):
+        count=0
+        alter=self.head
+        while(alter!=None):
+            count +=1
+            alter=alter.next
+        return count+1
+    

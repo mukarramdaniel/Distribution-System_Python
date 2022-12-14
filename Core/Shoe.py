@@ -1,6 +1,6 @@
 class Shoe:
     
-    def __init__(self,category,buyPrice,profitMargin,shoeSize,selPrice,color,prodID) -> None:
+    def __init__(self,category,buyPrice,profitMargin,shoeSize,selPrice,color,prodID,type) -> None:
         self.__prodID=prodID
         self.__category=category
         self.__buyPrice=buyPrice
@@ -8,6 +8,8 @@ class Shoe:
         self.__shoeSize=shoeSize
         self.__selPrice=selPrice
         self.__color=color
+        self.__type=type
+        
     def getProductCategory(self):
         return self.__category
     def setProfirMargin(self,profit):
@@ -30,3 +32,5 @@ class Shoe:
         return self.__buyPrice
     def getprodID(self):
         return self.__prodID
+    def getType(self):
+        return self.__type
