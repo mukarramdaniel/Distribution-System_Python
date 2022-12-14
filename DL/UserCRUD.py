@@ -85,10 +85,10 @@ class UserCRUD:
             return record_val
         else:
             return None
-    def deletUser(self, key, value):
+    def deleteUser(self, key, value):
         
         hashed_key = hash(key) % self.size
-        bucket = self.hash_table[hashed_key]
+        bucket = self.hashTable[hashed_key]
         found_key = False
         for index, record in enumerate(bucket):
             record_key, record_val = record

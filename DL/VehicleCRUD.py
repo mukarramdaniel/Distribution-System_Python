@@ -8,10 +8,12 @@ class Node:
         self.next=None
         self.prev=None
 
-class Doubly_Linked_List:
+class VehicleCRUD:
     def __init__(self):
         self.head=None
-    
+        self.linklist=[]
+    def addToList(self,val):
+        self.linklist.append(val)
     def Insert_at_Head(self,val): # insert at head
         New_Node=Node(val)
         New_Node.next=self.head
@@ -19,7 +21,8 @@ class Doubly_Linked_List:
             self.head.prev=New_Node
         self.head=New_Node
         New_Node.prev=None
-
+    def getList(self):
+        return self.linklist
     def Insert(self,val):
         New_Node=Node(val)
         last=self.head
@@ -81,11 +84,13 @@ class Doubly_Linked_List:
 
         mycursor = mydb.cursor()
 
-        mycursor.execute("SELECT model,number,fuelAverage,riderID  FROM manager")
-
+        mycursor.execute("SELECT model,number,fuelAverage,riderID  FROM vehicle")
+        DlinkList=VehicleCRUD()
         myresult = mycursor.fetchall()
         for x in myresult:
-            vehicle=Vehicle(x[0],x[1],x[2],x[3])
+            vehicle=Vehicle(x[0],x[1],x[2])
+            vehicle.setRider(x[3])
+            self.addToList(vehicle)
         mydb.close()
 
 # if __name__ == "__main__":

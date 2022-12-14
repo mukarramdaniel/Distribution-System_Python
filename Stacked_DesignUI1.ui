@@ -565,7 +565,7 @@ background-color:#f5f5f5;
        <number>1</number>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="Home_Widget">
        <property name="styleSheet">
@@ -2513,7 +2513,7 @@ background:transparent;
                <widget class="QWidget" name="widget_12" native="true">
                 <layout class="QHBoxLayout" name="horizontalLayout_17">
                  <item>
-                  <widget class="QTableWidget" name="tableWidget_3">
+                  <widget class="QTableWidget" name="table_Vehicle">
                    <property name="alternatingRowColors">
                     <bool>true</bool>
                    </property>
@@ -3836,7 +3836,7 @@ background-color:#ececec;
                    </property>
                    <item>
                     <property name="text">
-                     <string>Rider</string>
+                     <string>Inventory Supervisor</string>
                     </property>
                    </item>
                    <item>
@@ -3846,12 +3846,12 @@ background-color:#ececec;
                    </item>
                    <item>
                     <property name="text">
-                     <string>Inventory Supervisor</string>
+                     <string>Rider</string>
                     </property>
                    </item>
                    <item>
                     <property name="text">
-                     <string>Worker</string>
+                     <string/>
                     </property>
                    </item>
                   </widget>
