@@ -1,5 +1,12 @@
 #from UI.Login import Ui_LoginWindow
+
 import sys
+#Libraraies imported to embed the graph in the form
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.figure import Figure
+from numpy import random
+#----------------------------------------------
 from Stacked_DesignUI1 import *
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import (
@@ -26,6 +33,7 @@ class ManaMainWindow(QMainWindow):
         self.userDL.readFromTable()
         self.vehicleDL=VehicleCRUD()
         self.vehicleDL.loadFromTable()
+
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(20)
         self.shadow.setXOffset(0)
@@ -110,8 +118,35 @@ class ManaMainWindow(QMainWindow):
         self.shadow.setYOffset(0)
         self.shadow.setColor(QColor("black"))
         self.ui.widget_12.setGraphicsEffect(self.shadow)
+
+        self.shadow = QGraphicsDropShadowEffect(self)
+        self.shadow.setBlurRadius(20)
+        self.shadow.setXOffset(0)
+        self.shadow.setYOffset(0)
+        self.shadow.setColor(QColor("black"))
+        self.ui.frame_34.setGraphicsEffect(self.shadow)
         #----------------------------------------------
 
+        #----------Create a horizontal Layout----------
+        
+        self.ui.horizontalLayout_107=QtWidgets.QHBoxLayout(self.ui.frame_34)
+        self.ui.horizontalLayout_107.setObjectName("horizontalLayout_107")
+        self.ui.figure7=plt.figure()
+        self.ui.canvas7=FigureCanvas(self.ui.figure7)
+        self.ui.horizontalLayout_107.addWidget(self.ui.canvas7)
+
+        Days=['Monday','Tuesday','Wednesday','Thursday']
+        values=[123,1,333,2]
+        plt.plot(Days,values,color='red')
+        plt.xlabel('Weak Dayz')
+        plt.ylabel('Values')
+        plt.title("Profit")
+        self.ui.canvas7.draw()
+        self.ui.txt_Salaries.setText("1234")
+        
+        #----------------------------------------------
+        
+        
         #self.ui.btnUpdateStock.clicked.connect(lambda: self.OpenUpdatePage())
         #self.ui.btnBuyStock.clicked.connect(lambda: self.OpenBuyStockPage())
         #self.ui.btn_Report_Cost.clicked.connect(lambda: self.OpenReportCostPage())
@@ -130,6 +165,7 @@ class ManaMainWindow(QMainWindow):
         self.ui.btnUpdateEmployee.clicked.connect(lambda: self.OpenUpdateEmployee())
         self.ui.btn_AddVehicle.clicked.connect(lambda: self.OpenAddVehicleManager())
         self.ui.btnCheckAttendance.clicked.connect(lambda: self.OpenCheckAttendanceManager())
+        self.ui.btn_CompanyAccount.clicked.connect(lambda: self.OpenCompanyAccountManager())
         self.ui.btn_AddEmployee.clicked.connect(lambda: self.Add_Employee())
         self.ui.btn_GenerateID.clicked.connect(lambda: self.generate_userID())
         self.ui.btn_GeneratePassword.clicked.connect(lambda: self.generate_password(8,self.ui.txt_Passsword))
@@ -152,7 +188,107 @@ class ManaMainWindow(QMainWindow):
             self.ui.btn_Delete.setEnabled(1)
         
             
-  
+    def OpenCompanyAccountManager(self):
+        
+        #self.PlotGraph2()
+        self.ui.mainBody.setCurrentIndex(7)
+        self.PlotGraph()
+        
+    def PlotGraph(self):
+        self.ui.horizontalLayout_100=QtWidgets.QHBoxLayout(self.ui.frame_15)
+        self.ui.horizontalLayout_100.setObjectName("horizontalLayout_100")
+        self.ui.figure1=plt.figure()
+        self.ui.canvas1=FigureCanvas(self.ui.figure1)
+        self.ui.horizontalLayout_100.addWidget(self.ui.canvas1)
+
+        Days=['Monday','Tuesday','Wednesday','Thursday']
+        values=random.randint(50,size=(4))
+        plt.bar(Days,values,color='red',width=0.4)
+        plt.xlabel('Weak Dayz')
+        plt.ylabel('Values')
+        plt.title("Profit")
+        self.ui.canvas1.draw()
+        self.ui.txt_Salaries.setText("1234")
+
+        self.ui.horizontalLayout_101=QtWidgets.QVBoxLayout(self.ui.frame_17)
+        self.ui.horizontalLayout_101.setObjectName("horizontalLayout_101")
+        self.ui.figure2=plt.figure()
+        self.ui.canvas2=FigureCanvas(self.ui.figure2)
+        self.ui.horizontalLayout_101.addWidget(self.ui.canvas2)
+
+        Dayss=['Monday','Tuesday','Wednesday','Thursday']
+        valuses=[1,2,3,4]
+        plt.plot(Dayss,valuses)
+        plt.xlabel('Weak Dayz')
+        plt.ylabel('Values')
+        plt.title("Profit")
+        self.ui.canvas2.draw()
+        self.ui.txt_FuelConsumption.setText("1234")
+
+
+        self.ui.horizontalLayout_102=QtWidgets.QHBoxLayout(self.ui.frame_18)
+        self.ui.horizontalLayout_102.setObjectName("horizontalLayout_102")
+        self.ui.figure3=plt.figure()
+        self.ui.canvas3=FigureCanvas(self.ui.figure3)
+        self.ui.horizontalLayout_102.addWidget(self.ui.canvas3)
+
+        Dayss=['Monday','Tuesday','Wednesday','Thursday']
+        valuses=[1,2,3,4]
+        plt.scatter(Dayss,valuses)
+        plt.xlabel('Weak Dayz')
+        plt.ylabel('Values')
+        plt.title("Profit")
+        self.ui.canvas3.draw()
+        self.ui.txt_Bonuses.setText("1234")
+
+        self.ui.horizontalLayout_103=QtWidgets.QHBoxLayout(self.ui.frame_19)
+        self.ui.horizontalLayout_103.setObjectName("horizontalLayout_103")
+        self.ui.figure4=plt.figure()
+        self.ui.canvas4=FigureCanvas(self.ui.figure4)
+        self.ui.horizontalLayout_103.addWidget(self.ui.canvas4)
+
+        Dayss=['Monday','Tuesday','Wednesday','Thursday','Friday']
+        valuses=[1,21231,222,10,123]
+        plt.plot(Dayss,valuses)
+        plt.xlabel('Weak Dayz')
+        plt.ylabel('Values')
+        plt.title("Profit")
+        self.ui.canvas4.draw()
+        self.ui.txt_WarehouseExpense.setText("1234")
+
+        self.ui.horizontalLayout_104=QtWidgets.QHBoxLayout(self.ui.frame_31)
+        self.ui.horizontalLayout_104.setObjectName("horizontalLayout_103")
+        self.ui.figure5=plt.figure()
+        self.ui.canvas5=FigureCanvas(self.ui.figure5)
+        self.ui.horizontalLayout_104.addWidget(self.ui.canvas5)
+
+        Dayss=['Monday','Tuesday','Wednesday','Thursday','Friday']
+        valuses=[1,0,222,10,123]
+        plt.plot(Dayss,valuses)
+        plt.xlabel('Weak Dayz')
+        plt.ylabel('Values')
+        plt.title("Profit")
+        self.ui.canvas5.draw()
+        self.ui.txt_WarehouseExpense.setText("1234")
+
+        self.ui.horizontalLayout_105=QtWidgets.QHBoxLayout(self.ui.frame_32)
+        self.ui.horizontalLayout_105.setObjectName("horizontalLayout_103")
+        self.ui.figure6=plt.figure()
+        self.ui.canvas6=FigureCanvas(self.ui.figure6)
+        self.ui.horizontalLayout_105.addWidget(self.ui.canvas6)
+
+        Dayss=['Monday','Tuesday','Wednesday','Thursday','Friday']
+        valuses=[1,0,222,10,123]
+        plt.plot(Dayss,valuses)
+        plt.xlabel('Weak Dayz')
+        plt.ylabel('Values')
+        plt.title("Profit")
+        self.ui.canvas6.draw()
+        self.ui.txt_WarehouseExpense.setText("1234")
+        
+        #self.ui.figure2.clear()
+        #self.ui.figure3.clear()
+
     def OpenCheckAttendanceManager(self):
         self.ui.mainBody.setCurrentIndex(4)
     def OpenAddVehicleManager(self):
@@ -308,12 +444,12 @@ class ManaMainWindow(QMainWindow):
         self.ui.btn_Edit.setEnabled(0)
         self.ui.btn_Delete_2.setEnabled(0)
         DLinkList=self.vehicleDL.getList()
-        self.ui.table_Vehicle.clearSpans()
+        self.ui.tableWidget_3.clearSpans()
         row=0
         for data in DLinkList:
-            self.ui.table_Vehicle.setItem(row, 0, QtWidgets.QTableWidgetItem(str(data.model)))
-            self.ui.table_Vehicle.setItem(row, 1, QtWidgets.QTableWidgetItem(str(data.number)))
-            self.ui.table_Vehicle.setItem(row, 2, QtWidgets.QTableWidgetItem(str(data.fuelAverage)))
+            self.ui.tableWidget_3.setItem(row, 0, QtWidgets.QTableWidgetItem(str(data.model)))
+            self.ui.tableWidget_3.setItem(row, 1, QtWidgets.QTableWidgetItem(str(data.number)))
+            self.ui.tableWidget_3.setItem(row, 2, QtWidgets.QTableWidgetItem(str(data.fuelAverage)))
             row=row+1
     def addVehicle(self):
         model=self.ui.txt_VehicleModel.text()
