@@ -22,9 +22,9 @@ class InventoryMainWindow(QMainWindow):
         self.ui=Ui_MainWindow()
         self.ui.setupUi(self)
         inventory=Inventory()
-        inventory.readFromTable()
+        #inventory.readFromTable()
         self.orderStockDL=StockOrder_DL()
-        self.orderStockDL.loadFromTable()
+        #self.orderStockDL.loadFromTable()
         self.temp_OrderList=[]
         self.total = 0
         #self.prodList=ProducList()
@@ -54,7 +54,7 @@ class InventoryMainWindow(QMainWindow):
         self.ui.table_UpdateStockLoad()
     def table_UpdateStockLoad(self):
         if(self.orderStockDL.getDLinklist().data.getStatus()==0):
-            
+            pass
     def AddToCart_Stock(self):
         Product_Category=self.ui.cmb_Category.currentText()
         Product_Quantity=self.ui.spb_Quantity.text()
