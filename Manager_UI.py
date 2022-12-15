@@ -362,6 +362,27 @@ class ManaMainWindow(QMainWindow):
         self.ui.txt_BankAccount.clear()
         self.ui.spinBox_Salary.clear()
         self.ui.txt_Passsword.clear()
+    def validate_date (self,name) :
+        date_format = '%Y-%m-%d'
+        try: 
+            birth_date = datetime.datetime.strptime(name, date_format)
+            return True
+        except:
+            QMessageBox.warning(self , "Error","Invalid format of Date")
+            return False
+    def validate_email(self,email) :
+        regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
+        if (re.search(regex,email)):
+            return True
+        else:
+            QMessageBox.warning(self,"Error","Invalid format of email")
+            return False
+    def validate_number (self,number,n):
+        if re.search("([189])[\d]+", number) and len(number) == n :
+            return True
+        else :
+            QMessageBox.warning(self,"Error","Invalid format of Number")
+            return False
     def Add_Employee(self):
         flag = False
         Employee_Name =self.ui.txt_Name.text()
