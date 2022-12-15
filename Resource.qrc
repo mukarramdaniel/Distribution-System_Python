@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="White Icons">
+    <file>Graphics/featherBlack/price-list.png</file>
+    <file>Graphics/featherBlack/delivery-service.png</file>
     <file>Graphics/featherBlack/add-user.png</file>
     <file>Graphics/featherBlack/pin.png</file>
     <file>Graphics/featherBlack/calculator.png</file>
