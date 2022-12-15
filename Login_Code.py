@@ -34,7 +34,7 @@ class MainWindow(QMainWindow):
         self.show()
     
     
-        
+    
     def Handle_Login(self):
         
         Email=self.ui.emailinp.text()
@@ -42,13 +42,12 @@ class MainWindow(QMainWindow):
         flag=self.Validate_Email_password(Email,Password)
         if(flag):
             retrive=self.user.verify(Email,Password)
-            print(retrive.userRole)
             
             if(retrive!=None):
                 if(retrive.userRole==0):
                     self.Open_Manager_Window()
                 elif(retrive.userRole==1):
-                    self.Open_Inventory_Window()
+                    self.Open_Inventory_Window(retrive)
         else:
             QMessageBox.warning(self,'Error','Incorrect Email and Password')
             self.ui.emailinp.clear()
@@ -121,9 +120,9 @@ class MainWindow(QMainWindow):
         self.close()
         #self.ui.setupUi(self.MainWindow)
         #self.MainWindow.show()
-    def Open_Inventory_Window(self):
+    def Open_Inventory_Window(self,userA):
         self.MainWindow = QtWidgets.QMainWindow()
-        self.ui=InventoryMainWindow()
+        self.ui=InventoryMainWindow(userA)
     def OpenForgetScreen(self):
         self.ui.loginStackedWidget.setCurrentIndex(1)
     def Open_newpassword_Screen(self):

@@ -26,6 +26,9 @@ class User:
         self.BankAccount=userT[9]
         self.createdDate=userT[10]
         self.updatedDate=userT[11]
-        
+    def getUserName(self) :
+        return self.userName
+    def getName(self):
+        return self.name   
         
         

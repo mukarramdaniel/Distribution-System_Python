@@ -1,10 +1,10 @@
 
 class Attendence:
-    __userID=None
-    __dateTimeList=None
-    def __init__(self,userID,dateList):
+    
+    def __init__(self,userID,name):
         self.userID=userID
-        self.dateList=dateList
+        self.name=name
+        self.dateList=[]
     def addInDateTimeList(self,attendDate):
         self.dateList.append(attendDate)
     def getAttendenceList(self):
@@ -15,4 +15,6 @@ class Attendence:
         self.dateList=dateList
     def setUserID(self,id):
         self.userID=id
+    def getname(self) :
+        return self.name
     
