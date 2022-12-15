@@ -85,7 +85,7 @@ class StockOrder_DL:
 
         mycursor = mydb.cursor()    
 
-        mycursor.execute("SELECT prodCategory,buyPrice,profitMargin,shoeSize,selPrice,color,prodID,type,orderID,date FROM stock_order_crud")
+        mycursor.execute("SELECT prodCategory,buyPrice,profitMargin,shoeSize,selPrice,color,prodID,type,orderID,date,status FROM stock_order_crud")
 
         myresult = mycursor.fetchall()
         id=1
@@ -94,20 +94,22 @@ class StockOrder_DL:
         while(True):
             flag=False
             
-            temp.clear()
+            temp=[]
             for x in myresult:
                 if(x[8]==id):
                     flag=True
                     date=x[9]
+                    status=x[10]
                     shoe=Shoe.Shoe(x[0],x[1],x[2],x[3],x[4],x[5],x[6],x[7])
                     temp.append(shoe)
             if(flag):
-                order=ProducList(id,date,temp)
-                self.Insert_at_Head(order) 
+                order=ProducList(id,date,temp,status)
+                self.Insert(order) 
             if(flag==False):
                 break
             id +=1       
-            mydb.close()
+            
+        mydb.close()
     def generateOrderID(self):
         count=0
         alter=self.head
