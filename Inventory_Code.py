@@ -9,11 +9,15 @@ from PyQt5.QtGui import (QColor)
 import re
 from Core.Shoe import Shoe
 from Core.ProductList import ProducList
+from Core.Attendence import Attendence
+from DL.AttendenceCRUD import AttendenceCRUD
 from DL.StockOrder_DL import StockOrder_DL
 from DL.Inventory import Inventory
 from random import randint
-from datetime import datetime
-
+from datetime import date
+import datetime
+from DL.UserCRUD import UserCRUD
+import Login_Code
 
 
 class InventoryMainWindow(QMainWindow):
@@ -27,17 +31,22 @@ class InventoryMainWindow(QMainWindow):
         #self.orderStockDL.loadFromTable()
         self.temp_OrderList=[]
         self.total = 0
+        
         #self.prodList=ProducList()
 
         #self.ShoesDL=Inventory()
         #self.ShoesDL=ProducList(ShoeList, productID)
+        self.loginWindow = Login_Code.MainWindow()
+        self.attendanceDL = AttendenceCRUD()
         self.ui.btnBuyStock.clicked.connect(lambda: self.OpenPages(0))
         self.ui.btn_Update_Stock.clicked.connect(lambda: self.OpenPages(1))
         self.ui.btn_ViewStock.clicked.connect(lambda: self.OpenPages(2))
         self.ui.btn_AddtoCart.clicked.connect(lambda: self.AddToCart_Stock())
         self.ui.btn_RequestOrder.clicked.connect(lambda: self.orderStockFromCart())
-        
-        
+        self.ui.btn_MarkAttendance_2.clicked.connect(lambda: self.mark_attendance())
+        self.ui.calendarWidget.clicked.connect(lambda: self.printDate())
+        self.ui.lineEdit.setText(str(self.get_presents(self.attendanceDL)))
+        self.ui.lineEdit_3.setText(str(self.get_absents(self.attendanceDL)))
         self.show()
     def orderStockFromCart(self):
         now = datetime.now()
@@ -94,8 +103,38 @@ class InventoryMainWindow(QMainWindow):
             row=row+1
     def create_object(self, temp_OrderList):
         order_obj= ProducList(temp_OrderList, "001")
-        
-
+    def get_Object_for_attendance (self) :
+        a = self.loginWindow.get_object()
+        return a
+    def printDate(self):
+        qDate = self.ui.calendarWidget.selectedDate()
+        date =('{0}-{1}-{2}'.format(qDate.month(), qDate.day(), qDate.year()))
+        self.ui.txt_SelectedDate.setText(date)
+    def mark_attendance(self) :
+        today = date.today()
+        selected_date = self.ui.calendarWidget.selectedDate()
+        if (today == selected_date) :
+            user = self.get_Object_for_attendance()
+            att = Attendence(user.userName , user.name)
+            att.addInDateTimeList(today)
+            self.attendanceDL.addIntoList(att)
+        else :
+            QMessageBox.warning(self,"Invalid Date" , "Please Select today's Date")
+    def get_presents (self,DL) :
+        count = 0
+        user = self.get_Object_for_attendance()
+        for i in DL:
+            if (i.userID == user.userName) :
+                for j in i.dateTimeList :
+                    count = count + 1
+        return count
+    def get_absents (self, DL):
+        presents = 0
+        currentday = date.today().day
+        presents = self.get_presents(DL)
+        absents = currentday - presents
+        return absents
+    
 if __name__=="__main__":
     app=QApplication(sys.argv)
     window=InventoryMainWindow()

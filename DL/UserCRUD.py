@@ -105,7 +105,7 @@ class UserCRUD:
         import mysql.connector
         mydb = mysql.connector.connect(
         host="localhost",
-        user="user2",
+        user="user1",
         password="Rosepetal514@",
         database="dbarm"
         )

@@ -11,7 +11,7 @@ from PyQt5.QtCore import QPropertyAnimation
 from PyQt5.QtGui import (QColor)
 import re  #imported to validate he email
 from Manager_UI import ManaMainWindow
-from Inventory_Code import InventoryMainWindow
+import Inventory_Code
 import os
 from email.message import EmailMessage
 import smtplib
@@ -91,7 +91,11 @@ class MainWindow(QMainWindow):
                 self.Open_newpassword_Screen()
 
             
-            
+    def get_object (self):
+        Email= self.ui.emailinp.text()
+        obj = self.user.getUserReturn(Email)
+        print(obj.name)
+        return obj         
         
     def validate_email(self,email) :
         regex = '^[a-z0-9]+[\._]?[a-z0-9]+[@]\w+[.]\w{2,3}$'
@@ -123,7 +127,7 @@ class MainWindow(QMainWindow):
         #self.MainWindow.show()
     def Open_Inventory_Window(self):
         self.MainWindow = QtWidgets.QMainWindow()
-        self.ui=InventoryMainWindow()
+        self.ui=Inventory_Code.InventoryMainWindow()
     def OpenForgetScreen(self):
         self.ui.loginStackedWidget.setCurrentIndex(1)
     def Open_newpassword_Screen(self):
