@@ -50,6 +50,8 @@ class Inventory:
         if found_key:
             bucket.pop(index)
         return
+    def getInventoryStock(self):
+        return self.hashTable
     def readFromTable(self):
         import mysql.connector
         mydb = mysql.connector.connect(
@@ -58,15 +60,16 @@ class Inventory:
         password="Rosepetal514@",
         database="dbarm"
         )
+    
 
         mycursor = mydb.cursor()
 
-        mycursor.execute("SELECT prodCategory,buyPrice,profitMargin,shoeSize,sellPrice,color,prodID,type")
+        mycursor.execute("SELECT prodCategory,buyPrice,profitMargin,shoeSize,selPrice,color,prodID,type FROM inventory")
 
         myresult = mycursor.fetchall()
         for x in myresult:
             prodCategory=x[0]
           
-            shoe=Shoe(x[0],x[1],x[2],x[3],x[4],x[5],x[6,x[7]])
+            shoe=Shoe(x[0],x[1],x[2],x[3],x[4],x[5],x[6],x[7])
             self.setProduct(x[0],shoe)            
         mydb.close()
