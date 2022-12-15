@@ -9,15 +9,11 @@ from PyQt5.QtGui import (QColor)
 import re
 from Core.Shoe import Shoe
 from Core.ProductList import ProducList
-from Core.Attendence import Attendence
-from DL.AttendenceCRUD import AttendenceCRUD
 from DL.StockOrder_DL import StockOrder_DL
 from DL.Inventory import Inventory
 from random import randint
-from datetime import date
-import datetime
-from DL.UserCRUD import UserCRUD
-import Login_Code
+from datetime import datetime
+
 
 
 class InventoryMainWindow(QMainWindow):
@@ -35,17 +31,13 @@ class InventoryMainWindow(QMainWindow):
 
         #self.ShoesDL=Inventory()
         #self.ShoesDL=ProducList(ShoeList, productID)
-        self.loginWindow = Login_Code.MainWindow()
-        self.attendanceDL = AttendenceCRUD()
         self.ui.btnBuyStock.clicked.connect(lambda: self.OpenPages(0))
         self.ui.btn_Update_Stock.clicked.connect(lambda: self.OpenPages(1))
         self.ui.btn_ViewStock.clicked.connect(lambda: self.OpenPages(2))
         self.ui.btn_AddtoCart.clicked.connect(lambda: self.AddToCart_Stock())
         self.ui.btn_RequestOrder.clicked.connect(lambda: self.orderStockFromCart())
-        self.ui.btn_MarkAttendance_2.clicked.connect(lambda: self.mark_attendance())
-        self.ui.calendarWidget.clicked.connect(lambda: self.printDate())
-        self.ui.lineEdit.setText(str(self.get_presents(self.attendanceDL)))
-        self.ui.lineEdit_3.setText(str(self.get_absents(self.attendanceDL)))
+        
+        
         self.show()
     def orderStockFromCart(self):
         now = datetime.now()
