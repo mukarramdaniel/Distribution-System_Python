@@ -363,36 +363,81 @@ class ManaMainWindow(QMainWindow):
         self.ui.spinBox_Salary.clear()
         self.ui.txt_Passsword.clear()
     def Add_Employee(self):
-        #Employee_userID = "3"
+        flag = False
         Employee_Name =self.ui.txt_Name.text()
+        if (Employee_Name != "") :
+            if Employee_Name.isalpha() :
+                flag = True
+            else :
+                QMessageBox.warning(self , "Error","Invalid format of Name")
+                flag = False
+        else :
+                QMessageBox.warning(self , "Error","Name cannot be empty")
+                flag = False
         Employee_username = self.ui.txt_Name.text()
-        Employee_Age =self.ui.txt_Age.text()
+        Employee_Age =self.ui.txt_Age.text() #Employee birth date
+        if (Employee_Age != "") :
+            flag = self.validate_date(Employee_Age)
+            
+        else:
+            QMessageBox.warning(self , "Error","Date cannot be empty")
+            flag = False
         Employee_CNIC =self.ui.txt_Cnic.text()
+        if (Employee_CNIC != "") :
+            pass
+        else:
+            QMessageBox.warning(self , "Error","CNIC cannot be empty")
+            flag = False
         Employee_Email =self.ui.txt_Email.text()
+        if (Employee_Email != ""):
+            flag = self.validate_email(Employee_Email)
+            
+        else :
+            QMessageBox.warning(self , "Error","Email cannot be empty")
+            flag = False
         Employee_PhoneNo =self.ui.txt_PhoneNumber.text()
+        if (Employee_PhoneNo != ""):
+            flag = self.validate_number(Employee_PhoneNo , 11)
+        else:
+            QMessageBox.warning(self , "Error","Phone Number cannot be empty")
+            flag = False
         Employee_BankAccount =self.ui.txt_BankAccount.text()
+        if (Employee_BankAccount != ""):
+            flag = self.validate_number(Employee_BankAccount,12)
+            
+        else:
+            QMessageBox.warning(self,"Error","Invalid format of Bank Account")
+            flag = False
         Employee_Status =self.ui.cmb_Employee.currentIndex()+1
-        
         Employee_Salary =self.ui.spinBox_Salary.text()
+        if (Employee_Salary != ""):
+            if (Employee_Salary.isdigit() and int(Employee_Salary) > 5000):
+                flag= True
+            else:
+                QMessageBox.warning(self,"Error","Invalid format of Salary")
+                flag = False
+        else:
+            QMessageBox.warning(self,"Error","Salary cannot be empty")
         Employee_password = self.ui.txt_Passsword.text()
         Employee_createDate = date.today()
         Employee_updateDate = date.today()
-        my_user = (self.Employee_userID ,Employee_username,Employee_password,Employee_Status,Employee_Name,Employee_Age,Employee_PhoneNo,Employee_Email,Employee_CNIC,Employee_BankAccount,Employee_createDate , Employee_updateDate)
-        if(Employee_Status==1):
-            inventory_supervisor = InventorySupervisor.InventorySupervisor(my_user,Employee_Salary,Employee_createDate)
-            self.userDL.setUser(Employee_username,inventory_supervisor)
-            QMessageBox.information(self,"ADDED" ,"Employee Added")
-            self.clear_screen()
-        if(Employee_Status==3):
-            rider = Rider.Driver(my_user,Employee_Salary)
-            self.userDL.setUser(Employee_username,rider)
-            QMessageBox.information(self,"ADDED" ,"Employee Added")
-            self.clear_screen()
-        if(Employee_Status==2):
-            sales_agent = SaleAgent.SaleAgent(my_user,Employee_Salary,Employee_createDate)
-            self.userDL.setUser(Employee_username,sales_agent)
-            QMessageBox.information(self,"ADDED" ,"Employee Added")
-            self.clear_screen()
+        if (flag == True):
+            my_user = (self.Employee_userID ,Employee_username,Employee_password,Employee_Status,Employee_Name,Employee_Age,Employee_PhoneNo,Employee_Email,Employee_CNIC,Employee_BankAccount,Employee_createDate , Employee_updateDate)
+            if(Employee_Status==1):
+                inventory_supervisor = InventorySupervisor.InventorySupervisor(my_user,Employee_Salary,Employee_createDate)
+                self.userDL.setUser(Employee_username,inventory_supervisor)
+                QMessageBox.information(self,"ADDED" ,"Employee Added")
+                self.clear_screen()
+            if(Employee_Status==3):
+                rider = Rider.Driver(my_user,Employee_Salary)
+                self.userDL.setUser(Employee_username,rider)
+                QMessageBox.information(self,"ADDED" ,"Employee Added")
+                self.clear_screen()
+            if(Employee_Status==2):
+                sales_agent = SaleAgent.SaleAgent(my_user,Employee_Salary,Employee_createDate)
+                self.userDL.setUser(Employee_username,sales_agent)
+                QMessageBox.information(self,"ADDED" ,"Employee Added")
+                self.clear_screen()
     def EditToUpdate_employee (self, employee) :
         self.ui.txt_Name_2.setText(employee.name) 
         self.ui.txt_CNIC.setText(str(employee.CNIC))
@@ -402,15 +447,55 @@ class ManaMainWindow(QMainWindow):
         self.ui.txt_BankAccount_2.setText(str(employee.BankAccount))
         self.ui.lineEdit_7.setText(str(employee.getSalary())) 
     def update_employee (self,employee) :
+        flag = False
         employee.name = self.ui.txt_Name_2.text() 
+        if (employee.name != "") :
+            if employee.name.isalpha() :
+                flag = True
+            else :
+                QMessageBox.warning(self , "Error","Invalid format of Name")
+                flag = False
+        else :
+                QMessageBox.warning(self , "Error","Name cannot be empty")
+                flag = False
         employee.CNIC = self.ui.txt_CNIC.text()
         employee.age = self.ui.txt_Age_2.text()
+        if (employee.age != "") :
+            flag = self.validate_date(employee.age)
+            
+        else:
+            QMessageBox.warning(self , "Error","Date cannot be empty")
+            flag = False
         employee.Email = self.ui.txt_Email_2.text()
+        if (employee.Email != ""):
+            flag = self.validate_email(employee.Email)
+            
+        else :
+            QMessageBox.warning(self , "Error","Email cannot be empty")
+            flag = False
         employee.contactNum = self.ui.txt_PhonoNumber.text()
+        if (employee.contactNum != ""):
+            flag = self.validate_number(employee.contactNum , 11)
+        else:
+            QMessageBox.warning(self , "Error","Phone Number cannot be empty")
+            flag = False
         employee.BankAccount = self.ui.txt_BankAccount_2.text()
+        if (employee.BankAccount != ""):
+            flag = self.validate_number(employee.BankAccount,12)
+        else:
+            QMessageBox.warning(self,"Error","Invalid format of Bank Account")
+            flag = False
         employee.setSalary(self.ui.lineEdit_7.text())
-        employee.updatedDate = date.today()
-        self.OpenUpdateEmployee()
+        if (employee.getSalary() != ""):
+            if (employee.getSalary().isdigit() and int(employee.getSalary()) > 5000):
+                flag = True
+            else:
+                QMessageBox.warning(self,"Error","Invalid format of Salary")
+                flag = False
+        if (flag == True) :
+            employee.updatedDate = date.today()
+            self.OpenUpdateEmployee()
+    
     def deleteEmployee(self,employee):
         self.userDL.deleteUser(employee.getUsername(),employee)
         self.OpenUpdateEmployee()
