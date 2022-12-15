@@ -61,12 +61,12 @@ class Inventory:
 
         mycursor = mydb.cursor()
 
-        mycursor.execute("SELECT prodCategory,buyPrice,profitMargin,shoeSize,selPrice,color,prodID,type FROM inventory")
+        mycursor.execute("SELECT prodCategory,buyPrice,profitMargin,shoeSize,sellPrice,color,prodID,type")
 
         myresult = mycursor.fetchall()
         for x in myresult:
             prodCategory=x[0]
           
-            shoe=Shoe(x[0],x[1],x[2],x[3],x[4],x[5],x[6],x[7])
+            shoe=Shoe(x[0],x[1],x[2],x[3],x[4],x[5],x[6,x[7]])
             self.setProduct(x[0],shoe)            
         mydb.close()
