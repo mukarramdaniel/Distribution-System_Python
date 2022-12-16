@@ -24,8 +24,9 @@ DROP TABLE IF EXISTS `attendence`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `attendence` (
   `userID` int NOT NULL,
+  `name` varchar(45) NOT NULL,
   `date` varchar(45) NOT NULL,
-  `time` varchar(45) NOT NULL
+  PRIMARY KEY (`userID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -35,6 +36,7 @@ CREATE TABLE `attendence` (
 
 LOCK TABLES `attendence` WRITE;
 /*!40000 ALTER TABLE `attendence` DISABLE KEYS */;
+INSERT INTO `attendence` VALUES (2,'John','01-12-2022 11:01:01');
 /*!40000 ALTER TABLE `attendence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -344,4 +346,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-16 16:50:30
+-- Dump completed on 2022-12-16 17:29:19
