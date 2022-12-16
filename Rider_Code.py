@@ -46,6 +46,27 @@ class RiderMainWindow(QMainWindow):
         self.shadow.setColor(QColor("black"))
         self.ui.widget_42.setGraphicsEffect(self.shadow)
 
+        self.shadow = QGraphicsDropShadowEffect(self)
+        self.shadow.setBlurRadius(20)
+        self.shadow.setXOffset(0)
+        self.shadow.setYOffset(0)
+        self.shadow.setColor(QColor("black"))
+        self.ui.widget_47.setGraphicsEffect(self.shadow)
+
+        self.shadow = QGraphicsDropShadowEffect(self)
+        self.shadow.setBlurRadius(20)
+        self.shadow.setXOffset(0)
+        self.shadow.setYOffset(0)
+        self.shadow.setColor(QColor("black"))
+        self.ui.widget_67.setGraphicsEffect(self.shadow)
+
+        self.shadow = QGraphicsDropShadowEffect(self)
+        self.shadow.setBlurRadius(20)
+        self.shadow.setXOffset(0)
+        self.shadow.setYOffset(0)
+        self.shadow.setColor(QColor("black"))
+        self.ui.widget_18.setGraphicsEffect(self.shadow)
+
         self.ui.menuBtn_8.clicked.connect(lambda: self.slideLeftMenu())
         self.ui.menuBtn_11.clicked.connect(lambda: self.slideLeftMenu())
         self.ui.accountBtn_8.clicked.connect(lambda: self.SlideRightMenu())

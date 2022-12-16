@@ -565,7 +565,7 @@ background-color:#f5f5f5;
        <number>1</number>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="Home_Widget">
        <property name="styleSheet">
@@ -4232,7 +4232,7 @@ background-color:#ececec;
                     <number>10</number>
                    </property>
                    <property name="columnCount">
-                    <number>5</number>
+                    <number>1</number>
                    </property>
                    <attribute name="horizontalHeaderDefaultSectionSize">
                     <number>130</number>
@@ -4255,51 +4255,7 @@ background-color:#ececec;
                    <row/>
                    <column>
                     <property name="text">
-                     <string>New Column</string>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <weight>75</weight>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                   </column>
-                   <column>
-                    <property name="text">
                      <string>Name</string>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <weight>75</weight>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                   </column>
-                   <column>
-                    <property name="text">
-                     <string>CNIC</string>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <weight>75</weight>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                   </column>
-                   <column>
-                    <property name="text">
-                     <string>Status</string>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <weight>75</weight>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                   </column>
-                   <column>
-                    <property name="text">
-                     <string>Attendance Status</string>
                     </property>
                     <property name="font">
                      <font>
