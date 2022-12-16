@@ -200,6 +200,7 @@ class InventoryMainWindow(QMainWindow):
             att = Attendence(self.user.getUserName() , self.user.getName())
             att.addInDateTimeList(today)
             self.attendanceDL.addIntoList(att)
+            self.attendanceDL.insert_attendance()
         else :
             QMessageBox.warning(self,"Invalid Date" , "Please Select today's Date")
     def get_presents (self,attendanceDL) :
@@ -216,6 +217,7 @@ class InventoryMainWindow(QMainWindow):
         absents = currentday - presents
         return absents        
     
+
         
 
 if __name__=="__main__":
