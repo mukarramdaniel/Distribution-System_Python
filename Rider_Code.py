@@ -33,7 +33,7 @@ class RiderMainWindow(QMainWindow):
         self.shadow.setXOffset(0)
         self.shadow.setYOffset(0)
         self.shadow.setColor(QColor("black"))
-        self.ui.widget_28.setGraphicsEffect(self.shadow)
+        self.ui.widget_26.setGraphicsEffect(self.shadow)
 
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(20)
