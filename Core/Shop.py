@@ -1,8 +1,7 @@
 class Shop:
-    def __init__(self,shopID,name,address,created_on,update_on,account,location,fieldArea):
-        self.shopID=shopID
+    def __init__(self,riderID,name,Cnic,Email,location,phoneNum,accountNo,fieldArea,openTime,closeTime,created_on,update_on,account):
+        self.riderID=riderID
         self.name=name
-        self.address=address
         self.created_on=created_on
         self.update_on=update_on
         self.account=account
