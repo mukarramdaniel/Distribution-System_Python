@@ -523,7 +523,7 @@ background-color:#ececec;
        <number>1</number>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="page_AssignVehicle">
        <property name="styleSheet">
@@ -2207,7 +2207,7 @@ border-radius:20px;
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="ViewStock_page">
+      <widget class="QWidget" name="TrackOrder_page">
        <property name="styleSheet">
         <string notr="true">*{
 background-color:#f5f5f5;
@@ -2216,15 +2216,15 @@ background-color:#f5f5f5;
 background-color:qlineargradient(spread:pad,x1:0,y1:0.505682,x2:1,y2:0.477,stop:0 rgba(20,47,78,219),stop:1 rgba(85,98,112,150));
  border-radius: 20px;
 }
-#widget_64,QPushButton,QLabel,#widget_65,#table_ViewStock{
+#widget_64,QPushButton,QLabel,#widget_65,#table_ViewStock,#widget_54,#widget_55{
 background:transparent;
 }
 
-#widget_67{
+#widget_67,#widget_53{
 background-color:#ffffff;
  border-radius: 15px;
 }
-#btn_Performance_Graph{
+#btn_ViewHistory{
 background-color:qlineargradient(spread:pad,x1:0,y1:0.505682,x2:1,y2:0.477,stop:0 rgba(20,47,78,219),stop:1 rgba(85,98,112,150));
  border-radius: 10px;
 }
@@ -2239,7 +2239,7 @@ border-radius:20px;
          <widget class="QWidget" name="widget_63" native="true">
           <layout class="QVBoxLayout" name="verticalLayout_61">
            <property name="spacing">
-            <number>0</number>
+            <number>14</number>
            </property>
            <property name="leftMargin">
             <number>0</number>
@@ -2310,7 +2310,7 @@ border-radius:20px;
                     </font>
                    </property>
                    <property name="text">
-                    <string>View Stock</string>
+                    <string>Track Order</string>
                    </property>
                   </widget>
                  </item>
@@ -2364,9 +2364,112 @@ border-radius:20px;
              </layout>
             </widget>
            </item>
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QWidget" name="widget_53" native="true">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>20</height>
+              </size>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_46">
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item alignment="Qt::AlignHCenter">
+               <widget class="QWidget" name="widget_55" native="true">
+                <layout class="QHBoxLayout" name="horizontalLayout_10">
+                 <item>
+                  <widget class="QLabel" name="label_12">
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Select Rider:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QComboBox" name="comboBox_2">
+                   <property name="minimumSize">
+                    <size>
+                     <width>250</width>
+                     <height>30</height>
+                    </size>
+                   </property>
+                   <item>
+                    <property name="text">
+                     <string>Mukarram Ali</string>
+                    </property>
+                   </item>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="widget_54" native="true">
+                <layout class="QVBoxLayout" name="verticalLayout_48">
+                 <item alignment="Qt::AlignHCenter">
+                  <widget class="QPushButton" name="btn_ViewHistory">
+                   <property name="font">
+                    <font>
+                     <pointsize>10</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>View History</string>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="Resource.qrc">
+                     <normaloff>:/White Icons/Graphics/featherBlack/price-list.png</normaloff>:/White Icons/Graphics/featherBlack/price-list.png</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>20</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
            <item>
             <widget class="QWidget" name="widget_66" native="true">
              <layout class="QVBoxLayout" name="verticalLayout_62">
+              <item>
+               <widget class="QLabel" name="label_17">
+                <property name="font">
+                 <font>
+                  <pointsize>12</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>View History:</string>
+                </property>
+               </widget>
+              </item>
               <item>
                <widget class="QWidget" name="widget_67" native="true">
                 <layout class="QVBoxLayout" name="verticalLayout_63">
@@ -2386,7 +2489,7 @@ border-radius:20px;
                    </attribute>
                    <column>
                     <property name="text">
-                     <string>ID</string>
+                     <string>Order ID</string>
                     </property>
                     <property name="font">
                      <font>
@@ -2397,7 +2500,7 @@ border-radius:20px;
                    </column>
                    <column>
                     <property name="text">
-                     <string>Category</string>
+                     <string>Shop Name</string>
                     </property>
                     <property name="font">
                      <font>
@@ -2408,7 +2511,7 @@ border-radius:20px;
                    </column>
                    <column>
                     <property name="text">
-                     <string>Name</string>
+                     <string>Location</string>
                     </property>
                     <property name="font">
                      <font>
@@ -2419,7 +2522,7 @@ border-radius:20px;
                    </column>
                    <column>
                     <property name="text">
-                     <string>Available</string>
+                     <string>Ordered Data</string>
                     </property>
                     <property name="font">
                      <font>
@@ -2430,7 +2533,7 @@ border-radius:20px;
                    </column>
                    <column>
                     <property name="text">
-                     <string>Selling Price</string>
+                     <string>Delivered Data</string>
                     </property>
                     <property name="font">
                      <font>
@@ -2441,29 +2544,7 @@ border-radius:20px;
                    </column>
                    <column>
                     <property name="text">
-                     <string>Availability</string>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <weight>75</weight>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                   </column>
-                   <column>
-                    <property name="text">
-                     <string>Size</string>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <weight>75</weight>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                   </column>
-                   <column>
-                    <property name="text">
-                     <string>Color</string>
+                     <string>Order Status</string>
                     </property>
                     <property name="font">
                      <font>
