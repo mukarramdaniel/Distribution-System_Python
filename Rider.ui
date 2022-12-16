@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1002</width>
-    <height>665</height>
+    <height>748</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -312,11 +312,11 @@ background-color:#ececec;
                        </font>
                       </property>
                       <property name="text">
-                       <string>Add Client</string>
+                       <string>Add Shop</string>
                       </property>
                       <property name="icon">
                        <iconset resource="Resource.qrc">
-                        <normaloff>:/White Icons/Graphics/featherBlack/customer.png</normaloff>:/White Icons/Graphics/featherBlack/customer.png</iconset>
+                        <normaloff>:/White Icons/Graphics/featherBlack/shopping-cart.png</normaloff>:/White Icons/Graphics/featherBlack/shopping-cart.png</iconset>
                       </property>
                       <property name="iconSize">
                        <size>
@@ -593,7 +593,7 @@ background-color:#ececec;
        <number>1</number>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="page_TakeOrder">
        <property name="styleSheet">
@@ -3042,7 +3042,7 @@ background-color:qlineargradient(spread:pad,x1:0,y1:0.505682,x2:1,y2:0.477,stop:
 #widget_73,QPushButton,QLabel,#widget_74,#widget_14,#widget_13,#lineEdit_4,#txt_Address{
 background:transparent;
 }
-#txt_Name,#txt_Cnic,#txt_Email,#txt_CalculatedPrice,#widget_23,#txt_PhoneNumber,#txt_Shop{
+#txt_Name,#txt_Cnic,#txt_Email,#txt_CalculatedPrice,#widget_23,#txt_PhoneNumber,#txt_Shop,#txt_AccountNo{
 background-color:#fff;
 border-radius: 10px;
 border: 1px solid #000000
@@ -3143,7 +3143,7 @@ background-color:#ececec;
                     </font>
                    </property>
                    <property name="text">
-                    <string>Add Client</string>
+                    <string>Add Shop</string>
                    </property>
                   </widget>
                  </item>
@@ -3225,6 +3225,9 @@ background-color:#ececec;
                     <item>
                      <widget class="QWidget" name="widget_13" native="true">
                       <layout class="QVBoxLayout" name="verticalLayout_9">
+                       <property name="spacing">
+                        <number>12</number>
+                       </property>
                        <item>
                         <widget class="QLabel" name="label_5">
                          <property name="font">
@@ -3291,6 +3294,19 @@ background-color:#ececec;
                         </widget>
                        </item>
                        <item>
+                        <widget class="QLabel" name="label_43">
+                         <property name="font">
+                          <font>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string>Account Number:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
                         <widget class="QLabel" name="label_17">
                          <property name="font">
                           <font>
@@ -3316,6 +3332,32 @@ background-color:#ececec;
                          </property>
                         </widget>
                        </item>
+                       <item>
+                        <widget class="QLabel" name="label_44">
+                         <property name="font">
+                          <font>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string>Shop Open Time:</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="label_45">
+                         <property name="font">
+                          <font>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string>Shop Close Time:</string>
+                         </property>
+                        </widget>
+                       </item>
                       </layout>
                      </widget>
                     </item>
@@ -3323,7 +3365,7 @@ background-color:#ececec;
                      <widget class="QWidget" name="widget_14" native="true">
                       <layout class="QVBoxLayout" name="verticalLayout_10">
                        <property name="spacing">
-                        <number>20</number>
+                        <number>18</number>
                        </property>
                        <item>
                         <widget class="QLineEdit" name="txt_Name">
@@ -3452,6 +3494,16 @@ background-color:#ececec;
                         </widget>
                        </item>
                        <item>
+                        <widget class="QLineEdit" name="txt_AccountNo">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>30</height>
+                          </size>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
                         <widget class="QComboBox" name="cmb_Area">
                          <property name="minimumSize">
                           <size>
@@ -3481,6 +3533,26 @@ background-color:#ececec;
                          </property>
                          <property name="placeholderText">
                           <string>  Shop</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item alignment="Qt::AlignLeft">
+                        <widget class="QTimeEdit" name="timeEdit">
+                         <property name="minimumSize">
+                          <size>
+                           <width>100</width>
+                           <height>25</height>
+                          </size>
+                         </property>
+                        </widget>
+                       </item>
+                       <item alignment="Qt::AlignLeft">
+                        <widget class="QTimeEdit" name="timeEdit_2">
+                         <property name="minimumSize">
+                          <size>
+                           <width>100</width>
+                           <height>25</height>
+                          </size>
                          </property>
                         </widget>
                        </item>
