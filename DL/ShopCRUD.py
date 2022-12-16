@@ -1,27 +1,26 @@
 import sys
-sys.path.insert(1,"Core.Shop")
+sys.path.insert(1,"Core")
 from Core.Shop import Shop
+from Core.Location import Location
+
+
 
 class Node:
     def __init__(self,val):
         self.__data=val
-        self.__next=None
-        self.__prev=None
+        self.next=None
+        self.prev=None
     def getData(self):
         return self.__data
     def setData(self,data):
         self.__data=data
-    def getnext(self):
-        return self.__next
-    def setnext(self,next):
-        self.__next=next
+   
 
 class ShopCRUD:
     def __init__(self):
         self.head=None
         self.linklist=[]
-    def addToList(self,val):
-        self.linklist.append(val)
+  
     def Insert_at_Head(self,val): # insert at head
         New_Node=Node(val)
         New_Node.next=self.head
@@ -30,7 +29,7 @@ class ShopCRUD:
         self.head=New_Node
         New_Node.prev=None
     def getList(self):
-        return self.linklist
+        return self.head
     def Insert(self,val):
         New_Node=Node(val)
         last=self.head
@@ -85,19 +84,35 @@ class ShopCRUD:
         import mysql.connector
         mydb = mysql.connector.connect(
         host="localhost",
-        user="user1",
+        user="user2",
         password="Rosepetal514@",
         database="dbarm"
         )
 
         mycursor = mydb.cursor()
-
-        mycursor.execute("SELECT model,number,fuelAverage,riderID  FROM vehicle")
-        DlinkList=VehicleCRUD()
+        mycursor.execute("SELECT riderID,name,Cnic,Email,latitude,longitude,address,phoneNum,accountNo,FieldArea,shopName,timeOpen,timeClose,created_on FROM shop")
         myresult = mycursor.fetchall()
         for x in myresult:
-            vehicle=Vehicle(x[0],x[1],x[2])
-            vehicle.setRider(x[3])
-            self.addToList(vehicle)
+            loca=Location(x[4],x[5],x[6])
+            shop=Shop(x[0],x[1],x[2],x[3],loca,x[7],x[8],x[9],x[10],x[11],x[12],x[13])
+            self.Insert(shop)
         mydb.close()
-
+    def updateTable(self):
+        import mysql.connector
+        mydb = mysql.connector.connect(
+        host="localhost",
+        user="user1",
+        password="Rosepetal514@",
+        database="dbarm"
+        )
+        mycursor = mydb.cursor()
+        sql = "INSERT IGNORE INTO shop(riderID,name,Cnic,Email,latitude,longitude,address,phoneNum,accountNo,FieldArea,shopName,timeOpen,timeClose,created_on) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)  "
+        shops=self.head
+        while(shops!=None):
+            shop=shops.getData()    
+            val = (shop.getriderID(),shop.getname(),shop.getCnic(),shop.getEmail(),shop.getlocation().getLatitude(),shop.getlocation().getLongitude(),shop.getlocation().getaddress(),shop.getphoneNum(),shop.getaccountNo(),shop.getfieldArea(),shop.getShopName(),shop.getopenTime(),shop.getcloseTime(),shop.getcreated_on())
+            mycursor.execute(sql,val)
+            shops=shops.next
+            mydb.commit()
+        mydb.close()
+        print("Inserted") 

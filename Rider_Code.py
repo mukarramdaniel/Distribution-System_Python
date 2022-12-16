@@ -1,19 +1,23 @@
 import sys
 from Rider import *
+
+from Core.Shop import Shop
+from DL.ShopCRUD import *
 from PyQt5 import QtWidgets
+from DL.UserCRUD import *
 from PyQt5.QtWidgets import (
     QApplication, QDialog, QMainWindow, QMessageBox, QGraphicsDropShadowEffect,QMessageBox
 )
 from PyQt5.QtCore import QPropertyAnimation
 from PyQt5.QtGui import (QColor)
-import re
-
+from datetime import datetime
 class RiderMainWindow(QMainWindow):
     def __init__(self,parent=None):
         QMainWindow.__init__(self)
         self.ui=Ui_RiderWindow()
         self.ui.setupUi(self)
-
+        self.shopDL=ShopCRUD()
+        self.shopDL.loadFromTable()
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(20)
         self.shadow.setXOffset(0)
@@ -46,8 +50,30 @@ class RiderMainWindow(QMainWindow):
         self.ui.menuBtn_11.clicked.connect(lambda: self.slideLeftMenu())
         self.ui.accountBtn_8.clicked.connect(lambda: self.SlideRightMenu())
         self.ui.accountBtn_11.clicked.connect(lambda: self.SlideRightMenu())
-
+        self.ui.btn_AddClient.clicked.connect(lambda: self.addShopMenu())
+        self.ui.btn_Add.clicked.connect(lambda: self.addShop())
         self.show()
+    
+    def addShopMenu(self):
+        self.ui.mainBody.setCurrentIndex(4)
+    def addShop(self):
+        name=self.ui.txt_Name.text()
+        cnic=self.ui.txt_Cnic.text()
+        email=self.ui.txt_Email.text()
+       # address=self.ui.widget_14.show()
+        location=Location(31.22222,74.3222,"opposite mall")
+        PhoneNumber=self.ui.txt_PhoneNumber.text()
+        AccountNo=self.ui.txt_AccountNo.text()
+        Area=self.ui.cmb_Area.currentText()
+        shopName=self.ui.txt_Shop.text()
+        openTime=self.ui.timeEdit.text()
+        closeTime=self.ui.timeEdit_2.text()
+        now = datetime.now()
+        created_on = now.strftime("%d-%m-%Y %H:%M:%S")
+        shop=Shop(4,name,cnic,email,location,PhoneNumber,AccountNo,Area,shopName,openTime,closeTime,created_on)
+        self.shopDL.Insert(shop)
+        self.shopDL.updateTable()
+        
     def slideLeftMenu(self):
         width=self.ui.LeftMenu.width()
         if(width==0):

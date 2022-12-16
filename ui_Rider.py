@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'Rider.ui'
+# Form implementation generated from reading ui file 'e:\Final Term\ARM\cs261f22finalpid05\Rider.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.7
 #
@@ -2161,13 +2161,3 @@ class Ui_RiderWindow(object):
         self.btnProfile.setText(_translate("RiderWindow", "My Profile"))
         self.btnLogout.setText(_translate("RiderWindow", "Logout"))
 import Resource_rc
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    RiderWindow = QtWidgets.QMainWindow()
-    ui = Ui_RiderWindow()
-    ui.setupUi(RiderWindow)
-    RiderWindow.show()
-    sys.exit(app.exec_())
