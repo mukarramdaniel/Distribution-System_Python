@@ -523,7 +523,7 @@ background-color:#ececec;
        <number>1</number>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="page_AssignVehicle">
        <property name="styleSheet">
@@ -3533,7 +3533,7 @@ background-color:#ececec;
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="ViewHistory_page">
+      <widget class="QWidget" name="ViewCashbook_page">
        <property name="styleSheet">
         <string notr="true">*{
 background-color:#f5f5f5;
@@ -3542,7 +3542,7 @@ background-color:#f5f5f5;
 background-color:qlineargradient(spread:pad,x1:0,y1:0.505682,x2:1,y2:0.477,stop:0 rgba(20,47,78,219),stop:1 rgba(85,98,112,150));
  border-radius: 20px;
 }
-#widget_18{
+#widget_18,#frame{
 background-color:#fff;
  border-radius: 15px;
 }
@@ -3558,6 +3558,9 @@ background-color:#ececec;
         <item>
          <widget class="QWidget" name="widget_16" native="true">
           <layout class="QVBoxLayout" name="verticalLayout_13">
+           <property name="spacing">
+            <number>10</number>
+           </property>
            <property name="leftMargin">
             <number>0</number>
            </property>
@@ -3627,7 +3630,7 @@ background-color:#ececec;
                     </font>
                    </property>
                    <property name="text">
-                    <string>View History</string>
+                    <string>View Cashbook</string>
                    </property>
                   </widget>
                  </item>
@@ -3681,9 +3684,78 @@ background-color:#ececec;
              </layout>
             </widget>
            </item>
+           <item alignment="Qt::AlignHCenter">
+            <widget class="QFrame" name="frame">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>20</height>
+              </size>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_20">
+              <property name="spacing">
+               <number>15</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="label_28">
+                <property name="font">
+                 <font>
+                  <pointsize>10</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>Select Shop:</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="comboBox_3">
+                <property name="minimumSize">
+                 <size>
+                  <width>230</width>
+                  <height>30</height>
+                 </size>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>Cash and Carry</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Marhaba</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
            <item>
             <widget class="QWidget" name="widget_17" native="true">
              <layout class="QVBoxLayout" name="verticalLayout_16">
+              <item>
+               <widget class="QLabel" name="label_18">
+                <property name="font">
+                 <font>
+                  <pointsize>13</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="text">
+                 <string>View Clients Status</string>
+                </property>
+               </widget>
+              </item>
               <item>
                <widget class="QWidget" name="widget_18" native="true">
                 <layout class="QVBoxLayout" name="verticalLayout_17">
@@ -3706,7 +3778,7 @@ background-color:#ececec;
                    </attribute>
                    <column>
                     <property name="text">
-                     <string>ID</string>
+                     <string>Name</string>
                     </property>
                     <property name="font">
                      <font>
@@ -3717,7 +3789,7 @@ background-color:#ececec;
                    </column>
                    <column>
                     <property name="text">
-                     <string>Client Name</string>
+                     <string>CNIC</string>
                     </property>
                     <property name="font">
                      <font>
@@ -3728,18 +3800,7 @@ background-color:#ececec;
                    </column>
                    <column>
                     <property name="text">
-                     <string>Order No</string>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <weight>75</weight>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                   </column>
-                   <column>
-                    <property name="text">
-                     <string>Delivered Date </string>
+                     <string>Sop Name</string>
                     </property>
                     <property name="font">
                      <font>
@@ -3761,7 +3822,7 @@ background-color:#ececec;
                    </column>
                    <column>
                     <property name="text">
-                     <string>Status</string>
+                     <string>Amount Paid</string>
                     </property>
                     <property name="font">
                      <font>
@@ -3772,7 +3833,18 @@ background-color:#ececec;
                    </column>
                    <column>
                     <property name="text">
-                     <string>Amont</string>
+                     <string>Amont Pending</string>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                   </column>
+                   <column>
+                    <property name="text">
+                     <string>Status</string>
                     </property>
                     <property name="font">
                      <font>

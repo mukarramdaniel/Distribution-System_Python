@@ -1728,15 +1728,15 @@ class Ui_SalesAgentWindow(object):
         self.verticalLayout_7.addWidget(self.widget_10)
         self.horizontalLayout_6.addWidget(self.widget_9, 0, QtCore.Qt.AlignTop)
         self.mainBody.addWidget(self.AddClient_Page)
-        self.ViewHistory_page = QtWidgets.QWidget()
-        self.ViewHistory_page.setStyleSheet("*{\n"
+        self.ViewCashbook_page = QtWidgets.QWidget()
+        self.ViewCashbook_page.setStyleSheet("*{\n"
 "background-color:#f5f5f5;\n"
 "}\n"
 "#HeaderFrame_11{\n"
 "background-color:qlineargradient(spread:pad,x1:0,y1:0.505682,x2:1,y2:0.477,stop:0 rgba(20,47,78,219),stop:1 rgba(85,98,112,150));\n"
 " border-radius: 20px;\n"
 "}\n"
-"#widget_18{\n"
+"#widget_18,#frame{\n"
 "background-color:#fff;\n"
 " border-radius: 15px;\n"
 "}\n"
@@ -1747,13 +1747,14 @@ class Ui_SalesAgentWindow(object):
 "background-color:#ececec;\n"
 " border-radius: 20px;\n"
 "}")
-        self.ViewHistory_page.setObjectName("ViewHistory_page")
-        self.verticalLayout_12 = QtWidgets.QVBoxLayout(self.ViewHistory_page)
+        self.ViewCashbook_page.setObjectName("ViewCashbook_page")
+        self.verticalLayout_12 = QtWidgets.QVBoxLayout(self.ViewCashbook_page)
         self.verticalLayout_12.setObjectName("verticalLayout_12")
-        self.widget_16 = QtWidgets.QWidget(self.ViewHistory_page)
+        self.widget_16 = QtWidgets.QWidget(self.ViewCashbook_page)
         self.widget_16.setObjectName("widget_16")
         self.verticalLayout_13 = QtWidgets.QVBoxLayout(self.widget_16)
         self.verticalLayout_13.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_13.setSpacing(10)
         self.verticalLayout_13.setObjectName("verticalLayout_13")
         self.HeaderFrame_11 = QtWidgets.QWidget(self.widget_16)
         self.HeaderFrame_11.setAutoFillBackground(False)
@@ -1797,10 +1798,41 @@ class Ui_SalesAgentWindow(object):
         self.horizontalLayout_89.addWidget(self.accountBtn_12, 0, QtCore.Qt.AlignRight)
         self.horizontalLayout_87.addWidget(self.widget_76)
         self.verticalLayout_13.addWidget(self.HeaderFrame_11, 0, QtCore.Qt.AlignTop)
+        self.frame = QtWidgets.QFrame(self.widget_16)
+        self.frame.setMinimumSize(QtCore.QSize(0, 20))
+        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setObjectName("frame")
+        self.horizontalLayout_20 = QtWidgets.QHBoxLayout(self.frame)
+        self.horizontalLayout_20.setSpacing(15)
+        self.horizontalLayout_20.setObjectName("horizontalLayout_20")
+        self.label_28 = QtWidgets.QLabel(self.frame)
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_28.setFont(font)
+        self.label_28.setObjectName("label_28")
+        self.horizontalLayout_20.addWidget(self.label_28)
+        self.comboBox_3 = QtWidgets.QComboBox(self.frame)
+        self.comboBox_3.setMinimumSize(QtCore.QSize(230, 30))
+        self.comboBox_3.setObjectName("comboBox_3")
+        self.comboBox_3.addItem("")
+        self.comboBox_3.addItem("")
+        self.horizontalLayout_20.addWidget(self.comboBox_3)
+        self.verticalLayout_13.addWidget(self.frame, 0, QtCore.Qt.AlignHCenter)
         self.widget_17 = QtWidgets.QWidget(self.widget_16)
         self.widget_17.setObjectName("widget_17")
         self.verticalLayout_16 = QtWidgets.QVBoxLayout(self.widget_17)
         self.verticalLayout_16.setObjectName("verticalLayout_16")
+        self.label_18 = QtWidgets.QLabel(self.widget_17)
+        font = QtGui.QFont()
+        font.setPointSize(13)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_18.setFont(font)
+        self.label_18.setObjectName("label_18")
+        self.verticalLayout_16.addWidget(self.label_18)
         self.widget_18 = QtWidgets.QWidget(self.widget_17)
         self.widget_18.setObjectName("widget_18")
         self.verticalLayout_17 = QtWidgets.QVBoxLayout(self.widget_18)
@@ -1858,7 +1890,7 @@ class Ui_SalesAgentWindow(object):
         self.verticalLayout_16.addWidget(self.widget_18)
         self.verticalLayout_13.addWidget(self.widget_17)
         self.verticalLayout_12.addWidget(self.widget_16)
-        self.mainBody.addWidget(self.ViewHistory_page)
+        self.mainBody.addWidget(self.ViewCashbook_page)
         self.To_do_List_page = QtWidgets.QWidget()
         self.To_do_List_page.setStyleSheet("*{\n"
 "background-color:#f5f5f5;\n"
@@ -2078,7 +2110,7 @@ class Ui_SalesAgentWindow(object):
 
         self.retranslateUi(SalesAgentWindow)
         self.LeftMenu.setCurrentIndex(0)
-        self.mainBody.setCurrentIndex(2)
+        self.mainBody.setCurrentIndex(5)
         QtCore.QMetaObject.connectSlotsByName(SalesAgentWindow)
 
     def retranslateUi(self, SalesAgentWindow):
@@ -2222,21 +2254,25 @@ class Ui_SalesAgentWindow(object):
         item.setText(_translate("SalesAgentWindow", "Name"))
         item = self.tableWidget_ViewRider.horizontalHeaderItem(3)
         item.setText(_translate("SalesAgentWindow", "Assigned Location"))
-        self.appHeader_12.setText(_translate("SalesAgentWindow", "View History"))
+        self.appHeader_12.setText(_translate("SalesAgentWindow", "View Cashbook"))
+        self.label_28.setText(_translate("SalesAgentWindow", "Select Shop:"))
+        self.comboBox_3.setItemText(0, _translate("SalesAgentWindow", "Cash and Carry"))
+        self.comboBox_3.setItemText(1, _translate("SalesAgentWindow", "Marhaba"))
+        self.label_18.setText(_translate("SalesAgentWindow", "View Clients Status"))
         item = self.tableWidget_History.horizontalHeaderItem(0)
-        item.setText(_translate("SalesAgentWindow", "ID"))
+        item.setText(_translate("SalesAgentWindow", "Name"))
         item = self.tableWidget_History.horizontalHeaderItem(1)
-        item.setText(_translate("SalesAgentWindow", "Client Name"))
+        item.setText(_translate("SalesAgentWindow", "CNIC"))
         item = self.tableWidget_History.horizontalHeaderItem(2)
-        item.setText(_translate("SalesAgentWindow", "Order No"))
+        item.setText(_translate("SalesAgentWindow", "Sop Name"))
         item = self.tableWidget_History.horizontalHeaderItem(3)
-        item.setText(_translate("SalesAgentWindow", "Delivered Date "))
-        item = self.tableWidget_History.horizontalHeaderItem(4)
         item.setText(_translate("SalesAgentWindow", "Location"))
+        item = self.tableWidget_History.horizontalHeaderItem(4)
+        item.setText(_translate("SalesAgentWindow", "Amount Paid"))
         item = self.tableWidget_History.horizontalHeaderItem(5)
-        item.setText(_translate("SalesAgentWindow", "Status"))
+        item.setText(_translate("SalesAgentWindow", "Amont Pending"))
         item = self.tableWidget_History.horizontalHeaderItem(6)
-        item.setText(_translate("SalesAgentWindow", "Amont"))
+        item.setText(_translate("SalesAgentWindow", "Status"))
         self.appHeader_13.setText(_translate("SalesAgentWindow", "To-do-List"))
         self.btn_viewlocation.setText(_translate("SalesAgentWindow", "View Location"))
         item = self.tableWidget_ToDoList.horizontalHeaderItem(0)
