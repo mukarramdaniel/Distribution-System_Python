@@ -67,12 +67,45 @@ class RiderMainWindow(QMainWindow):
         self.shadow.setColor(QColor("black"))
         self.ui.widget_18.setGraphicsEffect(self.shadow)
 
+        self.shadow = QGraphicsDropShadowEffect(self)
+        self.shadow.setBlurRadius(20)
+        self.shadow.setXOffset(0)
+        self.shadow.setYOffset(0)
+        self.shadow.setColor(QColor("black"))
+        self.ui.widget_4.setGraphicsEffect(self.shadow)
+
+        self.shadow = QGraphicsDropShadowEffect(self)
+        self.shadow.setBlurRadius(20)
+        self.shadow.setXOffset(0)
+        self.shadow.setYOffset(0)
+        self.shadow.setColor(QColor("black"))
+        self.ui.widget_51.setGraphicsEffect(self.shadow)
+
         self.ui.menuBtn_8.clicked.connect(lambda: self.slideLeftMenu())
         self.ui.menuBtn_11.clicked.connect(lambda: self.slideLeftMenu())
+        self.ui.menuBtn_7.clicked.connect(lambda: self.slideLeftMenu())
+        self.ui.menuBtn_9.clicked.connect(lambda: self.slideLeftMenu())
+        self.ui.menuBtn_10.clicked.connect(lambda: self.slideLeftMenu())
+        self.ui.menuBtn_12.clicked.connect(lambda: self.slideLeftMenu())
+        self.ui.menuBtn_13.clicked.connect(lambda: self.slideLeftMenu())
         self.ui.accountBtn_8.clicked.connect(lambda: self.SlideRightMenu())
         self.ui.accountBtn_11.clicked.connect(lambda: self.SlideRightMenu())
-        self.ui.btn_AddClient.clicked.connect(lambda: self.addShopMenu())
+        self.ui.accountBtn_7.clicked.connect(lambda: self.SlideRightMenu())
+        self.ui.accountBtn_9.clicked.connect(lambda: self.SlideRightMenu())
+        self.ui.accountBtn_10.clicked.connect(lambda: self.SlideRightMenu())
+        self.ui.accountBtn_12.clicked.connect(lambda: self.SlideRightMenu())
+        self.ui.accountBtn_13.clicked.connect(lambda: self.SlideRightMenu())
+
+        self.ui.btn_Dashboard.clicked.connect(lambda: self.OpenDashBoard())
+        self.ui.btn_AddShop.clicked.connect(lambda: self.OpenAddShop())
+        self.ui.btn_TakeOrder.clicked.connect(lambda: self.OpenTakeOrder())
+        self.ui.btn_DeliverOrder.clicked.connect(lambda: self.OpenDeliverOrder())
+        self.ui.btn_ViewStock_2.clicked.connect(lambda: self.OpenViewStock())
+        self.ui.btn_ToDoList.clicked.connect(lambda: self.OpenTodoList())
+        self.ui.btn_History.clicked.connect(lambda: self.OpenHistory())
+        self.ui.btn_AddShop.clicked.connect(lambda: self.addShopMenu())
         self.ui.btn_Add.clicked.connect(lambda: self.addShop())
+       
         self.show()
     
     def addShopMenu(self):
@@ -94,7 +127,20 @@ class RiderMainWindow(QMainWindow):
         shop=Shop(4,name,cnic,email,location,PhoneNumber,AccountNo,Area,shopName,openTime,closeTime,created_on)
         self.shopDL.Insert(shop)
         self.shopDL.updateTable()
-        
+    def OpenDashBoard(self):
+        self.ui.mainBody.setCurrentIndex(3)
+    def OpenAddShop(self):
+        self.ui.mainBody.setCurrentIndex(4)
+    def OpenTakeOrder(self):
+        self.ui.mainBody.setCurrentIndex(1)
+    def OpenDeliverOrder(self):
+        self.ui.mainBody.setCurrentIndex(0)
+    def OpenViewStock(self):
+        self.ui.mainBody.setCurrentIndex(2)
+    def OpenTodoList(self):
+        self.ui.mainBody.setCurrentIndex(6)
+    def OpenHistory(self):
+        self.ui.mainBody.setCurrentIndex(5)   
     def slideLeftMenu(self):
         width=self.ui.LeftMenu.width()
         if(width==0):
