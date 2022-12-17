@@ -4,7 +4,7 @@ import os
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtWebEngineWidgets import QWebEngineView 
 from PyQt5.QtWebEngineWidgets import QWebEngineSettings as QWebSettings
-
+import googlemaps
 
 
 class MapWindow(QMainWindow):
@@ -15,7 +15,18 @@ class MapWindow(QMainWindow):
         # of the main window
         self.webview = QWebEngineView(self)
         self.setCentralWidget(self.webview)
-        
+        locations = [
+            (40.7128, -74.0060),  # New York City
+            (34.0522, -118.2437), # Los Angeles
+        ]
+        gmaps = googlemaps.Client("AIzaSyBebwTrA8E0hXbyw8R2dUQRTFOg7q517U0")
+
+        # Use the directions() method to retrieve the road route between the locations
+        result = gmaps.directions(locations[0], locations[1])
+
+        # Extract the polyline from the result
+        polyline = result[0]['overview_polyline']['points']
+
 
         # Load a map from the Google Maps API
         #self.webview.load(QUrl('https://maps.google.com/'))
@@ -26,15 +37,15 @@ class MapWindow(QMainWindow):
             <script>
               function initMap() {
                 var map = new google.maps.Map(document.getElementById('map'), {
-                  zoom: 8,
-                  center: {lat: 52.2296756, lng: 21.0122287}
+                  zoom: 100,
+                  center: {lat: 31.58060073946487, lng: 74.35624319553045}
                 });
 
                 var path = [
-                  {lat: 52.2296756, lng: 21.0122287},
-                  {lat: 41.89193, lng: 12.51133},
-                  {lat: 48.856614, lng: 2.3522219},
-                  {lat: 51.507351, lng: -0.127758}
+                  {lat: 31.58060073946487, lng: 74.35624319553045},
+                  {lat: 31.573996, lng: 74.345461},
+                  {lat: 31.578237, lng: 74.360331}
+                  
                 ];
 
                 var pathCoordinates = [];

@@ -1742,7 +1742,7 @@ class Ui_RiderWindow(object):
         font = QtGui.QFont()
         font.setPointSize(10)
         self.txt_Name.setFont(font)
-        self.txt_Name.setReadOnly(True)
+        self.txt_Name.setReadOnly(False)
         self.txt_Name.setObjectName("txt_Name")
         self.verticalLayout_10.addWidget(self.txt_Name)
         self.txt_Cnic = QtWidgets.QLineEdit(self.widget_14)
@@ -1760,16 +1760,19 @@ class Ui_RiderWindow(object):
         self.txt_Email.setObjectName("txt_Email")
         self.verticalLayout_10.addWidget(self.txt_Email)
         self.widget_23 = QtWidgets.QWidget(self.widget_14)
+        self.widget_23.setWhatsThis("")
         self.widget_23.setObjectName("widget_23")
         self.horizontalLayout_10 = QtWidgets.QHBoxLayout(self.widget_23)
         self.horizontalLayout_10.setContentsMargins(-1, 0, 0, 0)
         self.horizontalLayout_10.setObjectName("horizontalLayout_10")
         self.txt_Address = QtWidgets.QLineEdit(self.widget_23)
+        self.txt_Address.setEnabled(True)
         font = QtGui.QFont()
         font.setPointSize(9)
         self.txt_Address.setFont(font)
+        self.txt_Address.setWhatsThis("")
         self.txt_Address.setText("")
-        self.txt_Address.setReadOnly(True)
+        self.txt_Address.setReadOnly(False)
         self.txt_Address.setObjectName("txt_Address")
         self.horizontalLayout_10.addWidget(self.txt_Address)
         self.btn_Map = QtWidgets.QPushButton(self.widget_23)
@@ -1966,7 +1969,7 @@ class Ui_RiderWindow(object):
         self.verticalLayout_13.addWidget(self.widget_17)
         self.verticalLayout_12.addWidget(self.widget_16)
         self.mainBody.addWidget(self.ViewHistory_page)
-        self.To_do_List_page = QtWidgets.QWidget()
+        self.To_do_List_page = map()
         self.To_do_List_page.setStyleSheet("*{\n"
 "background-color:#f5f5f5;\n"
 "}\n"
@@ -2185,7 +2188,7 @@ class Ui_RiderWindow(object):
 
         self.retranslateUi(RiderWindow)
         self.LeftMenu.setCurrentIndex(0)
-        self.mainBody.setCurrentIndex(4)
+        self.mainBody.setCurrentIndex(6)
         self.btn_Orders.toggled['bool'].connect(self.widget_43.setVisible) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(RiderWindow)
 
@@ -2386,4 +2389,5 @@ class Ui_RiderWindow(object):
         self.label_9.setText(_translate("RiderWindow", "Admin"))
         self.btnProfile.setText(_translate("RiderWindow", "My Profile"))
         self.btnLogout.setText(_translate("RiderWindow", "Logout"))
+from map import map
 import Resource_rc

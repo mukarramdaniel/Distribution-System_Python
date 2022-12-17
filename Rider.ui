@@ -590,7 +590,7 @@ background-color:#ececec;
        <number>1</number>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>6</number>
       </property>
       <widget class="QWidget" name="page_DeliverOrder">
        <property name="styleSheet">
@@ -3600,7 +3600,7 @@ background-color:#ececec;
                           </font>
                          </property>
                          <property name="readOnly">
-                          <bool>true</bool>
+                          <bool>false</bool>
                          </property>
                          <property name="placeholderText">
                           <string>  Name</string>
@@ -3645,6 +3645,9 @@ background-color:#ececec;
                        </item>
                        <item>
                         <widget class="QWidget" name="widget_23" native="true">
+                         <property name="whatsThis">
+                          <string notr="true"/>
+                         </property>
                          <layout class="QHBoxLayout" name="horizontalLayout_10">
                           <property name="topMargin">
                            <number>0</number>
@@ -3657,16 +3660,22 @@ background-color:#ececec;
                           </property>
                           <item>
                            <widget class="QLineEdit" name="txt_Address">
+                            <property name="enabled">
+                             <bool>true</bool>
+                            </property>
                             <property name="font">
                              <font>
                               <pointsize>9</pointsize>
                              </font>
                             </property>
+                            <property name="whatsThis">
+                             <string notr="true"/>
+                            </property>
                             <property name="text">
                              <string/>
                             </property>
                             <property name="readOnly">
-                             <bool>true</bool>
+                             <bool>false</bool>
                             </property>
                             <property name="placeholderText">
                              <string>Address</string>
@@ -4099,7 +4108,7 @@ background-color:#ececec;
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="To_do_List_page">
+      <widget class="map" name="To_do_List_page">
        <property name="styleSheet">
         <string notr="true">*{
 background-color:#f5f5f5;
@@ -4369,7 +4378,7 @@ background-color:#ececec;
                     <string>Cancel Order</string>
                    </property>
                    <property name="icon">
-                    <iconset resource="Resource.qrc">
+                    <iconset>
                      <normaloff>:/White Icons/Graphics/featherBlack/cancel.png</normaloff>:/White Icons/Graphics/featherBlack/cancel.png</iconset>
                    </property>
                    <property name="iconSize">
@@ -4560,6 +4569,14 @@ background-color:#ececec;
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>map</class>
+   <extends>QWidget</extends>
+   <header>map.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="Resource.qrc"/>
  </resources>

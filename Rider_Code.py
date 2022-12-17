@@ -1,6 +1,7 @@
 import sys
 from Rider import *
-
+from Maps.maps import distance_between_places,getLocation
+from Maps.SelectShop import * 
 from Core.Shop import Shop
 from DL.ShopCRUD import *
 from PyQt5 import QtWidgets
@@ -105,17 +106,26 @@ class RiderMainWindow(QMainWindow):
         self.ui.btn_History.clicked.connect(lambda: self.OpenHistory())
         self.ui.btn_AddShop.clicked.connect(lambda: self.addShopMenu())
         self.ui.btn_Add.clicked.connect(lambda: self.addShop())
+        self.ui.btn_Map.clicked.connect(lambda: self.selectShopMap())
+        
        
         self.show()
-    
+    def selectShopMap():
+        pass
+        # self.MainWindow = QtWidgets.QMainWindow()
+        # self.ui=MapViewer()
+        # self.ui.show()
+        
     def addShopMenu(self):
         self.ui.mainBody.setCurrentIndex(4)
     def addShop(self):
         name=self.ui.txt_Name.text()
         cnic=self.ui.txt_Cnic.text()
         email=self.ui.txt_Email.text()
-       # address=self.ui.widget_14.show()
-        location=Location(31.22222,74.3222,"opposite mall")
+        Address=self.ui.txt_Address.text()
+        loca=getLocation(Address)
+        location=Location(loca[1],loca[2],loca[0])
+        print(loca[0],loca[1],loca[2])
         PhoneNumber=self.ui.txt_PhoneNumber.text()
         AccountNo=self.ui.txt_AccountNo.text()
         Area=self.ui.cmb_Area.currentText()
