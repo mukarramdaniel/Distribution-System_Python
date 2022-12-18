@@ -28,9 +28,9 @@ class InventoryMainWindow(QMainWindow):
         self.ui.setupUi(self)
         self.user = user
         self.inventory=Inventory()
-        self.inventory.readFromTable()
+        #self.inventory.readFromTable()
         self.orderStockDL=StockOrder_DL()
-        self.orderStockDL.loadFromTable()
+        #self.orderStockDL.loadFromTable()
         self.temp_OrderList=[]
         self.total = 0
         self.row_cart=[]    #esy database mai store bhe krvana ha abhi

@@ -12,6 +12,8 @@ from PyQt5.QtGui import (QColor)
 import re  #imported to validate he email
 from Manager_UI import ManaMainWindow
 from Inventory_Code import InventoryMainWindow
+from SalesAgent_Code import SalesAgentMainWindow
+from Rider_Code import RiderMainWindow
 import os
 from email.message import EmailMessage
 import smtplib
@@ -48,6 +50,11 @@ class MainWindow(QMainWindow):
                     self.Open_Manager_Window()
                 elif(retrive.userRole==1):
                     self.Open_Inventory_Window(retrive)
+                elif(retrive.userRole==2):
+                    self.Open_SaleAgent_Window()
+                elif(retrive.userRole==2):
+                    self.Open_Rider_Window()
+
         else:
             QMessageBox.warning(self,'Error','Incorrect Email and Password')
             self.ui.emailinp.clear()
@@ -123,6 +130,12 @@ class MainWindow(QMainWindow):
     def Open_Inventory_Window(self,userA):
         self.MainWindow = QtWidgets.QMainWindow()
         self.ui=InventoryMainWindow(userA)
+    def Open_SaleAgent_Window(self):
+        self.MainWindow = QtWidgets.QMainWindow()
+        self.ui=SalesAgentMainWindow()
+    def Open_Rider_Window(self):
+        self.MainWindow = QtWidgets.QMainWindow()
+        self.ui=RiderMainWindow()
     def OpenForgetScreen(self):
         self.ui.loginStackedWidget.setCurrentIndex(1)
     def Open_newpassword_Screen(self):

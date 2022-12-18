@@ -565,7 +565,7 @@ background-color:#f5f5f5;
        <number>1</number>
       </property>
       <property name="currentIndex">
-       <number>5</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="Home_Widget">
        <property name="styleSheet">
@@ -2192,6 +2192,13 @@ background-color:#fff;
 }
 QFrame,QPushButton{
 background:transparent;
+}
+#accountBtn_5:hover{
+background-color:#ececec;
+ border-radius: 20px;
+}
+#btn_AddVehicle_2:hover,#btn_Edit:hover,#btn_Delete_2:hover{
+background-color:#ececec;
 }</string>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -3098,6 +3105,13 @@ background-color:qlineargradient(spread:pad,x1:0,y1:0.505682,x2:1,y2:0.477,stop:
 #widget_77{
 background-color:#fff;
  border-radius: 15px;
+}
+#accountBtn_10:hover{
+background-color:#ececec;
+ border-radius: 20px;
+}
+#btn_Update:hover{
+background-color:#ececec;
 }</string>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_71">
@@ -4366,6 +4380,13 @@ background-color:qlineargradient(spread:pad,x1:0,y1:0.505682,x2:1,y2:0.477,stop:
 background-color:#fff;
  border-radius: 10px;
  border: 1px solid #000000
+}
+#btn_Performance:hover,#btn_paySalary:hover{
+background-color:#ececec;
+}
+#accountBtn_6:hover{
+background-color:#ececec;
+ border-radius: 20px;
 }</string>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_20">
@@ -4942,6 +4963,13 @@ background-color:#fff;
 #btn_Deduct{
 background-color:qlineargradient(spread:pad,x1:0,y1:0.505682,x2:1,y2:0.477,stop:0 rgba(20,47,78,219),stop:1 rgba(85,98,112,150));
  border-radius: 10px;
+}
+#btn_Deduct:hover{
+background-color:#ececec;
+}
+#accountBtn_8:hover{
+background-color:#ececec;
+ border-radius: 20px;
 }</string>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_42">

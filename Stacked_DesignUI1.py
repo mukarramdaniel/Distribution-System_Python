@@ -998,6 +998,13 @@ class Ui_MainWindow(object):
 "}\n"
 "QFrame,QPushButton{\n"
 "background:transparent;\n"
+"}\n"
+"#accountBtn_5:hover{\n"
+"background-color:#ececec;\n"
+" border-radius: 20px;\n"
+"}\n"
+"#btn_AddVehicle_2:hover,#btn_Edit:hover,#btn_Delete_2:hover{\n"
+"background-color:#ececec;\n"
 "}")
         self.AddVehicle_Page.setObjectName("AddVehicle_Page")
         self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.AddVehicle_Page)
@@ -1415,6 +1422,13 @@ class Ui_MainWindow(object):
 "#widget_77{\n"
 "background-color:#fff;\n"
 " border-radius: 15px;\n"
+"}\n"
+"#accountBtn_10:hover{\n"
+"background-color:#ececec;\n"
+" border-radius: 20px;\n"
+"}\n"
+"#btn_Update:hover{\n"
+"background-color:#ececec;\n"
 "}")
         self.UpdateEmployee_Page_2.setObjectName("UpdateEmployee_Page_2")
         self.verticalLayout_71 = QtWidgets.QVBoxLayout(self.UpdateEmployee_Page_2)
@@ -1957,6 +1971,13 @@ class Ui_MainWindow(object):
 "background-color:#fff;\n"
 " border-radius: 10px;\n"
 " border: 1px solid #000000\n"
+"}\n"
+"#btn_Performance:hover,#btn_paySalary:hover{\n"
+"background-color:#ececec;\n"
+"}\n"
+"#accountBtn_6:hover{\n"
+"background-color:#ececec;\n"
+" border-radius: 20px;\n"
 "}")
         self.Salar_and_Bonus_page.setObjectName("Salar_and_Bonus_page")
         self.verticalLayout_20 = QtWidgets.QVBoxLayout(self.Salar_and_Bonus_page)
@@ -2210,6 +2231,13 @@ class Ui_MainWindow(object):
 "#btn_Deduct{\n"
 "background-color:qlineargradient(spread:pad,x1:0,y1:0.505682,x2:1,y2:0.477,stop:0 rgba(20,47,78,219),stop:1 rgba(85,98,112,150));\n"
 " border-radius: 10px;\n"
+"}\n"
+"#btn_Deduct:hover{\n"
+"background-color:#ececec;\n"
+"}\n"
+"#accountBtn_8:hover{\n"
+"background-color:#ececec;\n"
+" border-radius: 20px;\n"
 "}")
         self.CompanyAccount_page.setObjectName("CompanyAccount_page")
         self.verticalLayout_42 = QtWidgets.QVBoxLayout(self.CompanyAccount_page)
@@ -2673,7 +2701,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.LeftMenu.setCurrentIndex(0)
-        self.mainBody.setCurrentIndex(5)
+        self.mainBody.setCurrentIndex(1)
         self.btn_AccountFinanace.toggled['bool'].connect(self.widget_13.setVisible) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 

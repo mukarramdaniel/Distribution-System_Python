@@ -1,6 +1,6 @@
 import sys
 from Rider import *
-from Maps.maps import distance_between_places,getLocation
+#from Maps.maps import distance_between_places,getLocation
 from Maps.SelectShop import * 
 from Core.Shop import Shop
 from DL.ShopCRUD import *
@@ -18,7 +18,7 @@ class RiderMainWindow(QMainWindow):
         self.ui=Ui_RiderWindow()
         self.ui.setupUi(self)
         self.shopDL=ShopCRUD()
-        self.shopDL.loadFromTable()
+        #self.shopDL.loadFromTable()
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(20)
         self.shadow.setXOffset(0)
@@ -82,6 +82,27 @@ class RiderMainWindow(QMainWindow):
         self.shadow.setColor(QColor("black"))
         self.ui.widget_51.setGraphicsEffect(self.shadow)
 
+        self.shadow = QGraphicsDropShadowEffect(self)
+        self.shadow.setBlurRadius(20)
+        self.shadow.setXOffset(0)
+        self.shadow.setYOffset(0)
+        self.shadow.setColor(QColor("black"))
+        self.ui.widget_62.setGraphicsEffect(self.shadow)
+
+        self.shadow = QGraphicsDropShadowEffect(self)
+        self.shadow.setBlurRadius(20)
+        self.shadow.setXOffset(0)
+        self.shadow.setYOffset(0)
+        self.shadow.setColor(QColor("black"))
+        self.ui.widget_68.setGraphicsEffect(self.shadow)
+
+        self.shadow = QGraphicsDropShadowEffect(self)
+        self.shadow.setBlurRadius(20)
+        self.shadow.setXOffset(0)
+        self.shadow.setYOffset(0)
+        self.shadow.setColor(QColor("black"))
+        self.ui.Account_Widget.setGraphicsEffect(self.shadow)
+
         self.ui.menuBtn_8.clicked.connect(lambda: self.slideLeftMenu())
         self.ui.menuBtn_11.clicked.connect(lambda: self.slideLeftMenu())
         self.ui.menuBtn_7.clicked.connect(lambda: self.slideLeftMenu())
@@ -89,6 +110,7 @@ class RiderMainWindow(QMainWindow):
         self.ui.menuBtn_10.clicked.connect(lambda: self.slideLeftMenu())
         self.ui.menuBtn_12.clicked.connect(lambda: self.slideLeftMenu())
         self.ui.menuBtn_13.clicked.connect(lambda: self.slideLeftMenu())
+        self.ui.menuBtn_14.clicked.connect(lambda: self.slideLeftMenu())
         self.ui.accountBtn_8.clicked.connect(lambda: self.SlideRightMenu())
         self.ui.accountBtn_11.clicked.connect(lambda: self.SlideRightMenu())
         self.ui.accountBtn_7.clicked.connect(lambda: self.SlideRightMenu())
@@ -96,12 +118,14 @@ class RiderMainWindow(QMainWindow):
         self.ui.accountBtn_10.clicked.connect(lambda: self.SlideRightMenu())
         self.ui.accountBtn_12.clicked.connect(lambda: self.SlideRightMenu())
         self.ui.accountBtn_13.clicked.connect(lambda: self.SlideRightMenu())
+        self.ui.accountBtn_14.clicked.connect(lambda: self.SlideRightMenu())
 
         self.ui.btn_Dashboard.clicked.connect(lambda: self.OpenDashBoard())
         self.ui.btn_AddShop.clicked.connect(lambda: self.OpenAddShop())
         self.ui.btn_TakeOrder.clicked.connect(lambda: self.OpenTakeOrder())
         self.ui.btn_DeliverOrder.clicked.connect(lambda: self.OpenDeliverOrder())
         self.ui.btn_ViewStock_2.clicked.connect(lambda: self.OpenViewStock())
+        self.ui.btn_FuelDetails.clicked.connect(lambda: self.OpenFuelDetails())
         self.ui.btn_ToDoList.clicked.connect(lambda: self.OpenTodoList())
         self.ui.btn_History.clicked.connect(lambda: self.OpenHistory())
         self.ui.btn_AddShop.clicked.connect(lambda: self.addShopMenu())
@@ -110,11 +134,13 @@ class RiderMainWindow(QMainWindow):
         
        
         self.show()
-    def selectShopMap():
-        pass
-        # self.MainWindow = QtWidgets.QMainWindow()
-        # self.ui=MapViewer()
-        # self.ui.show()
+    def selectShopMap(self):
+        #pass
+        self.MainWindow = QtWidgets.QMainWindow()
+        self.ui=MapViewer()
+        self.ui.show()
+    def OpenFuelDetails(self):
+        self.ui.mainBody.setCurrentIndex(7)
         
     def addShopMenu(self):
         self.ui.mainBody.setCurrentIndex(4)

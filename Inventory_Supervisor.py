@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1002, 623)
+        MainWindow.resize(1002, 631)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setStyleSheet("*{\n"
 "color:#000;\n"
@@ -623,7 +623,7 @@ class Ui_MainWindow(object):
 "border-radius: 10px;\n"
 "border: 1px solid #000000\n"
 "}\n"
-"#btn_CheckOut:hover{\n"
+"#btn_CheckOut:hover,#btn_CheckIn:hover{\n"
 "background-color:#ececec;\n"
 "}\n"
 "#accountBtn_8:hover{\n"
@@ -864,6 +864,13 @@ class Ui_MainWindow(object):
 "#btn_Performance_Graph{\n"
 "background-color:qlineargradient(spread:pad,x1:0,y1:0.505682,x2:1,y2:0.477,stop:0 rgba(20,47,78,219),stop:1 rgba(85,98,112,150));\n"
 " border-radius: 10px;\n"
+"}\n"
+"#accountBtn_9:hover{\n"
+"border-radius: 20px;\n"
+"background-color:#ececec;\n"
+"}\n"
+"#btn_Performance_Graph:hover{\n"
+"background-color:#ececec;\n"
 "}")
         self.ViewStock_page.setObjectName("ViewStock_page")
         self.verticalLayout_60 = QtWidgets.QVBoxLayout(self.ViewStock_page)
@@ -1018,6 +1025,13 @@ class Ui_MainWindow(object):
 "#btn_details{\n"
 "background-color:qlineargradient(spread:pad,x1:0,y1:0.505682,x2:1,y2:0.477,stop:0 rgba(20,47,78,219),stop:1 rgba(85,98,112,150));\n"
 " border-radius: 10px;\n"
+"}\n"
+"#btn_MarkAttendance_2:hover,#btn_details:hover{\n"
+"background-color:#ececec;\n"
+"}\n"
+"#accountBtn_10:hover{\n"
+" border-radius: 20px;\n"
+"background-color:#ececec;\n"
 "}")
         self.Dashboard_page.setObjectName("Dashboard_page")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.Dashboard_page)
@@ -1283,6 +1297,13 @@ class Ui_MainWindow(object):
 "#btn_Calculate{\n"
 "background-color:qlineargradient(spread:pad,x1:0,y1:0.505682,x2:1,y2:0.477,stop:0 rgba(20,47,78,219),stop:1 rgba(85,98,112,150));\n"
 " border-radius: 10px;\n"
+"}\n"
+"#accountBtn_11:hover{\n"
+"background-color:#ececec;\n"
+"border-radius: 20px;\n"
+"}\n"
+"#btn_Calculate:hover{\n"
+"background-color:#ececec;\n"
 "}")
         self.ReportCost_page.setObjectName("ReportCost_page")
         self.horizontalLayout_6 = QtWidgets.QHBoxLayout(self.ReportCost_page)
@@ -1465,6 +1486,10 @@ class Ui_MainWindow(object):
 "#widget_18{\n"
 "background-color:#fff;\n"
 " border-radius: 15px;\n"
+"}\n"
+"#accountBtn_12:hover{\n"
+"border-radius: 20px;\n"
+"background-color:#ececec;\n"
 "}")
         self.ViewHistory_page.setObjectName("ViewHistory_page")
         self.verticalLayout_12 = QtWidgets.QVBoxLayout(self.ViewHistory_page)
@@ -1472,6 +1497,7 @@ class Ui_MainWindow(object):
         self.widget_16 = QtWidgets.QWidget(self.ViewHistory_page)
         self.widget_16.setObjectName("widget_16")
         self.verticalLayout_13 = QtWidgets.QVBoxLayout(self.widget_16)
+        self.verticalLayout_13.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_13.setObjectName("verticalLayout_13")
         self.HeaderFrame_11 = QtWidgets.QWidget(self.widget_16)
         self.HeaderFrame_11.setAutoFillBackground(False)

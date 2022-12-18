@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1002</width>
-    <height>623</height>
+    <height>631</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -1269,7 +1269,7 @@ background-color:#fffff;
 border-radius: 10px;
 border: 1px solid #000000
 }
-#btn_CheckOut:hover{
+#btn_CheckOut:hover,#btn_CheckIn:hover{
 background-color:#ececec;
 }
 #accountBtn_8:hover{
@@ -1781,6 +1781,13 @@ background-color:#ffffff;
 #btn_Performance_Graph{
 background-color:qlineargradient(spread:pad,x1:0,y1:0.505682,x2:1,y2:0.477,stop:0 rgba(20,47,78,219),stop:1 rgba(85,98,112,150));
  border-radius: 10px;
+}
+#accountBtn_9:hover{
+border-radius: 20px;
+background-color:#ececec;
+}
+#btn_Performance_Graph:hover{
+background-color:#ececec;
 }</string>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_60">
@@ -2080,6 +2087,13 @@ background-color:#fff;
 #btn_details{
 background-color:qlineargradient(spread:pad,x1:0,y1:0.505682,x2:1,y2:0.477,stop:0 rgba(20,47,78,219),stop:1 rgba(85,98,112,150));
  border-radius: 10px;
+}
+#btn_MarkAttendance_2:hover,#btn_details:hover{
+background-color:#ececec;
+}
+#accountBtn_10:hover{
+ border-radius: 20px;
+background-color:#ececec;
 }</string>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -2610,6 +2624,13 @@ border-radius: 10px;
 #btn_Calculate{
 background-color:qlineargradient(spread:pad,x1:0,y1:0.505682,x2:1,y2:0.477,stop:0 rgba(20,47,78,219),stop:1 rgba(85,98,112,150));
  border-radius: 10px;
+}
+#accountBtn_11:hover{
+background-color:#ececec;
+border-radius: 20px;
+}
+#btn_Calculate:hover{
+background-color:#ececec;
 }</string>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_6">
@@ -2978,12 +2999,28 @@ background-color:qlineargradient(spread:pad,x1:0,y1:0.505682,x2:1,y2:0.477,stop:
 #widget_18{
 background-color:#fff;
  border-radius: 15px;
+}
+#accountBtn_12:hover{
+border-radius: 20px;
+background-color:#ececec;
 }</string>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_12">
         <item>
          <widget class="QWidget" name="widget_16" native="true">
           <layout class="QVBoxLayout" name="verticalLayout_13">
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
            <item alignment="Qt::AlignTop">
             <widget class="QWidget" name="HeaderFrame_11" native="true">
              <property name="autoFillBackground">
