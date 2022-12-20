@@ -565,7 +565,7 @@ background-color:#f5f5f5;
        <number>1</number>
       </property>
       <property name="currentIndex">
-       <number>5</number>
+       <number>6</number>
       </property>
       <widget class="QWidget" name="Home_Widget">
        <property name="styleSheet">
@@ -4657,17 +4657,6 @@ background-color:#ececec;
                    </column>
                    <column>
                     <property name="text">
-                     <string>Bonus Paid</string>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <weight>75</weight>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                   </column>
-                   <column>
-                    <property name="text">
                      <string>Paid Status</string>
                     </property>
                     <property name="font">
@@ -4736,11 +4725,11 @@ background-color:#ececec;
                      </widget>
                     </item>
                     <item>
-                     <widget class="QComboBox" name="comboBox">
+                     <widget class="QComboBox" name="cmb_Employee_3">
                       <property name="minimumSize">
                        <size>
-                        <width>140</width>
-                        <height>0</height>
+                        <width>200</width>
+                        <height>25</height>
                        </size>
                       </property>
                       <item>
@@ -4758,29 +4747,6 @@ background-color:#ececec;
                         <string>Rayan</string>
                        </property>
                       </item>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QPushButton" name="btn_Performance">
-                      <property name="font">
-                       <font>
-                        <weight>75</weight>
-                        <bold>true</bold>
-                       </font>
-                      </property>
-                      <property name="text">
-                       <string>View Performance</string>
-                      </property>
-                      <property name="icon">
-                       <iconset resource="Resource.qrc">
-                        <normaloff>:/Black Icons/Graphics/featherBlack/activity.svg</normaloff>:/Black Icons/Graphics/featherBlack/activity.svg</iconset>
-                      </property>
-                      <property name="iconSize">
-                       <size>
-                        <width>20</width>
-                        <height>20</height>
-                       </size>
-                      </property>
                      </widget>
                     </item>
                     <item>

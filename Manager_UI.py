@@ -178,7 +178,7 @@ class ManaMainWindow(QMainWindow):
         self.ui.Update_tableWidget.verticalHeader().sectionClicked.connect(lambda: self.getTableRow())
         self.ui.btn_AddVehicle_2.clicked.connect(lambda: self.addVehicle())
         self.ui.btn_SalaryBonus.clicked.connect(lambda: self.OpenSalaryPage())
-        
+        self.ui.btn_paySalary.clicked.connect(lambda: self.Pay_Salary())
         
         
         self.show()
@@ -188,12 +188,19 @@ class ManaMainWindow(QMainWindow):
         self.Load_SalaryTable()
         
     def Load_SalaryTable(self):
+        now1 = date.today()
+        dateTime = now1.strftime("%Y-%m-%d")
+        day = dateTime.split("-")
+        if(day[2]=="20"): #MakeEveryone Un Paid
+            self.Make_Everyone_Unpaid()
+            
         row = 0
+        unPaid=[]
         self.ui.tableWidget_4.setRowCount(self.Get_Table_Row_Length())
         for i in self.userDL.getHashTable():
             for j in i :
                 if(j!=None):
-                    if(j[1].getUserRole()!= 0) :
+                    if(j[1].getUserRole()!= 0):
                         self.ui.tableWidget_4.setItem(row, 0, QtWidgets.QTableWidgetItem(str(j[0])))
                         self.ui.tableWidget_4.setItem(row, 1, QtWidgets.QTableWidgetItem(str(j[1].getName())))
                         if (j[1].getUserRole() == 1) :
@@ -203,11 +210,34 @@ class ManaMainWindow(QMainWindow):
                         self.ui.tableWidget_4.setItem(row, 3, QtWidgets.QTableWidgetItem(str(j[1].getSalary())))
                         print(j[1].get_s_status())
                         if (j[1].get_s_status() != 0):
-                            self.ui.tableWidget_4.setItem(row, 5, QtWidgets.QTableWidgetItem("Paid"))
+                            self.ui.tableWidget_4.setItem(row, 4, QtWidgets.QTableWidgetItem("Paid"))
                         else:
-                            self.ui.tableWidget_4.setItem(row, 5, QtWidgets.QTableWidgetItem("Un Paid"))
-  
+                            self.ui.tableWidget_4.setItem(row, 4, QtWidgets.QTableWidgetItem("Un Paid"))
+                            unPaid.append(j[1].getName())
                         row+=1
+        self.Select_Employee(unPaid)
+        
+    def Select_Employee(self,unPaid):
+        self.ui.cmb_Employee_3.clear()
+        self.ui.cmb_Employee_3.addItems(unPaid)
+
+    def Pay_Salary(self):
+        
+        employe=self.ui.cmb_Employee_3.currentText()
+        bonus=self.ui.txt_Bonus.text()
+        for i in self.userDL.getHashTable():
+            for j in i :
+                if(j!=None):
+                    if(j[1].getUserRole()!= 0):
+                        j[1].set_s_status(1)
+                        self.Load_SalaryTable()
+
+    def Make_Everyone_Unpaid(self):
+        for i in self.userDL.getHashTable():
+            for j in i :
+                if(j!=None):
+                    if(j[1].getUserRole()!= 0):
+                        j[1].set_s_status(0)
     def Get_Table_Row_Length(self):
         count=0
         for i in self.userDL.getHashTable():
