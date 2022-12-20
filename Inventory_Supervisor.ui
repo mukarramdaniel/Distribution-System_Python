@@ -3512,7 +3512,7 @@ background-color:#ececec;
                    </attribute>
                    <column>
                     <property name="text">
-                     <string>Product ID</string>
+                     <string>Order ID</string>
                     </property>
                     <property name="font">
                      <font>

@@ -9,7 +9,8 @@ class Shoe:
         self.__selPrice=selPrice
         self.__color=color
         self.__type=type
-        
+    def __iter__(self):
+        return self
     def getProductCategory(self):
         return self.__category
     def setProfirMargin(self,profit):

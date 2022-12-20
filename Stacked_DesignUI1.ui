@@ -565,7 +565,7 @@ background-color:#f5f5f5;
        <number>1</number>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="Home_Widget">
        <property name="styleSheet">
@@ -4243,10 +4243,10 @@ background-color:#ececec;
                     <bool>true</bool>
                    </property>
                    <property name="rowCount">
-                    <number>10</number>
+                    <number>0</number>
                    </property>
                    <property name="columnCount">
-                    <number>1</number>
+                    <number>0</number>
                    </property>
                    <attribute name="horizontalHeaderDefaultSectionSize">
                     <number>130</number>
@@ -4257,27 +4257,6 @@ background-color:#ececec;
                    <attribute name="verticalHeaderStretchLastSection">
                     <bool>true</bool>
                    </attribute>
-                   <row/>
-                   <row/>
-                   <row/>
-                   <row/>
-                   <row/>
-                   <row/>
-                   <row/>
-                   <row/>
-                   <row/>
-                   <row/>
-                   <column>
-                    <property name="text">
-                     <string>Name</string>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <weight>75</weight>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                   </column>
                   </widget>
                  </item>
                 </layout>

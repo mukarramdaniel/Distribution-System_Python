@@ -18,5 +18,7 @@ class ProducList:
         return self.__status
     def getOrderID(self):
         return self.orderID
+    def getDate(self):
+        return self.date
     
          

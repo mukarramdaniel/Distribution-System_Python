@@ -58,7 +58,31 @@ class InventoryMainWindow(QMainWindow):
         self.show()
 
     def openViewHistory(self):
-        pass
+        self.ui.mainBody.setCurrentIndex(5)
+        self.Load_Table_History()
+    def Load_Table_History(self):
+        row=0
+        DlinkList=self.orderStockDL.getDLinklist()
+        self.ui.tableWidget_History.setRowCount(self.calculateRow_History())
+        while(DlinkList!=None):
+            #if(DlinkList.data.getStatus()==1):
+            for prod in DlinkList.data.getShoeList():
+                self.ui.tableWidget_History.setItem(row, 0, QtWidgets.QTableWidgetItem(str(DlinkList.data.getOrderID())))
+                self.ui.tableWidget_History.setItem(row, 1, QtWidgets.QTableWidgetItem(str(prod.getProductCategory())))
+                self.ui.tableWidget_History.setItem(row, 2, QtWidgets.QTableWidgetItem(str(prod.getColor())))
+                self.ui.tableWidget_History.setItem(row, 3, QtWidgets.QTableWidgetItem(str(prod.getBuyPrice())))
+                self.ui.tableWidget_History.setItem(row, 4, QtWidgets.QTableWidgetItem(str(DlinkList.data.date)))
+                self.ui.tableWidget_History.setItem(row, 5, QtWidgets.QTableWidgetItem(str(DlinkList.data.date)))
+            row +=1
+                    
+            DlinkList=DlinkList.next
+    def calculateRow_History(self):
+        count=0
+        DlinkList=self.orderStockDL.getDLinklist()
+        while(DlinkList!=None):
+            count+=1
+            DlinkList=DlinkList.next
+        return count
     def Handle_Product_Category(self):
         Category=self.ui.cmb_Category_2.currentText()
         isFound=False
@@ -148,10 +172,7 @@ class InventoryMainWindow(QMainWindow):
                     if(prod[1].getSellPrice()==0):
                         self.ui.table_ViewStock.setItem(row, 3, QtWidgets.QTableWidgetItem("None"))
                     else:
-                        self.ui.table_ViewStock.setItem(row, 3, QtWidgets.QTableWidgetItem(str(prod[1].getSellPrice())))
-                           
-                    
-                    
+                        self.ui.table_ViewStock.setItem(row, 3, QtWidgets.QTableWidgetItem(str(prod[1].getSellPrice())))                 
                     
                     row +=1
                     
@@ -162,6 +183,7 @@ class InventoryMainWindow(QMainWindow):
                 if(j!=None):
                     stockCount +=1
         return stockCount
+    
     def table_CheckInLoad(self):
         
         row=0
