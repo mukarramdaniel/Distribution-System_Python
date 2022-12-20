@@ -614,7 +614,7 @@ background-color:#ececec;
        <number>1</number>
       </property>
       <property name="currentIndex">
-       <number>7</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="page_DeliverOrder">
        <property name="styleSheet">
@@ -1530,11 +1530,6 @@ border-radius:20px;
                         <height>25</height>
                        </size>
                       </property>
-                      <item>
-                       <property name="text">
-                        <string>Cash and Carry</string>
-                       </property>
-                      </item>
                      </widget>
                     </item>
                    </layout>
@@ -1561,11 +1556,11 @@ border-radius:20px;
                     <property name="bottomMargin">
                      <number>0</number>
                     </property>
-                    <item>
+                    <item alignment="Qt::AlignTop">
                      <widget class="QWidget" name="widget_34" native="true">
                       <layout class="QVBoxLayout" name="verticalLayout_25">
                        <property name="spacing">
-                        <number>6</number>
+                        <number>20</number>
                        </property>
                        <property name="leftMargin">
                         <number>0</number>
@@ -1589,19 +1584,6 @@ border-radius:20px;
                          </property>
                          <property name="text">
                           <string>Select Category:</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLabel" name="label_36">
-                         <property name="font">
-                          <font>
-                           <weight>75</weight>
-                           <bold>true</bold>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>Name:</string>
                          </property>
                         </widget>
                        </item>
@@ -1644,6 +1626,19 @@ border-radius:20px;
                          </property>
                         </widget>
                        </item>
+                       <item>
+                        <widget class="QLabel" name="Type">
+                         <property name="font">
+                          <font>
+                           <weight>75</weight>
+                           <bold>true</bold>
+                          </font>
+                         </property>
+                         <property name="text">
+                          <string>Type:</string>
+                         </property>
+                        </widget>
+                       </item>
                       </layout>
                      </widget>
                     </item>
@@ -1651,7 +1646,7 @@ border-radius:20px;
                      <widget class="QWidget" name="widget_35" native="true">
                       <layout class="QVBoxLayout" name="verticalLayout_26">
                        <property name="spacing">
-                        <number>10</number>
+                        <number>12</number>
                        </property>
                        <property name="topMargin">
                         <number>0</number>
@@ -1681,21 +1676,6 @@ border-radius:20px;
                          <item>
                           <property name="text">
                            <string>Sneakers</string>
-                          </property>
-                         </item>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QComboBox" name="cmb_Name">
-                         <property name="minimumSize">
-                          <size>
-                           <width>0</width>
-                           <height>25</height>
-                          </size>
-                         </property>
-                         <item>
-                          <property name="text">
-                           <string>Gazelle</string>
                           </property>
                          </item>
                         </widget>
@@ -1732,6 +1712,16 @@ border-radius:20px;
                        </item>
                        <item>
                         <widget class="QSpinBox" name="spb_Size_2">
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>20</height>
+                          </size>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QComboBox" name="cmb_type">
                          <property name="minimumSize">
                           <size>
                            <width>0</width>
@@ -1780,19 +1770,6 @@ border-radius:20px;
                         <widget class="QWidget" name="widget_38" native="true">
                          <layout class="QVBoxLayout" name="verticalLayout_28">
                           <item>
-                           <widget class="QLabel" name="label_39">
-                            <property name="font">
-                             <font>
-                              <weight>75</weight>
-                              <bold>true</bold>
-                             </font>
-                            </property>
-                            <property name="text">
-                             <string>Price/Piece:</string>
-                            </property>
-                           </widget>
-                          </item>
-                          <item>
                            <widget class="QLabel" name="label_40">
                             <property name="font">
                              <font>
@@ -1827,25 +1804,6 @@ border-radius:20px;
                           <property name="spacing">
                            <number>18</number>
                           </property>
-                          <item>
-                           <widget class="QLineEdit" name="txt_Price">
-                            <property name="minimumSize">
-                             <size>
-                              <width>0</width>
-                              <height>30</height>
-                             </size>
-                            </property>
-                            <property name="maximumSize">
-                             <size>
-                              <width>400</width>
-                              <height>16777215</height>
-                             </size>
-                            </property>
-                            <property name="placeholderText">
-                             <string>  Price per shoes</string>
-                            </property>
-                           </widget>
-                          </item>
                           <item>
                            <widget class="QLineEdit" name="txt_Total">
                             <property name="minimumSize">
@@ -2306,7 +2264,7 @@ border-radius:20px;
                          <row/>
                          <column>
                           <property name="text">
-                           <string>ID</string>
+                           <string>Category</string>
                           </property>
                           <property name="font">
                            <font>
@@ -2317,7 +2275,29 @@ border-radius:20px;
                          </column>
                          <column>
                           <property name="text">
-                           <string>Total</string>
+                           <string>Color</string>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                         </column>
+                         <column>
+                          <property name="text">
+                           <string>Size</string>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                         </column>
+                         <column>
+                          <property name="text">
+                           <string>Price</string>
                           </property>
                           <property name="font">
                            <font>

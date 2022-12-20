@@ -52,6 +52,19 @@ class Inventory:
         return
     def getInventoryStock(self):
         return self.hashTable
+    def getShoe(self,quantity,category,color,type):
+        i=hash(category)
+        cart=[]
+        for prod in self.hashTable[i]:
+            if(quantity>0):
+                if(category==prod.getProductCategory(),color==prod.getColor(),type==prod.getType()):
+                    #prod.remove(prod)
+                    cart.append(prod)
+                    quantity -=1
+        if(quantity==0):
+            return cart
+                
+                  
     def readFromTable(self):
         import mysql.connector
         mydb = mysql.connector.connect(

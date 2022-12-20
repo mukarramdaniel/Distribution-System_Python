@@ -31,5 +31,7 @@ class User:
         return self.name   
     def getUserRole(self) :
         return self.userRole
+    def getID(self) :
+        return self.userId
         
         

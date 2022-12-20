@@ -4,6 +4,7 @@ class ProducList:
         self.__status=status
         self.date=date
         self.ShoeList=ShoeList
+        self.riderID=None
     def addShoeInList(self,shoe):
         self.ShoeList.append(shoe)
     def getShoeList(self):
@@ -20,5 +21,9 @@ class ProducList:
         return self.orderID
     def getDate(self):
         return self.date
+    def getriderID(self):
+        return self.riderID
+    def setriderID(self,riderID):
+        self.riderID=riderID
     
          

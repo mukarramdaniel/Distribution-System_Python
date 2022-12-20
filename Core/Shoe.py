@@ -31,7 +31,13 @@ class Shoe:
         self.__shoeSize=size
     def getBuyPrice(self):
         return self.__buyPrice
+    def setBuyPrice(self,price):
+        self.__buyPrice=price
     def getprodID(self):
         return self.__prodID
+    def setprodID(self,prodID):
+        self.__prodID=prodID
     def getType(self):
         return self.__type
+    def setType(self,type):
+        self.__type=type

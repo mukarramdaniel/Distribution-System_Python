@@ -4,6 +4,7 @@ from Rider import *
 from Maps.SelectShop import * 
 from Core.Shop import Shop
 from DL.ShopCRUD import *
+from Maps.maps import *
 from PyQt5 import QtWidgets
 from DL.UserCRUD import *
 from PyQt5.QtWidgets import (
@@ -12,13 +13,22 @@ from PyQt5.QtWidgets import (
 from PyQt5.QtCore import QPropertyAnimation
 from PyQt5.QtGui import (QColor)
 from datetime import datetime
+from DL.Inventory import Inventory
+from DL.OrderCRUD import *
+
 class RiderMainWindow(QMainWindow):
     def __init__(self,parent=None):
         QMainWindow.__init__(self)
         self.ui=Ui_RiderWindow()
         self.ui.setupUi(self)
+        initCart=Cart()
+        initCart.loadFromTable()
+        self.cart=initCart.getCart()
         self.shopDL=ShopCRUD()
-        #self.shopDL.loadFromTable()
+        self.shopDL.loadFromTable()
+        self.inventory=Inventory()
+        self.inventory.readFromTable()
+        self.cartProducts=None
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(20)
         self.shadow.setXOffset(0)
@@ -131,8 +141,8 @@ class RiderMainWindow(QMainWindow):
         self.ui.btn_AddShop.clicked.connect(lambda: self.addShopMenu())
         self.ui.btn_Add.clicked.connect(lambda: self.addShop())
         self.ui.btn_Map.clicked.connect(lambda: self.selectShopMap())
+        self.ui.btn_AddtoCart_2.clicked.connect(lambda: self.addToCart())
         
-       
         self.show()
     def selectShopMap(self):
         #pass
@@ -167,8 +177,43 @@ class RiderMainWindow(QMainWindow):
         self.ui.mainBody.setCurrentIndex(3)
     def OpenAddShop(self):
         self.ui.mainBody.setCurrentIndex(4)
+        
     def OpenTakeOrder(self):
         self.ui.mainBody.setCurrentIndex(1)
+        cmb=[]
+        shops=self.shopDL.getList()
+        self.showInCart()
+        
+        while(shops!=None):
+            cmb.append(shops.getData().getShopName())
+            shops=shops.next
+        self.ui.comboBox.addItems(cmb)
+       
+    def addToCart(self):
+        self.inventory.getInventoryStock()
+        category=self.ui.cmb_Category_2.currentText()
+        quantity=self.ui.spb_Quantity_2.text()
+        color=self.ui.spb_Size_2.text()
+        type=self.ui.cmb_type.currentText()
+        size=self.ui.spb_Size_2.text()
+        self.cartProducts=self.inventory.getShoe(quantity,category,color,type)#shoes that are in cart object list
+        self.cart.addIntoCart((category,int(quantity),color,int(size),type))
+        self.ui.tableWidget_Cart.setRowCount(len(self.cart))#setting row count of ui_datatable
+        self.showInCart()
+        self.cart.updateTable()#updating databasetable
+        
+    def showInCart(self):
+        row=0
+        for i in self.cart:
+            
+            self.ui.tableWidget_Cart.setItem(row, 0, QtWidgets.QTableWidgetItem(str(i[0])))
+            self.ui.tableWidget_Cart.setItem(row, 1, QtWidgets.QTableWidgetItem(str(i[2])))
+            self.ui.tableWidget_Cart.setItem(row, 2, QtWidgets.QTableWidgetItem(str(i[3])))
+            self.ui.tableWidget_Cart.setItem(row, 2, QtWidgets.QTableWidgetItem(str(i[5])))
+            
+            row +=1
+        
+        
     def OpenDeliverOrder(self):
         self.ui.mainBody.setCurrentIndex(0)
     def OpenViewStock(self):
