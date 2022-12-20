@@ -23,10 +23,11 @@ DROP TABLE IF EXISTS `attendence`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `attendence` (
-  `userID` int NOT NULL,
+  `userName` varchar(45) NOT NULL,
   `name` varchar(45) NOT NULL,
   `date` varchar(45) NOT NULL,
-  PRIMARY KEY (`userID`)
+  `id` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -36,7 +37,7 @@ CREATE TABLE `attendence` (
 
 LOCK TABLES `attendence` WRITE;
 /*!40000 ALTER TABLE `attendence` DISABLE KEYS */;
-INSERT INTO `attendence` VALUES (2,'John','01-12-2022 11:01:01');
+INSERT INTO `attendence` VALUES ('ammadaslam07@gmail.com','ammad','2022-12-20','20202021'),('mukarramali623@gmail.com','John','2022-12-20','20202022'),('ammadaslam07@gmail.com','ammad','2022-12-21','20202033');
 /*!40000 ALTER TABLE `attendence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,10 +59,11 @@ CREATE TABLE `employee` (
   `Email` varchar(45) NOT NULL,
   `Cnic` varchar(45) NOT NULL,
   `bankAccount` varchar(45) NOT NULL,
-  `resetToken` varchar(45) DEFAULT NULL,
+  `salary` varchar(45) DEFAULT NULL,
   `created_on` varchar(45) NOT NULL,
   `update_on` varchar(45) NOT NULL,
   `dateTime` varchar(45) NOT NULL,
+  `Salary_Status` int NOT NULL,
   PRIMARY KEY (`userID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -72,7 +74,7 @@ CREATE TABLE `employee` (
 
 LOCK TABLES `employee` WRITE;
 /*!40000 ALTER TABLE `employee` DISABLE KEYS */;
-INSERT INTO `employee` VALUES (2,'mukarramali623@gmail.com','employee12345',1,'John',34,'03157963703','mukarramali623@gmail.com','3130258066436','435545345454',NULL,'15-01-2022 08:15:11','15-01-2022 08:15:11','15-01-2022 08:15:11');
+INSERT INTO `employee` VALUES (2,'mukarramali623@gmail.com','employee12345',1,'John',34,'03157963703','mukarramali623@gmail.com','3130258066436','435545345454','30000','15-01-2022 08:15:11','15-01-2022 08:15:11','15-01-2022 08:15:11',1),(3,'ammadaslam1997@gmail.com','employee123',2,'AMMAD',22,'03129250987','ammadaslam1997@gmail.com','3510266901853','434343443434','100000','12-01-2022 08:15:11','12-01-2022 08:15:11','15-01-2022 08:15:11',0);
 /*!40000 ALTER TABLE `employee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -162,7 +164,6 @@ CREATE TABLE `rider` (
   `resetToken` varchar(45) NOT NULL,
   `created_on` varchar(45) NOT NULL,
   `updated_on` varchar(45) NOT NULL,
-  `date` varchar(45) DEFAULT NULL,
   `time` varchar(45) DEFAULT NULL,
   `latitude` float DEFAULT NULL,
   `longitutde` float DEFAULT NULL,
@@ -307,7 +308,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'rasheedrayan@gmailcom','123','1','Rayan Rasheed',18,'03077963751','rasheedrayan514@gmail.com','3130258066437','043227118332','12112022','13112021');
+INSERT INTO `user` VALUES (1,'rasheedrayan@gmailcom','123','0','Rayan Rasheed',18,'03077963751','rasheedrayan514@gmail.com','3130258066437','043227118332','12112022','13112021');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -346,4 +347,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-16 17:29:19
+-- Dump completed on 2022-12-20 15:31:39
