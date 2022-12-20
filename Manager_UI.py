@@ -183,7 +183,7 @@ class ManaMainWindow(QMainWindow):
         self.ui.btn_AddVehicle_2.clicked.connect(lambda: self.addVehicle())
         self.ui.btn_SalaryBonus.clicked.connect(lambda: self.OpenSalaryPage())
         self.ui.btn_paySalary.clicked.connect(lambda: self.Pay_Salary())
-        
+        self.ui.btn_MonthlyReport.clicked.connect(lambda: self.export_to_excel(self.ui.table_CheckAttendance))
         
         self.show()
     
@@ -671,6 +671,19 @@ class ManaMainWindow(QMainWindow):
                 column = column + 1
             column = 1
             row = row+1
+    def export_to_excel (self , table):
+        import pandas as pd
+        columnheader = []
+        for j in range (table.model().columnCount()):
+            columnheader.append(table.horizontalHeaderItem(j).text())
+        df = pd.DataFrame(columns=columnheader)
+        for i in range(table.rowCount()):
+            for j in range(table.columnCount()) :
+                thing = table.item(i,j)
+                if thing is not None and thing.text() != '': 
+                    df.at[i,columnheader[j]] = thing.text()     
+                #df.at[i,columnheader[j]] = table.item(i,j).text()
+        df.to_excel('attendance.xlsx',index = False)
     def addVehicle(self):
         model=self.ui.txt_VehicleModel.text()
         number=self.ui.txt_VehicleNumber.text()
