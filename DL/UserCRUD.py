@@ -3,7 +3,7 @@ sys.path.insert(2,"Core")
 from Core.Manager import Manager
 from Core.InventorySupervisor import InventorySupervisor
 from Core.SaleAgent import SaleAgent
-#from Core.Rider import Rider
+from Core.Rider import Rider
 
 # from Core.Rider import Rider
 # from Core.SaleAgent import SaleAgent
@@ -121,14 +121,20 @@ class UserCRUD:
             
             self.setUser(userName,user)
         
-        othercursor.execute("SELECT userID,userName,password,userRole,name,age,contactNum,Email,Cnic,bankAccount,resetToken,created_on,update_on,dateTime  FROM employee")
+        othercursor.execute("SELECT userID,userName,password,userRole,name,age,contactNum,Email,Cnic,bankAccount,salary,created_on,update_on,dateTime,Salary_Status  FROM employee")
         myEmployee=othercursor.fetchall()
         for x in myEmployee:
             userName1=x[1]
             if(int(x[3])==1):
+                #user=InventorySupervisor()
                 user=InventorySupervisor((x[0],x[1],x[2],x[3],x[4],x[5],x[6],x[7],x[8],x[9],x[11],x[12]),x[10],x[13])
+                user.set_s_status(x[14])
             if(int(x[3])==2):
                 user=SaleAgent((x[0],x[1],x[2],x[3],x[4],x[5],x[6],x[7],x[8],x[9],x[11],x[12]),x[10],x[13])
+                user.set_s_status(x[14])
+            #if(int(x[3])==3):
+            #    user=Rider((x[0],x[1],x[2],x[3],x[4],x[5],x[6],x[7],x[8],x[9],x[11],x[12]),x[10],x[13])
+            #    user.set_s_status(x[14])
             self.setUser(userName1,user)
         mydb.close()
         

@@ -177,10 +177,45 @@ class ManaMainWindow(QMainWindow):
         self.ui.btn_Update.clicked.connect(lambda: self.update_employee(self.updateEmpObj))
         self.ui.Update_tableWidget.verticalHeader().sectionClicked.connect(lambda: self.getTableRow())
         self.ui.btn_AddVehicle_2.clicked.connect(lambda: self.addVehicle())
+        self.ui.btn_SalaryBonus.clicked.connect(lambda: self.OpenSalaryPage())
         
         
         
         self.show()
+    
+    def OpenSalaryPage(self):
+        self.ui.mainBody.setCurrentIndex(6)
+        self.Load_SalaryTable()
+        
+    def Load_SalaryTable(self):
+        row = 0
+        self.ui.tableWidget_4.setRowCount(self.Get_Table_Row_Length())
+        for i in self.userDL.getHashTable():
+            for j in i :
+                if(j!=None):
+                    if(j[1].getUserRole()!= 0) :
+                        self.ui.tableWidget_4.setItem(row, 0, QtWidgets.QTableWidgetItem(str(j[0])))
+                        self.ui.tableWidget_4.setItem(row, 1, QtWidgets.QTableWidgetItem(str(j[1].getName())))
+                        if (j[1].getUserRole() == 1) :
+                            self.ui.tableWidget_4.setItem(row, 2, QtWidgets.QTableWidgetItem("Inventory Supervisor"))
+                        elif (j[1].getUserRole() == 2) :
+                            self.ui.tableWidget_4.setItem(row, 2, QtWidgets.QTableWidgetItem("Sales Agent"))
+                        self.ui.tableWidget_4.setItem(row, 3, QtWidgets.QTableWidgetItem(str(j[1].getSalary())))
+                        print(j[1].get_s_status())
+                        if (j[1].get_s_status() != 0):
+                            self.ui.tableWidget_4.setItem(row, 5, QtWidgets.QTableWidgetItem("Paid"))
+                        else:
+                            self.ui.tableWidget_4.setItem(row, 5, QtWidgets.QTableWidgetItem("Un Paid"))
+  
+                        row+=1
+    def Get_Table_Row_Length(self):
+        count=0
+        for i in self.userDL.getHashTable():
+            for j in i:
+                if(j!=None and j[1].getUserRole()!= 0):
+                    count+=1
+        return count
+        
     def getTableRow(self):
        
         tableRow=self.ui.Update_tableWidget.currentRow()
@@ -596,8 +631,8 @@ class ManaMainWindow(QMainWindow):
             vehicle=Vehicle.Vehicle(model,number,fuelAverage)
             self.vehicleDL.addToList(vehicle)
             self.loadVehicle_tableWidget()
-    def pay_salary (self) :
-
+    #def pay_salary (self) :
+    
 if __name__=="__main__":
     app=QApplication(sys.argv)
     window=ManaMainWindow()
