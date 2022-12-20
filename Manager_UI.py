@@ -10,7 +10,7 @@ from numpy import random
 from Stacked_DesignUI1 import *
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import (
-    QApplication, QDialog, QMainWindow, QMessageBox, QGraphicsDropShadowEffect,QMessageBox
+    QApplication, QDialog, QMainWindow, QMessageBox, QGraphicsDropShadowEffect,QMessageBox,QPushButton
 )
 from PyQt5.QtCore import QPropertyAnimation
 from PyQt5.QtGui import (QColor)
@@ -148,7 +148,11 @@ class ManaMainWindow(QMainWindow):
         self.ui.txt_Salaries.setText("1234")
         
         #----------------------------------------------
-        
+        now1 = date.today()
+        dateTime = now1.strftime("%Y-%m-%d")
+        day = dateTime.split("-")
+        if(day[2]=="30"): #MakeEveryone Un Paid
+            self.Make_Everyone_Unpaid()
         
         #self.ui.btnUpdateStock.clicked.connect(lambda: self.OpenUpdatePage())
         #self.ui.btnBuyStock.clicked.connect(lambda: self.OpenBuyStockPage())
@@ -187,13 +191,7 @@ class ManaMainWindow(QMainWindow):
         self.ui.mainBody.setCurrentIndex(6)
         self.Load_SalaryTable()
         
-    def Load_SalaryTable(self):
-        now1 = date.today()
-        dateTime = now1.strftime("%Y-%m-%d")
-        day = dateTime.split("-")
-        if(day[2]=="20"): #MakeEveryone Un Paid
-            self.Make_Everyone_Unpaid()
-            
+    def Load_SalaryTable(self):    
         row = 0
         unPaid=[]
         self.ui.tableWidget_4.setRowCount(self.Get_Table_Row_Length())
@@ -210,10 +208,14 @@ class ManaMainWindow(QMainWindow):
                         self.ui.tableWidget_4.setItem(row, 3, QtWidgets.QTableWidgetItem(str(j[1].getSalary())))
                         print(j[1].get_s_status())
                         if (j[1].get_s_status() != 0):
+                            pass
                             self.ui.tableWidget_4.setItem(row, 4, QtWidgets.QTableWidgetItem("Paid"))
                         else:
                             self.ui.tableWidget_4.setItem(row, 4, QtWidgets.QTableWidgetItem("Un Paid"))
                             unPaid.append(j[1].getName())
+
+                        #self.ui.tableWidget_4.setCellWidget(row,4,btn)
+                        
                         row+=1
         self.Select_Employee(unPaid)
         
@@ -223,14 +225,33 @@ class ManaMainWindow(QMainWindow):
 
     def Pay_Salary(self):
         
-        employe=self.ui.cmb_Employee_3.currentText()
-        bonus=self.ui.txt_Bonus.text()
-        for i in self.userDL.getHashTable():
-            for j in i :
-                if(j!=None):
-                    if(j[1].getUserRole()!= 0):
-                        j[1].set_s_status(1)
-                        self.Load_SalaryTable()
+        employee=self.ui.cmb_Employee_3.currentText()
+        if(employee!=""):
+            bonus=self.ui.txt_Bonus.text()
+            if(bonus=="" or bonus==None):
+                bonus="0"
+            if(bonus.isdigit()):
+                isFound=False
+
+
+                for i in self.userDL.getHashTable():
+                    for j in i :
+                        if(j!=None):
+                            if(j[1].getUserRole()!= 0 and j[1].getName()==employee):
+                                j[1].set_s_status(1)
+                                isFound=True
+                                self.Load_SalaryTable()
+                                self.ui.txt_Bonus.clear()
+                                break
+                    if(isFound):
+                        break
+            else:
+                self.ui.txt_Bonus.clear()
+                QMessageBox.warning(self , "Error","Bonus must be integer and greater than zero")
+        else:
+            self.ui.txt_Bonus.clear()
+            QMessageBox.warning(self , "Error","Employee must be selected")
+
 
     def Make_Everyone_Unpaid(self):
         for i in self.userDL.getHashTable():
