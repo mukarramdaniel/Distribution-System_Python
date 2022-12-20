@@ -17,10 +17,11 @@ from PyQt5.QtGui import (QColor)
 import re
 from Core import User, InventorySupervisor, Rider , SaleAgent, Vehicle
 from DL.UserCRUD import UserCRUD
+from DL.AttendenceCRUD import AttendenceCRUD
 from DL.VehicleCRUD import VehicleCRUD
 
 from random import randint
-from datetime import date
+from datetime import date , datetime
 
 
 
@@ -33,6 +34,8 @@ class ManaMainWindow(QMainWindow):
         self.userDL.readFromTable()
         self.vehicleDL=VehicleCRUD()
         self.vehicleDL.loadFromTable()
+        self.AttendanceDL = AttendenceCRUD()
+        self.AttendanceDL.readData()
 
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(20)
@@ -164,7 +167,7 @@ class ManaMainWindow(QMainWindow):
         self.ui.btnDashboard.clicked.connect(lambda: self.OpenDashboardManager())
         self.ui.btnUpdateEmployee.clicked.connect(lambda: self.OpenUpdateEmployee())
         self.ui.btn_AddVehicle.clicked.connect(lambda: self.OpenAddVehicleManager())
-        self.ui.btnCheckAttendance.clicked.connect(lambda: self.OpenCheckAttendanceManager())
+        self.ui.btnCheckAttendance.clicked.connect(lambda: self.OpenCheckattendance())
         self.ui.btn_CompanyAccount.clicked.connect(lambda: self.OpenCompanyAccountManager())
         self.ui.btn_AddEmployee.clicked.connect(lambda: self.Add_Employee())
         self.ui.btn_GenerateID.clicked.connect(lambda: self.generate_userID())
@@ -289,12 +292,12 @@ class ManaMainWindow(QMainWindow):
         #self.ui.figure2.clear()
         #self.ui.figure3.clear()
 
-    def OpenCheckAttendanceManager(self):
-        self.ui.mainBody.setCurrentIndex(4)
     def OpenAddVehicleManager(self):
         self.ui.mainBody.setCurrentIndex(1)
         self.loadVehicle_tableWidget()   
-        
+    def OpenCheckattendance(self) :
+        self.ui.mainBody.setCurrentIndex(5)  
+        self.loadAttendance_tableWidget()  
     def OpenUpdateEmployee(self ):
         self.ui.mainBody.setCurrentIndex(2) 
         self.loadUpdate_tableWidget()   
@@ -450,7 +453,7 @@ class ManaMainWindow(QMainWindow):
                 QMessageBox.information(self,"ADDED" ,"Employee Added")
                 self.clear_screen()
             if(Employee_Status==3):
-                rider = Rider.Driver(my_user,Employee_Salary)
+                rider = Rider.Rider(my_user,Employee_Salary)
                 self.userDL.setUser(Employee_username,rider)
                 QMessageBox.information(self,"ADDED" ,"Employee Added")
                 self.clear_screen()
@@ -557,6 +560,31 @@ class ManaMainWindow(QMainWindow):
             self.ui.tableWidget_3.setItem(row, 1, QtWidgets.QTableWidgetItem(str(data.number)))
             self.ui.tableWidget_3.setItem(row, 2, QtWidgets.QTableWidgetItem(str(data.fuelAverage)))
             row=row+1
+    def loadAttendance_tableWidget(self) :
+        listt = self.AttendanceDL.getAttendancelist()
+        self.ui.table_CheckAttendance.setColumnCount(31)
+        import pandas as pd
+        import datetime
+        t=date.today()
+        base = pd.to_datetime(str(t))
+        date_list = [datetime.datetime.strftime(pd.to_datetime(base + datetime.timedelta(days=x)),"%Y-%m-%d") for x in range(31)]
+        date_list.insert(0,"Employee")
+        self.ui.table_CheckAttendance.setHorizontalHeaderLabels(date_list)
+        self.ui.table_CheckAttendance.setRowCount(len(listt))
+        row = 0
+        column = 1
+        for data in listt:
+            self.ui.table_CheckAttendance.setItem(row, 0, QtWidgets.QTableWidgetItem(str(data.getname())))
+            for i in data.getAttendenceList():
+                print(i)
+                #for j in range(1, len(date_list)-1):
+                if (date_list[column] == i) :
+                    self.ui.table_CheckAttendance.setItem(row, column, QtWidgets.QTableWidgetItem("P"))
+                elif ():
+                    self.ui.table_CheckAttendance.setItem(row, column, QtWidgets.QTableWidgetItem("A"))
+                column = column + 1
+            column = 1
+            row = row+1
     def addVehicle(self):
         model=self.ui.txt_VehicleModel.text()
         number=self.ui.txt_VehicleNumber.text()
@@ -568,7 +596,8 @@ class ManaMainWindow(QMainWindow):
             vehicle=Vehicle.Vehicle(model,number,fuelAverage)
             self.vehicleDL.addToList(vehicle)
             self.loadVehicle_tableWidget()
-    
+    def pay_salary (self) :
+
 if __name__=="__main__":
     app=QApplication(sys.argv)
     window=ManaMainWindow()

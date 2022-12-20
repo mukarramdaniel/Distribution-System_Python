@@ -1,11 +1,10 @@
 from Core.User import User
-class Driver(User):
-    def __init__(self,userT,resetToken):
+class Rider(User):
+    def __init__(self,userT,salary):
         super().__init__(userT)
         fieldArea=""
-        adjList=[]
-        self.resetToken=resetToken
+        self.salary=salary
         vehicle=None#vehicle object
         startLocation=None#location object
-        fuelRecord=[]
+        
 

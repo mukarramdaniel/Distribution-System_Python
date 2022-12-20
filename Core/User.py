@@ -10,7 +10,6 @@ class User:
     _CNIC=None
     _BankAccount=None
     _createdDate=None
-    _createdDate=None
     _updatedDate=None
     
     def __init__(self,userT):
