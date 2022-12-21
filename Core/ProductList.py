@@ -5,6 +5,7 @@ class ProducList:
         self.date=date
         self.ShoeList=ShoeList
         self.riderID=None
+        self.shopID=None
     def addShoeInList(self,shoe):
         self.ShoeList.append(shoe)
     def getShoeList(self):

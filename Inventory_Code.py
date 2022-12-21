@@ -28,9 +28,9 @@ class InventoryMainWindow(QMainWindow):
         self.ui.setupUi(self)
         self.user = user
         self.inventory=Inventory()
-        self.inventory.readFromTable()
+        #self.inventory.readFromTable()
         self.orderStockDL=StockOrder_DL()
-        self.orderStockDL.loadFromTable()
+        #self.orderStockDL.loadFromTable()
         self.temp_OrderList=[]
         self.total = 0
         self.row_cart=[]    #esy database mai store bhe krvana ha abhi
@@ -42,93 +42,22 @@ class InventoryMainWindow(QMainWindow):
         self.ui.btnBuyStock.clicked.connect(lambda: self.OpenPages(0))
         self.ui.btn_Update_Stock.clicked.connect(lambda: self.OpenPages(1))
         self.ui.btn_ViewStock.clicked.connect(lambda: self.OpenPageViewStock(2))
-        self.ui.btn_ReportCost.clicked.connect(lambda: self.OpenPageViewStock(4))
         self.ui.btn_AddtoCart.clicked.connect(lambda: self.AddToCart_Stock())
         self.ui.btn_RequestOrder.clicked.connect(lambda: self.orderStockFromCart())
-        self.ui.btn_ViewHistory.clicked.connect(lambda: self.openViewHistory())
-
         self.ui.btn_CheckIn.clicked.connect(lambda: self.checkInStock())
         self.ui.btn_MarkAttendance_2.clicked.connect(lambda: self.mark_attendance())
         self.ui.calendarWidget.clicked.connect(lambda: self.printDate())
         self.ui.lineEdit.setText(str(self.get_presents(self.attendanceDL)))
         self.ui.lineEdit_3.setText(str(self.get_absents(self.attendanceDL)))
-        self.ui.btn_Calculate.clicked.connect(lambda: self.Calculate_Selling_Price())
-        #self.ui.cmb_Category_2.view().pressed.connect(lambda: self.Handle_Product_Names())
-        self.ui.cmb_Category_2.currentIndexChanged.connect(lambda: self.Handle_Product_Category())
         self.show()
-
-    def openViewHistory(self):
-        self.ui.mainBody.setCurrentIndex(5)
-        self.Load_Table_History()
-    def Load_Table_History(self):
-        row=0
-        DlinkList=self.orderStockDL.getDLinklist()
-        self.ui.tableWidget_History.setRowCount(self.calculateRow_History())
-        while(DlinkList!=None):
-            #if(DlinkList.data.getStatus()==1):
-            for prod in DlinkList.data.getShoeList():
-                self.ui.tableWidget_History.setItem(row, 0, QtWidgets.QTableWidgetItem(str(DlinkList.data.getOrderID())))
-                self.ui.tableWidget_History.setItem(row, 1, QtWidgets.QTableWidgetItem(str(prod.getProductCategory())))
-                self.ui.tableWidget_History.setItem(row, 2, QtWidgets.QTableWidgetItem(str(prod.getColor())))
-                self.ui.tableWidget_History.setItem(row, 3, QtWidgets.QTableWidgetItem(str(prod.getBuyPrice())))
-                self.ui.tableWidget_History.setItem(row, 4, QtWidgets.QTableWidgetItem(str(DlinkList.data.date)))
-                self.ui.tableWidget_History.setItem(row, 5, QtWidgets.QTableWidgetItem(str(DlinkList.data.date)))
-            row +=1
-                    
-            DlinkList=DlinkList.next
-    def calculateRow_History(self):
-        count=0
-        DlinkList=self.orderStockDL.getDLinklist()
-        while(DlinkList!=None):
-            count+=1
-            DlinkList=DlinkList.next
-        return count
-    def Handle_Product_Category(self):
-        Category=self.ui.cmb_Category_2.currentText()
-        isFound=False
-        for bucket in self.inventory.getInventoryStock():
-            for prod in bucket:
-                if(prod!=None and prod[1].getProductCategory()==Category):
-                    self.ui.txt_BuyingPrice.setText(str(prod[1].getBuyPrice()))
-                    isFound=True
-                    break
-            if(isFound):
-                break
-        if(isFound==False):
-            QMessageBox.warning(self,"Category not Found" , "Product Category not available")
-
-
-    def Calculate_Selling_Price(self):
-        Category=self.ui.cmb_Category_2.currentText()
-        Buy_Price=(self.ui.txt_BuyingPrice.text())
-        Gov_Tax=(self.ui.txt_GovernmentTaxes.text())
-        Profit_Margin=(self.ui.txt_ProfitMargin.text())
-        Comapny_Expense=(self.ui.txt_Expenses.text())
-        if(Category!="" and Buy_Price!="" and Gov_Tax!="" and Profit_Margin!="" and Comapny_Expense!=""):
-            Margin=float(Buy_Price)*(float(Profit_Margin)/100)
-            Tax=float(Buy_Price)*(float(Gov_Tax)/100)
-            Sell_Price=float(Buy_Price)+Margin+Tax+float(Comapny_Expense)
-            self.ui.txt_CalculatedPrice.setText(str(Sell_Price))
-            isFound=False
-            for bucket in self.inventory.getInventoryStock():
-                for prod in bucket:
-                    if(prod!=None and prod[1].getProductCategory()==Category):
-                        prod[1].setSellPrice(Sell_Price)
-                        isFound=True
-                        break
-                if(isFound):
-                    break
-        else:
-            QMessageBox.warning(self,"Input Error" , "All inputs must be filled")
     def checkInStock(self):
         self.ui.table_UpdateStock.clearContents()
-         
+      
         DlinkList=self.orderStockDL.getDLinklist()
         while(DlinkList!=None):
             if(DlinkList.data.getStatus()==1):
-
-                # for prod in DlinkList.data.getShoeList():
-                #     self.inventory.setProduct(prod.getProductCategory(),prod)
+                for prod in DlinkList.data.getShoeList():
+                    self.inventory.setProduct(prod.getProductCategory(),prod)
                 DlinkList.data.setStatus(2)
             DlinkList=DlinkList.next
         
@@ -172,7 +101,10 @@ class InventoryMainWindow(QMainWindow):
                     if(prod[1].getSellPrice()==0):
                         self.ui.table_ViewStock.setItem(row, 3, QtWidgets.QTableWidgetItem("None"))
                     else:
-                        self.ui.table_ViewStock.setItem(row, 3, QtWidgets.QTableWidgetItem(str(prod[1].getSellPrice())))                 
+                        self.ui.table_ViewStock.setItem(row, 3, QtWidgets.QTableWidgetItem(str(prod[1].getSellPrice())))
+                           
+                    
+                    
                     
                     row +=1
                     
@@ -183,7 +115,6 @@ class InventoryMainWindow(QMainWindow):
                 if(j!=None):
                     stockCount +=1
         return stockCount
-    
     def table_CheckInLoad(self):
         
         row=0
@@ -237,9 +168,9 @@ class InventoryMainWindow(QMainWindow):
         for prod in self.row_cart:
             self.ui.Table_BuyCartStock.setItem(row, 0, QtWidgets.QTableWidgetItem(str(prod[0])))
             self.ui.Table_BuyCartStock.setItem(row, 1, QtWidgets.QTableWidgetItem(str(prod[1])))
-            self.ui.Table_BuyCartStock.setItem(row, 2, QtWidgets.QTableWidgetItem(str(prod[2])))
-            self.ui.Table_BuyCartStock.setItem(row, 3, QtWidgets.QTableWidgetItem(str(prod[3])))
-            self.ui.Table_BuyCartStock.setItem(row, 4, QtWidgets.QTableWidgetItem(str(prod[4])))
+            self.ui.Table_BuyCartStock.setItem(row, 2, QtWidgets.QTableWidgetItem(str(prod[1])))
+            self.ui.Table_BuyCartStock.setItem(row, 3, QtWidgets.QTableWidgetItem(str(prod[1])))
+            self.ui.Table_BuyCartStock.setItem(row, 4, QtWidgets.QTableWidgetItem(str(prod[1])))
             row +=1
         row=row+1
         if(len(self.row_cart)!=0):
@@ -269,7 +200,7 @@ class InventoryMainWindow(QMainWindow):
             att = Attendence(self.user.getUserName() , self.user.getName())
             att.addInDateTimeList(today)
             self.attendanceDL.addIntoList(att)
-            self.attendanceDL.insert_attendance(self.attendanceDL.getAttendancelist())
+            self.attendanceDL.insert_attendance()
         else :
             QMessageBox.warning(self,"Invalid Date" , "Please Select today's Date")
     def get_presents (self,attendanceDL) :
@@ -285,7 +216,6 @@ class InventoryMainWindow(QMainWindow):
         presents = self.get_presents(attendanceDL)
         absents = currentday - presents
         return absents        
-    
 
         
 

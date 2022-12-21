@@ -20,15 +20,21 @@ class RiderMainWindow(QMainWindow):
     def __init__(self,parent=None):
         QMainWindow.__init__(self)
         self.ui=Ui_RiderWindow()
+        riderID=4
+        
+        self.orderDL=RiderOrders()
+        self.orderDL.loadFromTable()
         self.ui.setupUi(self)
-        initCart=Cart()
-        initCart.loadFromTable()
-        self.cart=initCart.getCart()
+        self.CartDL=Cart()
+        self.CartDL.loadFromTable()
+        self.cart=self.CartDL.getCart()
         self.shopDL=ShopCRUD()
         self.shopDL.loadFromTable()
         self.inventory=Inventory()
         self.inventory.readFromTable()
         self.cartProducts=None
+        self.Shoes=None
+        self.riderID=3130258066433
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(20)
         self.shadow.setXOffset(0)
@@ -142,8 +148,63 @@ class RiderMainWindow(QMainWindow):
         self.ui.btn_Add.clicked.connect(lambda: self.addShop())
         self.ui.btn_Map.clicked.connect(lambda: self.selectShopMap())
         self.ui.btn_AddtoCart_2.clicked.connect(lambda: self.addToCart())
+        self.ui.comboBox.currentIndexChanged.connect(self.showShopSummary)
+        self.ui.btn_ConfirmOrder_2.clicked.connect(self.confirmOrder)
+        
         
         self.show()
+    def confirmOrder(self):
+        prodsCart=[]
+        if(len(self.temp)!=0):#temp is list the cart item of that shop to avoid again checkking of shop ordercart
+            if(self.ui.tableWidget_Cart.rowCount()!=0):
+                for idx in self.temp:
+                    prod=self.cart[idx]
+                    #quantity,category,color,type
+                    
+                    prodsCart=self.inventory.deductFromInventory(prod[1],prod[0],prod[2],prod[4])+prodsCart
+                
+                if(prodsCart):
+                    self.addIntoOrders(prodsCart,prod[5])#orderiD=>shopID for that scenerio
+                    self.temp.remove(idx)#temp int elemet(idx) stored delete whose orderdone
+                    del self.cart[idx]#del from cart whole index stored in temp
+                    self.CartDL.updateTable()
+                    self.inventory.updateTable()
+                        
+        self.showInCart()
+                
+                        
+                    #shoes that are in cart object list
+                    
+                
+    def addIntoOrders(self,prodsCart,shopID):
+        from datetime import datetime
+        now = datetime.now()
+        date = now.strftime("%d-%m-%Y %H:%M:%S")
+        orderID=len(self.orderDL.queue)+1
+        riderID=self.riderID
+        order=ProducList(orderID,date,[],1)
+        order.setriderID(riderID)
+        order.shopID=shopID
+        for i in prodsCart:
+            order.addShoeInList(i)
+        self.orderDL.enqueue(order)
+        self.orderDL.updateTable()
+    def showShopSummary(self):
+        checkShop=self.ui.comboBox.currentText()
+        shops=self.shopDL.getList()
+        while(shops!=None):
+            if(checkShop==shops.getData().getShopName()):
+                self.ui.txt_Cnic_2.setText(shops.getData().getCnic())
+                self.ui.txt_Email_2.setText(shops.getData().getEmail())
+                self.ui.txt_Address_2.setText(shops.getData().getlocation().getaddress())
+                self.shopID=shops.getData().getCnic()
+                self.ui.txt_PhoneNumber_2.setText(shops.getData().getphoneNum())
+                self.ui.txt_Shop_2.setText(shops.getData().getShopName())
+                break
+            
+            shops=shops.next
+        self.showInCart()
+        
     def selectShopMap(self):
         #pass
         self.MainWindow = QtWidgets.QMainWindow()
@@ -170,7 +231,7 @@ class RiderMainWindow(QMainWindow):
         closeTime=self.ui.timeEdit_2.text()
         now = datetime.now()
         created_on = now.strftime("%d-%m-%Y %H:%M:%S")
-        shop=Shop(4,name,cnic,email,location,PhoneNumber,AccountNo,Area,shopName,openTime,closeTime,created_on)
+        shop=Shop(self.riderID,name,cnic,email,location,PhoneNumber,AccountNo,Area,shopName,openTime,closeTime,created_on)
         self.shopDL.Insert(shop)
         self.shopDL.updateTable()
     def OpenDashBoard(self):
@@ -182,36 +243,67 @@ class RiderMainWindow(QMainWindow):
         self.ui.mainBody.setCurrentIndex(1)
         cmb=[]
         shops=self.shopDL.getList()
-        self.showInCart()
-        
         while(shops!=None):
             cmb.append(shops.getData().getShopName())
             shops=shops.next
         self.ui.comboBox.addItems(cmb)
+        self.ui.lineEdit_2.clear()#setting on screen
+        
+        
+        
        
     def addToCart(self):
         self.inventory.getInventoryStock()
+        shopName=self.ui.comboBox.currentText()
         category=self.ui.cmb_Category_2.currentText()
         quantity=self.ui.spb_Quantity_2.text()
-        color=self.ui.spb_Size_2.text()
+        color=self.ui.cmb_Color_2.currentText()
         type=self.ui.cmb_type.currentText()
-        size=self.ui.spb_Size_2.text()
-        self.cartProducts=self.inventory.getShoe(quantity,category,color,type)#shoes that are in cart object list
-        self.cart.addIntoCart((category,int(quantity),color,int(size),type))
-        self.ui.tableWidget_Cart.setRowCount(len(self.cart))#setting row count of ui_datatable
-        self.showInCart()
-        self.cart.updateTable()#updating databasetable
-        
+        self.Shoes=self.inventory.getShoe(quantity,category,color,type)#shoes that are in cart object list
+        if(self.Shoes!=None):
+            subTotal=self.calculateSubTotal(self.Shoes)# calculating subtotal of cart
+            self.ui.lineEdit_2.setText(str(subTotal))#setting on screen
+            self.CartDL.addIntoCart((category,int(quantity),color,type,subTotal,self.shopID))
+            self.ui.tableWidget_Cart.setRowCount(len(self.cart))#setting row count of ui_datatable
+            self.showInCart()
+            self.CartDL.updateTable()#updating databasetable
+        else:
+            msg_box = QMessageBox()
+            msg_box.setText("Item Unavailable")
+            msg_box.setWindowTitle("Caution") 
+        self.clearFields()  
+    def clearFields(self):
+        self.ui.cmb_Category_2.clearEditText()
+        self.ui.spb_Quantity_2.clearMask()
+        self.ui.cmb_type.clearEditText()
+        self.ui.cmb_Color_2.clearMask()
+    def calculateSubTotal(self,Shoes):
+        total=0
+        for shoe in Shoes:
+            total +=shoe.getSellPrice()
+        return total
+               
     def showInCart(self):
+        rowCount=0
+        self.temp=[] 
+        for idx,i in enumerate(self.cart):
+            if(self.shopID==str(i[5])):
+                self.temp.append(idx)
+                rowCount +=1
+        self.ui.tableWidget_Cart.clearContents()
+        self.ui.tableWidget_Cart.setRowCount(rowCount)
+        
         row=0
-        for i in self.cart:
-            
+        self.total=0
+        for j in self.temp:
+            i=self.cart[j]
             self.ui.tableWidget_Cart.setItem(row, 0, QtWidgets.QTableWidgetItem(str(i[0])))
             self.ui.tableWidget_Cart.setItem(row, 1, QtWidgets.QTableWidgetItem(str(i[2])))
             self.ui.tableWidget_Cart.setItem(row, 2, QtWidgets.QTableWidgetItem(str(i[3])))
-            self.ui.tableWidget_Cart.setItem(row, 2, QtWidgets.QTableWidgetItem(str(i[5])))
-            
+            self.ui.tableWidget_Cart.setItem(row, 3, QtWidgets.QTableWidgetItem(str(i[4])))
+            self.total +=int(i[4])
             row +=1
+        self.ui.txt_Total.setText(str(self.total))
         
         
     def OpenDeliverOrder(self):

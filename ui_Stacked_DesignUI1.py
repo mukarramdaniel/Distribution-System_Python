@@ -2678,7 +2678,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.LeftMenu.setCurrentIndex(0)
-        self.mainBody.setCurrentIndex(6)
+        self.mainBody.setCurrentIndex(5)
         self.btn_AccountFinanace.toggled['bool'].connect(self.widget_13.setVisible) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
