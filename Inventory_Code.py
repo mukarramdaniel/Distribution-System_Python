@@ -10,7 +10,7 @@ import re
 from Core.Shoe import Shoe
 from Core.Attendence import Attendence
 from DL.AttendenceCRUD import AttendenceCRUD
-from Core.ProductList import ProducList
+from Core.Order import Order
 from DL.StockOrder_DL import StockOrder_DL
 from DL.Inventory import Inventory
 from random import randint
@@ -65,7 +65,7 @@ class InventoryMainWindow(QMainWindow):
     def orderStockFromCart(self):
         now = datetime.now()
         date = now.strftime("%d-%m-%Y %H:%M:%S")
-        order=ProducList(self.orderStockDL.generateOrderID(),date,self.temp_OrderList,0)
+        order=Order(self.orderStockDL.generateOrderID(),date,self.temp_OrderList,0)
         self.orderStockDL.Insert(order)
         self.row_cart.clear()
         self.emptyTableAndList()

@@ -1,4 +1,4 @@
-from Core.ProductList import *
+from Core.Order import *
 from Core.Shoe import Shoe
 class Node:
     def __init__(self, data):
@@ -7,9 +7,9 @@ class Node:
 
 
  
-class RiderOrders:
+class OrderLine:
     def __init__(self):
-        self.queue = []
+        self.__queue = []
     
     def enqueue(self, item):
         self.queue.append(item)
@@ -41,7 +41,7 @@ class RiderOrders:
                 status=prod[10]
                 riderID=prod[11]
                 shopID=prod[12]
-                order=ProducList(prod[8],prod[9],[],status)
+                order=Order(prod[8],prod[9],[],status)
                 order.setriderID(riderID)
                 order.shopID=shopID
             else:

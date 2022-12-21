@@ -14,7 +14,7 @@ from PyQt5.QtCore import QPropertyAnimation
 from PyQt5.QtGui import (QColor)
 from datetime import datetime
 from DL.Inventory import Inventory
-from DL.OrderCRUD import *
+from DL.OrderLine import *
 
 class RiderMainWindow(QMainWindow):
     def __init__(self,parent=None):
@@ -22,7 +22,7 @@ class RiderMainWindow(QMainWindow):
         self.ui=Ui_RiderWindow()
         riderID=4
         
-        self.orderDL=RiderOrders()
+        self.orderDL=OrderLine()
         self.orderDL.loadFromTable()
         self.ui.setupUi(self)
         self.CartDL=Cart()
@@ -182,7 +182,7 @@ class RiderMainWindow(QMainWindow):
         date = now.strftime("%d-%m-%Y %H:%M:%S")
         orderID=len(self.orderDL.queue)+1
         riderID=self.riderID
-        order=ProducList(orderID,date,[],1)
+        order=Order(orderID,date,[],1)
         order.setriderID(riderID)
         order.shopID=shopID
         for i in prodsCart:

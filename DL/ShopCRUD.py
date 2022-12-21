@@ -19,7 +19,6 @@ class Node:
 class ShopCRUD:
     def __init__(self):
         self.head=None
-        self.linklist=[]
   
     def Insert_at_Head(self,val): # insert at head
         New_Node=Node(val)

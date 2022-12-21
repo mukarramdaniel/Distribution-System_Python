@@ -1,7 +1,7 @@
 import sys
 sys.path.insert(1,"Core")
 from Core.Shoe import Shoe
-from Core.ProductList import ProducList
+from Core.Order import Order
 class Inventory:
   
     def __init__(self):

@@ -11,25 +11,19 @@ class MapWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        # Create a QWebEngineView widget and set it as the central widget
-        # of the main window
+        
         self.webview = QWebEngineView(self)
         self.setCentralWidget(self.webview)
-        locations = [
-            (40.7128, -74.0060),  # New York City
-            (34.0522, -118.2437), # Los Angeles
-        ]
+        # locations = [
+        #     (40.7128, -74.0060)
+        #     (34.0522, -118.2437)
+        # ]
         gmaps = googlemaps.Client("AIzaSyBebwTrA8E0hXbyw8R2dUQRTFOg7q517U0")
 
-        # Use the directions() method to retrieve the road route between the locations
-        result = gmaps.directions(locations[0], locations[1])
+        #result = gmaps.directions(locations[0], locations[1])
 
-        # Extract the polyline from the result
-        polyline = result[0]['overview_polyline']['points']
+        #polyline = result[0]['overview_polyline']['points']
 
-
-        # Load a map from the Google Maps API
-        #self.webview.load(QUrl('https://maps.google.com/'))
         html='''
         <html>
           <head>
@@ -37,7 +31,7 @@ class MapWindow(QMainWindow):
             <script>
               function initMap() {
                 var map = new google.maps.Map(document.getElementById('map'), {
-                  zoom: 100,
+                  zoom: 20,
                   center: {lat: 31.58060073946487, lng: 74.35624319553045}
                 });
 
@@ -55,7 +49,7 @@ class MapWindow(QMainWindow):
 
                 var pathLine = new google.maps.Polyline({
                   path: pathCoordinates,
-                  strokeColor: '#FF0000',
+                  strokeColor: '#004300',
                   strokeOpacity: 1.0,
                   strokeWeight: 2
                 });

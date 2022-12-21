@@ -1,7 +1,7 @@
 import sys
 sys.path.insert(2,"Core")
 from Core import Shoe
-from Core.ProductList import ProducList
+from Core.Order import Order
 
 class Node:
     def __init__(self,val):
@@ -103,7 +103,7 @@ class StockOrder_DL:
                     shoe=Shoe.Shoe(x[0],x[1],x[2],x[3],x[4],x[5],x[6],x[7])
                     temp.append(shoe)
             if(flag):
-                order=ProducList(id,date,temp,status)
+                order=Order(id,date,temp,status)
                 self.Insert_at_Head(order) 
             if(flag==False):
                 break
