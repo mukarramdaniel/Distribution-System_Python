@@ -9,12 +9,14 @@ from PyQt5.QtGui import (QColor)
 import re
 from Core.Shoe import Shoe
 from Core.Attendence import Attendence
+from Core.Notification import Notific
 from DL.AttendenceCRUD import AttendenceCRUD
 from Core.ProductList import ProducList
 from DL.StockOrder_DL import StockOrder_DL
 from DL.Inventory import Inventory
 from random import randint
 from DL.UserCRUD import UserCRUD
+from DL.NotificationDL import Notifications
 #import Login_Code
 from datetime import datetime,date
 
@@ -31,6 +33,7 @@ class InventoryMainWindow(QMainWindow):
         self.inventory.readFromTable()
         self.orderStockDL=StockOrder_DL()
         self.orderStockDL.loadFromTable()
+        self.Notification_DL=Notifications()
         self.temp_OrderList=[]
         self.total = 0
         self.row_cart=[]    #esy database mai store bhe krvana ha abhi
@@ -73,14 +76,15 @@ class InventoryMainWindow(QMainWindow):
                 self.ui.tableWidget_History.setItem(row, 3, QtWidgets.QTableWidgetItem(str(prod.getBuyPrice())))
                 self.ui.tableWidget_History.setItem(row, 4, QtWidgets.QTableWidgetItem(str(DlinkList.data.date)))
                 self.ui.tableWidget_History.setItem(row, 5, QtWidgets.QTableWidgetItem(str(DlinkList.data.date)))
-            row +=1
+                row +=1
                     
             DlinkList=DlinkList.next
     def calculateRow_History(self):
         count=0
         DlinkList=self.orderStockDL.getDLinklist()
         while(DlinkList!=None):
-            count+=1
+            for prod in DlinkList.data.getShoeList():
+                count+=1
             DlinkList=DlinkList.next
         return count
     def Handle_Product_Category(self):
@@ -114,10 +118,9 @@ class InventoryMainWindow(QMainWindow):
                 for prod in bucket:
                     if(prod!=None and prod[1].getProductCategory()==Category):
                         prod[1].setSellPrice(Sell_Price)
+                        prod[1].setProfirMargin(float(Profit_Margin))
                         isFound=True
-                        break
-                if(isFound):
-                    break
+                        
         else:
             QMessageBox.warning(self,"Input Error" , "All inputs must be filled")
     def checkInStock(self):
@@ -140,13 +143,15 @@ class InventoryMainWindow(QMainWindow):
         self.orderStockDL.Insert(order)
         self.row_cart.clear()
         self.emptyTableAndList()
+        n=Notific(order, "Order is placed. Kindly check Email for Further Details")
+        self.Notification_DL.Add_Notification(n)
         if(len(self.row_cart)==0):
             self.ui.btn_RequestOrder.setEnabled(0)
         else:
             self.ui.btn_RequestOrder.setEnabled(1)
     def emptyTableAndList(self):
         self.ui.Table_BuyCartStock.clearContents()
-        self.temp_OrderList.clear()
+        self.temp_OrderList=[]
     def OpenPages(self,idx):
         
        
@@ -211,16 +216,19 @@ class InventoryMainWindow(QMainWindow):
         Product_Color=self.ui.cmb_Color.currentText()
         Product_Price=self.ui.txt_PriceperShoes.text()
         t_price=0
-        self.row_cart.append((Product_Category,Product_Quantity,Product_Size,Product_Color,Product_Price,t_price))
-        prodID=self.generateProdID()
-        self.clearField()
-        for i in range(int(Product_Quantity)):
-            shoe = Shoe(Product_Category, Product_Price, 0 , Product_Size, 0 , Product_Color, prodID,"men")
-            t_price +=int(Product_Price)
-            self.temp_OrderList.append(shoe)
-        self.loadUpdate_tableWidget(t_price)
-        
-        QMessageBox.information(self,"ADDED" ,"Product Added")
+        if(int(Product_Quantity)>0 and int(Product_Size)>0 and int(Product_Price)>0 and Product_Price.isdigit()):
+            self.row_cart.append((Product_Category,Product_Quantity,Product_Size,Product_Color,Product_Price,t_price))
+            prodID=self.generateProdID()
+            self.clearField()
+            for i in range(int(Product_Quantity)):
+                shoe = Shoe(Product_Category, Product_Price, 0 , Product_Size, 0 , Product_Color, prodID,"men")
+                t_price +=int(Product_Price)
+                self.temp_OrderList.append(shoe)
+            self.loadUpdate_tableWidget(t_price)
+
+            QMessageBox.information(self,"ADDED" ,"Product Added")
+        else:
+            QMessageBox.warning(self,"Invalid" ,"Invalid Input")
     def clearField(self):
         self.ui.cmb_Category.clearEditText()
         self.ui.spb_Quantity.cleanText()

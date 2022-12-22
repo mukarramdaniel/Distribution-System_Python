@@ -19,7 +19,7 @@ class AttendenceCRUD:
         database="dbarm"
         )
         mycursor = mydb.cursor()
-        sql = "INSERT INTO attendence(userName,name,date) VALUES (%s,%s,%s,%s)"
+        sql = "INSERT INTO attendence(userName,name,date,id) VALUES (%s,%s,%s,%s)"
         for i in listt :
             for j in i.getAttendenceList() :
                 code = str(randint(start,end))

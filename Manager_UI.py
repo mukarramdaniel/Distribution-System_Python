@@ -19,6 +19,7 @@ from Core import User, InventorySupervisor, Rider , SaleAgent, Vehicle
 from DL.UserCRUD import UserCRUD
 from DL.AttendenceCRUD import AttendenceCRUD
 from DL.VehicleCRUD import VehicleCRUD
+from DL.NotificationDL import Notifications
 
 from random import randint
 from datetime import date , datetime
@@ -36,6 +37,9 @@ class ManaMainWindow(QMainWindow):
         self.vehicleDL.loadFromTable()
         self.AttendanceDL = AttendenceCRUD()
         self.AttendanceDL.readData()
+
+        self.noti=Notifications()
+        self.noti.GetNotification()
 
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(20)
@@ -184,9 +188,25 @@ class ManaMainWindow(QMainWindow):
         self.ui.btn_SalaryBonus.clicked.connect(lambda: self.OpenSalaryPage())
         self.ui.btn_paySalary.clicked.connect(lambda: self.Pay_Salary())
         self.ui.btn_MonthlyReport.clicked.connect(lambda: self.export_to_excel(self.ui.table_CheckAttendance))
-        
+        self.ui.btnNotification.clicked.connect(lambda: self.Open_NotificationPage())
+
         self.show()
     
+    def Open_NotificationPage(self):
+        self.ui.mainBody.setCurrentIndex(8)
+        self.LoadNotificationTable()
+    def LoadNotificationTable(self):
+        row=0
+        self.ui.table_Notification.setRowCount(5)
+        for i in range(5):
+            btn_Edit = QPushButton()
+            btn_Edit.setText("Confirm")
+            self.ui.table_Notification.setCellWidget(row,2,btn_Edit)
+            btn_Delete=QPushButton()
+            btn_Delete.setText("Reject")
+            self.ui.table_Notification.setCellWidget(row,3,btn_Delete)
+            row+=1
+            
     def OpenSalaryPage(self):
         self.ui.mainBody.setCurrentIndex(6)
         self.Load_SalaryTable()
