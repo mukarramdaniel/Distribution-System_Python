@@ -1614,19 +1614,6 @@ border-radius:20px;
                         </widget>
                        </item>
                        <item>
-                        <widget class="QLabel" name="label_38">
-                         <property name="font">
-                          <font>
-                           <weight>75</weight>
-                           <bold>true</bold>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>Select Size:</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
                         <widget class="QLabel" name="Type">
                          <property name="font">
                           <font>
@@ -1670,12 +1657,12 @@ border-radius:20px;
                          </property>
                          <item>
                           <property name="text">
-                           <string>Athletic Shoes</string>
+                           <string>sandles</string>
                           </property>
                          </item>
                          <item>
                           <property name="text">
-                           <string>Sneakers</string>
+                           <string>Joggers</string>
                           </property>
                          </item>
                         </widget>
@@ -1700,24 +1687,14 @@ border-radius:20px;
                          </property>
                          <item>
                           <property name="text">
-                           <string>Black</string>
+                           <string>black</string>
                           </property>
                          </item>
                          <item>
                           <property name="text">
-                           <string>White</string>
+                           <string>brown</string>
                           </property>
                          </item>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QSpinBox" name="spb_Size_2">
-                         <property name="minimumSize">
-                          <size>
-                           <width>0</width>
-                           <height>20</height>
-                          </size>
-                         </property>
                         </widget>
                        </item>
                        <item>
@@ -1728,6 +1705,16 @@ border-radius:20px;
                            <height>20</height>
                           </size>
                          </property>
+                         <item>
+                          <property name="text">
+                           <string>male</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>female</string>
+                          </property>
+                         </item>
                         </widget>
                        </item>
                       </layout>
@@ -1992,19 +1979,6 @@ border-radius:20px;
                         </widget>
                        </item>
                        <item>
-                        <widget class="QLabel" name="label_20">
-                         <property name="font">
-                          <font>
-                           <weight>75</weight>
-                           <bold>true</bold>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>Name:</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
                         <widget class="QLabel" name="label_21">
                          <property name="font">
                           <font>
@@ -2040,19 +2014,6 @@ border-radius:20px;
                          </property>
                          <property name="text">
                           <string>Phone Number:</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLabel" name="label_24">
-                         <property name="font">
-                          <font>
-                           <weight>75</weight>
-                           <bold>true</bold>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>Location:</string>
                          </property>
                         </widget>
                        </item>
@@ -2101,22 +2062,6 @@ border-radius:20px;
                         </widget>
                        </item>
                        <item>
-                        <widget class="QLineEdit" name="txt_Name_2">
-                         <property name="minimumSize">
-                          <size>
-                           <width>0</width>
-                           <height>30</height>
-                          </size>
-                         </property>
-                         <property name="readOnly">
-                          <bool>true</bool>
-                         </property>
-                         <property name="placeholderText">
-                          <string>  Name</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
                         <widget class="QLineEdit" name="txt_Email_2">
                          <property name="minimumSize">
                           <size>
@@ -2161,22 +2106,6 @@ border-radius:20px;
                          </property>
                          <property name="placeholderText">
                           <string>  Phone Number</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLineEdit" name="txt_Location">
-                         <property name="minimumSize">
-                          <size>
-                           <width>0</width>
-                           <height>30</height>
-                          </size>
-                         </property>
-                         <property name="readOnly">
-                          <bool>true</bool>
-                         </property>
-                         <property name="placeholderText">
-                          <string>  Location</string>
                          </property>
                         </widget>
                        </item>
@@ -2286,13 +2215,7 @@ border-radius:20px;
                          </column>
                          <column>
                           <property name="text">
-                           <string>Size</string>
-                          </property>
-                          <property name="font">
-                           <font>
-                            <weight>75</weight>
-                            <bold>true</bold>
-                           </font>
+                           <string>Type</string>
                           </property>
                          </column>
                          <column>

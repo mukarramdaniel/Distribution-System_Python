@@ -1,76 +1,26 @@
 from Core.ProductList import *
 from Core.Shoe import Shoe
 class Node:
-    def __init__(self,val):
-        self.data=val
-        self.next=None
-        self.prev=None
+    def __init__(self, data):
+        self.data = data
+        self.next = None
 
+
+ 
 class RiderOrders:
     def __init__(self):
-        self.head=None
-   
-    def Insert_at_Head(self,val): # insert at head
-        New_Node=Node(val)
-        New_Node.next=self.head
-        if(self.head != None):
-            self.head.prev=New_Node
-        self.head=New_Node
-        New_Node.prev=None
-    def getList(self):
-        return self.linklist
-    def Insert(self,val):
-        New_Node=Node(val)
-        last=self.head
-        New_Node.next=None
-        if(self.head==None):
-            New_Node.prev=None
-            self.head=New_Node
-            return
-        
-        while(last.next!=None):
-            last=last.next
-        last.next=New_Node
-        New_Node.prev=last
+        self.queue = []
     
-    def Insert_btw_Nodes(self,prev_Node,val):
-        if(prev_Node==None):
-            print("Previous node cannot be empty")
-            return
-        New_Node=Node(val)
-        New_Node.next=prev_Node.next
-        prev_Node.next=New_Node
-        New_Node.prev=prev_Node
-        if(New_Node.next!=None):
-            New_Node.next.prev=New_Node
+    def enqueue(self, item):
+        self.queue.append(item)
+    
+    def dequeue(self):
+        return self.queue.pop(0)
+    
+    def is_empty(self):
+        return not bool(self.queue)
 
-    def Delete(self,val):
-        start=self.head
-        Node_Deleted=False
-
-        if(start==None):
-            return
-        elif(start.data==val): # deleting from start
-            self.head=start.next
-            return
-        while(start!=None):
-            if(start.data==val):
-                break
-            start=start.next
-        if(start.next==None): #deleting from end
-            start=start.prev
-            start.next=None
-        else:
-            start.prev.next=start.next
-            start.next.prev=start.prev
-            
-    def getDLinklist(self):
-        return self.head
-    def Print_List(self,node):
-        while(node!=None):
-            print(" {}".format(node.data))
-            node=node.next
-        
+    
     def loadFromTable(self):
         import mysql.connector
         mydb = mysql.connector.connect(
@@ -79,33 +29,32 @@ class RiderOrders:
         password="Rosepetal514@",
         database="dbarm"
         )
+        mycursor = mydb.cursor()
+        mycursor.execute("SELECT prodCategory,buyPrice,profitMargin,shoeSize,selPrice,color,prodID,type,orderID,date,status,riderID,shopID FROM riderorder")
 
-        mycursor = mydb.cursor()    
+        my = list(mycursor.fetchall())
+        myprods = list(map(list , my))
+        print(myprods)
+        for prod in myprods :
+            order=prod[8]
+            if (order != None) :
+                status=prod[10]
+                riderID=prod[11]
+                shopID=prod[12]
+                order=ProducList(prod[8],prod[9],[],status)
+                order.setriderID(riderID)
+                order.shopID=shopID
+            else:
+                order=None
+            for j in myprods :
+                if (prod[8]== order and prod[8]!=None) :
+                    prod[8] = None
+                    order.addShoeInList(Shoe(prod[0],prod[1],prod[2],prod[3],prod[4],prod[5],prod[6],prod[7]))
+            if(order!=None)        :
+                self.enqueue(order)
+        mydb.close()
 
-        mycursor.execute("SELECT prodCategory,buyPrice,profitMargin,shoeSize,selPrice,color,prodID,type,orderID,date,status,riderID FROM riderorder")
-
-        myresult = mycursor.fetchall()
-        id=1
-        date=""
-        temp=[]
-        while(True):
-            flag=False
-            
-            temp=[]
-            for x in myresult:
-                if(x[8]==id):
-                    flag=True
-                    date=x[9]
-                    status=x[10]
-                    shoe=Shoe.Shoe(x[0],x[1],x[2],x[3],x[4],x[5],x[6],x[7])
-                    temp.append(shoe)
-            if(flag):
-                order=ProducList(id,date,temp,status)
-                self.Insert_at_Head(order) 
-            if(flag==False):
-                break
-            id +=1       
-            mydb.close()
+        
     def updateTable(self):
         import mysql.connector
         mydb = mysql.connector.connect(
@@ -115,23 +64,26 @@ class RiderOrders:
         database="dbarm"
         )
         mycursor = mydb.cursor()
-        sql = "INSERT IGNORE INTO riderorder(prodCategory,buyPrice,profitMargin,shoeSize,selPrice,color,prodID,type,orderID,date,status,riderID) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)  "
-        data=self.head
-        while(data!=None):
-            productlist=data.getData()
+        mycursor.execute("TRUNCATE TABLE riderorder")
+        mydb.commit()
+        list=self.queue
+        sql = "INSERT IGNORE INTO riderorder(prodCategory,buyPrice,profitMargin,shoeSize,selPrice,color,prodID,type,orderID,date,status,riderID,shopID) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)  "
+        while(self.is_empty()==False):
+            
+            productlist=self.dequeue()
             date=productlist.getDate()
             status=productlist.getStatus() 
             riderID=productlist.getriderID()   
             orderID=productlist.getOrderID()
             shoes=productlist.getShoeList()
             for shoe in shoes:
-                val = (shoe.getProductCategory(),shoe.getBuyPrice(),shoe.getProfirMargin(),shoe.getShoeSize().getSellPrice(),shoe.getColor().getprodID(),shoe.getType(),orderID,date,status,riderID)
+                val = (shoe.getProductCategory(),shoe.getBuyPrice(),shoe.getProfirMargin(),shoe.getShoeSize(),shoe.getSellPrice(),shoe.getColor(),shoe.getprodID(),shoe.getType(),orderID,date,status,riderID,productlist.shopID)
                 mycursor.execute(sql,val)
-                data=data.next
                 mydb.commit()
         mydb.close()
         print("Inserted") 
-        
+        self.queue=list
+            
 class Cart:
     def __init__(self) -> None:
         self.cart=None
@@ -150,7 +102,7 @@ class Cart:
 
         mycursor = mydb.cursor()    
 
-        mycursor.execute("SELECT category, quantity, color, size, type, total FROM cart")
+        mycursor.execute("SELECT category, quantity, color, type,total,orderID  FROM cart")
 
         myresult = mycursor.fetchall()
         self.cart=list(map(list, myresult))
@@ -166,13 +118,12 @@ class Cart:
         )
 
         mycursor = mydb.cursor()    
-        sql = "INSERT IGNORE INTO cart(category, quantity, color, size, type, total) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)  "
+        mycursor.execute("TRUNCATE TABLE cart")
+        mydb.commit()
+        sql = "INSERT IGNORE INTO cart(category, quantity, color, type,total,orderID ) VALUES (%s,%s,%s,%s,%s,%s)  "
         for ca in self.cart:
             val = (ca[0],ca[1],ca[2],ca[3],ca[4],ca[5])
             mycursor.execute(sql,val)
             mydb.commit()
         mydb.close()
-        
-        
-    
         
