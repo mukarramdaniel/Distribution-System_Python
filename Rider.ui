@@ -614,7 +614,7 @@ background-color:#ececec;
        <number>1</number>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>8</number>
       </property>
       <widget class="QWidget" name="page_DeliverOrder">
        <property name="styleSheet">
@@ -3527,7 +3527,7 @@ background-color:#ececec;
                           </font>
                          </property>
                          <property name="readOnly">
-                          <bool>true</bool>
+                          <bool>false</bool>
                          </property>
                          <property name="placeholderText">
                           <string>  Name</string>
@@ -3593,7 +3593,7 @@ background-color:#ececec;
                              <string/>
                             </property>
                             <property name="readOnly">
-                             <bool>true</bool>
+                             <bool>false</bool>
                             </property>
                             <property name="placeholderText">
                              <string>Address</string>
@@ -4199,7 +4199,7 @@ background-color:#ececec;
                  </font>
                 </property>
                 <property name="text">
-                 <string>View Location</string>
+                 <string>Today's Route</string>
                 </property>
                 <property name="icon">
                  <iconset resource="Resource.qrc">
@@ -4778,6 +4778,145 @@ background-color:#ececec;
                </widget>
               </item>
              </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="page">
+       <property name="styleSheet">
+        <string notr="true">#HeaderFrame_14{
+
+background-color:qlineargradient(spread:pad,x1:0,y1:0.505682,x2:1,y2:0.477,stop:0 rgba(20,47,78,219),stop:1 rgba(85,98,112,150));
+ border-radius: 20px;
+
+}</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_54">
+        <item>
+         <widget class="QWidget" name="widget_82" native="true">
+          <layout class="QVBoxLayout" name="verticalLayout_55">
+           <item alignment="Qt::AlignTop">
+            <widget class="QWidget" name="HeaderFrame_14" native="true">
+             <property name="autoFillBackground">
+              <bool>false</bool>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_76">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item alignment="Qt::AlignLeft">
+               <widget class="QWidget" name="widget_83" native="true">
+                <layout class="QHBoxLayout" name="horizontalLayout_80">
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QPushButton" name="menuBtn_15">
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="Resource.qrc">
+                     <normaloff>:/Black Icons/Graphics/featherBlack/menu.svg</normaloff>:/Black Icons/Graphics/featherBlack/menu.svg</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>24</width>
+                     <height>24</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="appHeader_15">
+                   <property name="font">
+                    <font>
+                     <pointsize>15</pointsize>
+                     <weight>75</weight>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Today's Route</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QWidget" name="widget_84" native="true">
+                <layout class="QHBoxLayout" name="horizontalLayout_93">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item alignment="Qt::AlignRight">
+                  <widget class="QPushButton" name="accountBtn_15">
+                   <property name="minimumSize">
+                    <size>
+                     <width>50</width>
+                     <height>50</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="icon">
+                    <iconset resource="Resource.qrc">
+                     <normaloff>:/Black Icons/Graphics/featherBlack/user.svg</normaloff>:/Black Icons/Graphics/featherBlack/user.svg</iconset>
+                   </property>
+                   <property name="iconSize">
+                    <size>
+                     <width>32</width>
+                     <height>32</height>
+                    </size>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="QWidget" name="route" native="true">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
             </widget>
            </item>
           </layout>

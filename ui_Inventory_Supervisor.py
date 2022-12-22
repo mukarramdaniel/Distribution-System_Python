@@ -1815,7 +1815,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.LeftMenu.setCurrentIndex(0)
-        self.mainBody.setCurrentIndex(5)
+        self.mainBody.setCurrentIndex(0)
         self.btn_InventoryReport.toggled['bool'].connect(self.widget_43.setVisible) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
