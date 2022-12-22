@@ -46,7 +46,7 @@ class InventoryMainWindow(QMainWindow):
         self.ui.btn_AddtoCart.clicked.connect(lambda: self.AddToCart_Stock())
         self.ui.btn_RequestOrder.clicked.connect(lambda: self.orderStockFromCart())
         self.ui.btn_ViewHistory.clicked.connect(lambda: self.openViewHistory())
-        self.ui.btn_Dashboard.clicked.connect(lambda: self.opendashboard())
+
         self.ui.btn_CheckIn.clicked.connect(lambda: self.checkInStock())
         self.ui.btn_MarkAttendance_2.clicked.connect(lambda: self.mark_attendance())
         self.ui.calendarWidget.clicked.connect(lambda: self.printDate())
@@ -285,8 +285,7 @@ class InventoryMainWindow(QMainWindow):
         presents = self.get_presents(attendanceDL)
         absents = currentday - presents
         return absents        
-    def opendashboard(self) :
-        self.ui.mainBody.setCurrentIndex(3)
+    
 
         
 
