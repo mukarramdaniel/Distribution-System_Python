@@ -662,12 +662,11 @@ class ManaMainWindow(QMainWindow):
         for data in listt:
             self.ui.table_CheckAttendance.setItem(row, 0, QtWidgets.QTableWidgetItem(str(data.getname())))
             for i in data.getAttendenceList():
-                print(i)
-                #for j in range(1, len(date_list)-1):
-                if (date_list[column] == i) :
-                    self.ui.table_CheckAttendance.setItem(row, column, QtWidgets.QTableWidgetItem("P"))
-                elif ():
-                    self.ui.table_CheckAttendance.setItem(row, column, QtWidgets.QTableWidgetItem("A"))
+                for j in range(1, len(date_list)) :
+                    if (date_list[j] == i) :
+                        self.ui.table_CheckAttendance.setItem(row, column, QtWidgets.QTableWidgetItem("P"))
+                    elif ():
+                        self.ui.table_CheckAttendance.setItem(row, column, QtWidgets.QTableWidgetItem("A"))
                 column = column + 1
             column = 1
             row = row+1
