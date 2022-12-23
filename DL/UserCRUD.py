@@ -112,6 +112,7 @@ class UserCRUD:
 
         mycursor = mydb.cursor()
         othercursor=mydb.cursor()
+        ridercursor = mydb.cursor()
         mycursor.execute("SELECT userID,userName,password,userRole,name,age,contactNum,Email,Cnic,bankAccount,resetToken,created_on,update_on  FROM manager")
 
         myresult = mycursor.fetchall()
@@ -126,16 +127,43 @@ class UserCRUD:
         for x in myEmployee:
             userName1=x[1]
             if(int(x[3])==1):
-                #user=InventorySupervisor()
                 user=InventorySupervisor((x[0],x[1],x[2],x[3],x[4],x[5],x[6],x[7],x[8],x[9],x[11],x[12]),x[10],x[13])
                 user.set_s_status(x[14])
             if(int(x[3])==2):
                 user=SaleAgent((x[0],x[1],x[2],x[3],x[4],x[5],x[6],x[7],x[8],x[9],x[11],x[12]),x[10],x[13])
                 user.set_s_status(x[14])
-            #if(int(x[3])==3):
-            #    user=Rider((x[0],x[1],x[2],x[3],x[4],x[5],x[6],x[7],x[8],x[9],x[11],x[12]),x[10],x[13])
-            #    user.set_s_status(x[14])
+            self.setUser(userName1,user)
+        ridercursor.execute("SELECT userID,userName,password,userRole,name,age,contactNum,Email,Cnic,bankAccount,resetToken,created_on,updated_on,date,time,latitude,longitutde,fieldArea,VehicleNumber  FROM rider")
+        myrider = ridercursor.fetchall()
+        for x in myrider :
+            userName1=x[1]
+            if(int(x[3])==3):
+                user=Rider((x[0],x[1],x[2],x[3],x[4],x[5],x[6],x[7],x[8],x[9],x[11],x[12]),x[10],x[13])
+                user.set_s_status(x[14])
+                user.set_fieldarea(x[17])
             self.setUser(userName1,user)
         mydb.close()
+    def insert_rider (self) :
+        import mysql.connector
+        mydb = mysql.connector.connect(
+        host="localhost",
+        user="user1",
+        password="Rosepetal514@",
+        database="dbarm"
+        )
+        mycursor = mydb.cursor()
+        mycursor.execute("TRUNCATE TABLE rider")
+        mydb.commit()
+        sql = "INSERT INTO rider(userName,password,userRole,name,age,contactNum,Email,Cnic,bankAccount,resetToken,created_on,updated_on,date,time,latitude,longitutde,fieldArea,VehicleNumber) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+        for bucket in self.hashTable:
+            if(bucket!=None):
+                for rider in bucket:
+                    if (rider[1].getUserRole() == '3') :
+                        obj = rider[1]
+                        val = (obj.getUserName() , obj.getpassword() , obj.getUserRole() , obj.getName() ,obj.getAge() , obj.getnumber() , obj.getmail() , obj.getCNIC() , obj.getbankaccount() , obj.getSalary() , obj.getcreatedDate() , obj.getupdatedDate() ,obj.get_s_status(), "" , float(obj.getLatitude()) , float(obj.getLongitude()) ,obj.getFieldarea() , obj.getVehicle())
+                        mycursor.execute(sql,val)
+                        mydb.commit()
+        mydb.close()
+        print("Inserted") 
         
    

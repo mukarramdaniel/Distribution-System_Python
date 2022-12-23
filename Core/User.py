@@ -1,17 +1,4 @@
 class User:
-    _userId=None
-    _userName=None
-    _password=None
-    _userRole=None
-    _name=None
-    _age=None
-    _contactNum=None
-    _Email=None
-    _CNIC=None
-    _BankAccount=None
-    _createdDate=None
-    _updatedDate=None
-    
     def __init__(self,userT):
         self.userId=userT[0]
         self.userName=userT[1]
@@ -33,5 +20,20 @@ class User:
         return self.userRole
     def getID(self) :
         return self.userId
-        
+    def getAge(self) :
+        return self.age
+    def getnumber(self) :
+        return self.contactNum
+    def getCNIC(self) :
+        return self.CNIC
+    def getbankaccount(self) :
+        return self.BankAccount
+    def getcreatedDate(self) :
+        return self.createdDate
+    def getupdatedDate(self) :
+        return self.updatedDate
+    def getpassword(self) :
+        return self.password
+    def getmail(self) :
+        return self.Email
         

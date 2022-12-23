@@ -6,7 +6,8 @@ from PyQt5.QtWidgets import (
 from PyQt5.QtCore import QPropertyAnimation
 from PyQt5.QtGui import (QColor)
 from datetime import datetime
-
+from Core.Rider import Rider
+from DL.UserCRUD import UserCRUD
 from Sales_Agent import *
 
 
@@ -15,14 +16,19 @@ class SalesAgentMainWindow(QMainWindow):
         QMainWindow.__init__(self)
         self.ui=Ui_SalesAgentWindow()
         self.ui.setupUi(self)
-
+        self.userDL = UserCRUD()
+        self.userDL.readFromTable()
+        self.ui.btn_Add.clicked.connect(lambda: self.assign_location())
+        self.ui.btn_AssignVehicle_2.clicked.connect(lambda: self.assign_vehicle())
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(20)
         self.shadow.setXOffset(0)
         self.shadow.setYOffset(0)
         self.shadow.setColor(QColor("black"))
         self.ui.widget_4.setGraphicsEffect(self.shadow)
-
+        self.rider_displays(self.ui.cmb_Rider)
+        self.rider_displays(self.ui.cmb_rider)
+        self.vehicle_display()
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(20)
         self.shadow.setXOffset(0)
@@ -95,8 +101,10 @@ class SalesAgentMainWindow(QMainWindow):
         self.ui.mainBody.setCurrentIndex(4)
     def OpenAssignVehicle(self):
         self.ui.mainBody.setCurrentIndex(0)
+        self.load_ViewRider_table1()
     def OpenAssignLocation(self):
         self.ui.mainBody.setCurrentIndex(3)
+        self.load_ViewRider_table()
     def OpenDashBoard(self):
         self.ui.mainBody.setCurrentIndex(2)
     def slideLeftMenu(self):
@@ -125,7 +133,97 @@ class SalesAgentMainWindow(QMainWindow):
         self.animation.setEndValue(newWidth)#end value is the new menu width
         self.animation.setEasingCurve(QtCore.QEasingCurve.Type.InOutQuart)
         self.animation.start()
+    def rider_displays (self,a) :
+        import mysql.connector
+        mydb = mysql.connector.connect(
+        host="localhost",
+        user="user1",
+        password="Rosepetal514@",
+        database="dbarm"
+        )
+        mycursor = mydb.cursor()
+        query = 'SELECT name FROM rider'
+        mycursor.execute(query)
+        rows = mycursor.fetchall()
+        column_list = [row[0] for row in rows]
+        mydb.close()
+        a.addItems(column_list)
+    def vehicle_display (self) :
+        import mysql.connector
+        mydb = mysql.connector.connect(
+        host="localhost",
+        user="user1",
+        password="Rosepetal514@",
+        database="dbarm"
+        )
+        mycursor = mydb.cursor()
+        query = 'SELECT number FROM vehicle'
+        mycursor.execute(query)
+        rows = mycursor.fetchall()
+        column_list = [row[0] for row in rows]
+        mydb.close()
+        self.ui.cmb_Vehicle.addItems(column_list)
+    def get_object (self , name) :
+        for i in self.userDL.getHashTable():
+            for j in i :
+                if(j!=None):
+                    if (str(j[1].getName()) == name) :
+                        print(j[0])
+                        obj = self.userDL.getUserReturn(j[0])
+                        return obj
+    def assign_location (self) :
+        obj = self.get_object(self.ui.cmb_rider.currentText())
+        obj.set_fieldarea(self.ui.cmb_location.currentText())
+        self.userDL.insert_rider()
+        self.load_ViewRider_table()
+    def assign_vehicle (self) :
+        obj = self.get_object(self.ui.cmb_Rider.currentText())
+        obj.set_vehicle(self.ui.cmb_Vehicle.currentText())
+        self.userDL.insert_rider()
+        self.load_ViewRider_table1()
+    def load_ViewRider_table (self) :
+        row = 0
+        self.ui.tableWidget_ViewRider.setRowCount(self.Get_Table_Row_Length())
+        for i in self.userDL.getHashTable():
+            for j in i :
+                if(j!=None):
+                    if(j[1].getUserRole()== '3'):
+                            self.ui.tableWidget_ViewRider.setItem(row, 0, QtWidgets.QTableWidgetItem(str(j[0])))
+                            self.ui.tableWidget_ViewRider.setItem(row, 1, QtWidgets.QTableWidgetItem(str(j[1].getID())))
+                            self.ui.tableWidget_ViewRider.setItem(row, 2, QtWidgets.QTableWidgetItem(str(j[1].getName())))
+                            if (j[1].getFieldarea() != "") :
+                                self.ui.tableWidget_ViewRider.setItem(row, 3, QtWidgets.QTableWidgetItem(str(j[1].getFieldarea())))
+                            else :
+                                self.ui.tableWidget_ViewRider.setItem(row, 3, QtWidgets.QTableWidgetItem("None"))
+                            row = row+1
+    def load_ViewRider_table1 (self) :
+        row = 0
+        self.ui.tableWidget_ViewRider_2.setRowCount(self.Get_Table_Row_Length())
+        for i in self.userDL.getHashTable():
+            for j in i :
+                if(j!=None):
+                    if(j[1].getUserRole()== '3'):
+                            self.ui.tableWidget_ViewRider_2.setItem(row, 0, QtWidgets.QTableWidgetItem(str(j[1].getID())))
+                            self.ui.tableWidget_ViewRider_2.setItem(row, 1, QtWidgets.QTableWidgetItem(str(j[1].getName())))
+                            self.ui.tableWidget_ViewRider_2.setItem(row, 2, QtWidgets.QTableWidgetItem(str(j[1].getCNIC())))
+                            if (j[1].getVehicle() != "") :
+                                self.ui.tableWidget_ViewRider_2.setItem(row, 3, QtWidgets.QTableWidgetItem(str(j[1].getVehicle())))
+                            else :
+                                self.ui.tableWidget_ViewRider_2.setItem(row, 3, QtWidgets.QTableWidgetItem("None"))
+                            row = row+1
+                    
 
+
+        
+
+    def Get_Table_Row_Length(self):
+        count=0
+        for i in self.userDL.getHashTable():
+            for j in i:
+                if(j!=None and j[1].getUserRole() == "3"):
+                    count+=1
+        return count
+        
 
 if __name__=="__main__":
     app=QApplication(sys.argv)

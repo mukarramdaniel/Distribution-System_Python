@@ -519,7 +519,7 @@ background-color:#ececec;
        <number>1</number>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="page_AssignVehicle">
        <property name="styleSheet">
@@ -805,81 +805,6 @@ background-color:#ececec;
                            <height>30</height>
                           </size>
                          </property>
-                         <item>
-                          <property name="text">
-                           <string>Bonega Shoes</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>Pumpy</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>Sandles</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>Sneakers</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>Canvas Shoes</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>High Ankle</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>Rivet High Shoes</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>Slip-on Shoes</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>Leisure Sport Shoes</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>ShellToe Boots</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>Formal Shoes</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>Leather Shoes</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>Slippers</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>Padded Shoes</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>Wrestling Shoes</string>
-                          </property>
-                         </item>
                         </widget>
                        </item>
                        <item>
@@ -892,7 +817,7 @@ background-color:#ececec;
                          </property>
                          <item>
                           <property name="text">
-                           <string>Honda CD 70</string>
+                           <string>None</string>
                           </property>
                          </item>
                         </widget>
@@ -2202,21 +2127,6 @@ background-color:#ececec;
                            <height>30</height>
                           </size>
                          </property>
-                         <item>
-                          <property name="text">
-                           <string>Mukarram Ali</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>Rayan Rasheed</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>Ammad Aslam</string>
-                          </property>
-                         </item>
                         </widget>
                        </item>
                        <item>
@@ -2234,7 +2144,57 @@ background-color:#ececec;
                          </item>
                          <item>
                           <property name="text">
-                           <string>Garri Shau</string>
+                           <string>Ghari Shahu</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>DHA Phase I</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>DHA Phase II</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>DHA Phase V</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Johar Town</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Ali Town</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Dharampura</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Anarkali</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Chaburji</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>Gulberg III</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>None</string>
                           </property>
                          </item>
                         </widget>
@@ -2321,7 +2281,7 @@ background-color:#ececec;
                    </attribute>
                    <column>
                     <property name="text">
-                     <string>New Column</string>
+                     <string>Email</string>
                     </property>
                     <property name="font">
                      <font>
