@@ -132,7 +132,7 @@ background-color:qlineargradient(spread:pad,x1:0,y1:0.505682,x2:1,y2:0.477,stop:
 
 border-radius:20px;
 }
-#btnBuyStock:hover,#btn_Update_Stock:hover,#btn_Notifications:hover,#btn_ReportCost:hover,#widget_Inventory_dropdown_2:hover,#btn_ViewHistory:hover,#btn_ViewStock:hover,#btn_MarkAttendance:hover{
+#btnBuyStock:hover,#btn_Update_Stock:hover,#btn_Notifications:hover,#btn_ReportCost:hover,#widget_Inventory_dropdown_2:hover,#btn_ViewHistory:hover,#btn_ViewStock:hover,#btn_MarkAttendance:hover,#btn_Dashboard:hover{
 background-color:#ececec;
 }</string>
        </property>
@@ -617,7 +617,7 @@ background-color:#ececec;
        <number>1</number>
       </property>
       <property name="currentIndex">
-       <number>5</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="page_BuyStock">
        <property name="styleSheet">

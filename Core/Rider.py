@@ -10,6 +10,7 @@ class Rider(User):
         self.longitude = 0
         self.salary_status = salary_status
     def getSalary(self):
+        print("s")
         return self.salary
     def setSalary(self,salary):
         self.salary=salary

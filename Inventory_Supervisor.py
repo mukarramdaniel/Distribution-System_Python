@@ -112,7 +112,7 @@ class Ui_MainWindow(object):
 "\n"
 "border-radius:20px;\n"
 "}\n"
-"#btnBuyStock:hover,#btn_Update_Stock:hover,#btn_Notifications:hover,#btn_ReportCost:hover,#widget_Inventory_dropdown_2:hover,#btn_ViewHistory:hover,#btn_ViewStock:hover,#btn_MarkAttendance:hover{\n"
+"#btnBuyStock:hover,#btn_Update_Stock:hover,#btn_Notifications:hover,#btn_ReportCost:hover,#widget_Inventory_dropdown_2:hover,#btn_ViewHistory:hover,#btn_ViewStock:hover,#btn_MarkAttendance:hover,#btn_Dashboard:hover{\n"
 "background-color:#ececec;\n"
 "}")
         self.InventorySupervisor_SideBar.setObjectName("InventorySupervisor_SideBar")
@@ -1620,7 +1620,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6.addWidget(self.widget_9, 0, QtCore.Qt.AlignTop)
         self.mainBody.addWidget(self.ReportCost_page)
         self.ViewHistory_page = QtWidgets.QWidget()
-        self.ViewHistory_page.setStyleSheet("#HeaderFrame_11{\n"
+        self.ViewHistory_page.setStyleSheet("#HeaderFrame_11,#btn_StockReport{\n"
 "background-color:qlineargradient(spread:pad,x1:0,y1:0.505682,x2:1,y2:0.477,stop:0 rgba(20,47,78,219),stop:1 rgba(85,98,112,150));\n"
 " border-radius: 20px;\n"
 "}\n"
@@ -1628,10 +1628,12 @@ class Ui_MainWindow(object):
 "background-color:#fff;\n"
 " border-radius: 15px;\n"
 "}\n"
-"#accountBtn_12:hover{\n"
+"\n"
+"#accountBtn_12:hover,btn_StockReport:hover{\n"
 "border-radius: 20px;\n"
 "background-color:#ececec;\n"
-"}")
+"}\n"
+"")
         self.ViewHistory_page.setObjectName("ViewHistory_page")
         self.verticalLayout_12 = QtWidgets.QVBoxLayout(self.ViewHistory_page)
         self.verticalLayout_12.setObjectName("verticalLayout_12")
@@ -1815,7 +1817,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.LeftMenu.setCurrentIndex(0)
-        self.mainBody.setCurrentIndex(5)
+        self.mainBody.setCurrentIndex(3)
         self.btn_InventoryReport.toggled['bool'].connect(self.widget_43.setVisible) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 

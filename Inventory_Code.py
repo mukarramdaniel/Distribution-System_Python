@@ -53,6 +53,7 @@ class InventoryMainWindow(QMainWindow):
         self.ui.btn_AddtoCart.clicked.connect(lambda: self.AddToCart_Stock())
         self.ui.btn_RequestOrder.clicked.connect(lambda: self.orderStockFromCart())
         self.ui.btn_ViewHistory.clicked.connect(lambda: self.openViewHistory())
+        self.ui.btn_Dashboard.clicked.connect(lambda: self.openDashboard())
         self.ui.btn_StockReport.clicked.connect(lambda: self.generate_report_cost())
         self.ui.btn_CheckIn.clicked.connect(lambda: self.checkInStock())
         self.ui.btn_MarkAttendance_2.clicked.connect(lambda: self.mark_attendance())
@@ -64,6 +65,8 @@ class InventoryMainWindow(QMainWindow):
         self.ui.cmb_Category_2.currentIndexChanged.connect(lambda: self.Handle_Product_Category())
         self.show()
 
+    def openDashboard(self):
+        self.ui.mainBody.setCurrentIndex(3)
     def openViewHistory(self):
         self.ui.mainBody.setCurrentIndex(5)
         self.Load_Table_History()
@@ -334,7 +337,7 @@ class InventoryMainWindow(QMainWindow):
     def get_presents (self,attendanceDL) :
         count = 0
         for i in attendanceDL.getAttendancelist():
-            if (i.userID == self.user.getUserName()) :
+            if (i.getUserName() == self.user.getUserName()) :
                 for j in i.dateTimeList :
                     count = count + 1
         return count
