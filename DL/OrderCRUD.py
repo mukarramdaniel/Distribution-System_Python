@@ -66,12 +66,10 @@ class RiderOrders:
         mycursor = mydb.cursor()
         mycursor.execute("TRUNCATE TABLE riderorder")
         mydb.commit()
-        list=[]
-        sql = "INSERT IGNORE INTO riderorder(prodCategory,buyPrice,profitMargin,shoeSize,selPrice,color,prodID,type,orderID,date,status,riderID,shopID) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)  "
+        sql = "INSERT riderorder(prodCategory,buyPrice,profitMargin,shoeSize,selPrice,color,prodID,type,orderID,date,status,riderID,shopID) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)  "
         while(self.is_empty()==False):
             
             productlist=self.dequeue()
-            list.append[productlist]
             date=productlist.getDate()
             status=productlist.getStatus() 
             riderID=productlist.getriderID()   
@@ -82,8 +80,8 @@ class RiderOrders:
                 mycursor.execute(sql,val)
                 mydb.commit()
         mydb.close()
-        self.queue=list
         print("Inserted") 
+        self.loadFromTable()
         
             
 class Cart:

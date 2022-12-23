@@ -196,7 +196,7 @@ class RiderMainWindow(QMainWindow):
     def addIntoOrders(self,prodsCart,shopID):
         from datetime import datetime
         now = datetime.now()
-        date = now.strftime("%d-%m-%Y %H:%M:%S")
+        date = now.strftime("%Y-%m-%d %H:%M:%S")
         orderID=len(self.orderDL.queue)+1
         riderID=self.riderID
         order=ProducList(orderID,date,[],1)
@@ -258,6 +258,7 @@ class RiderMainWindow(QMainWindow):
         
     def OpenTakeOrder(self):
         self.ui.mainBody.setCurrentIndex(1)
+        self.ui.comboBox.clear()
         cmb=[]
         shops=self.shopDL.getList()
         while(shops!=None):
@@ -327,9 +328,41 @@ class RiderMainWindow(QMainWindow):
         self.ui.mainBody.setCurrentIndex(0)
     def OpenViewStock(self):
         self.ui.mainBody.setCurrentIndex(2)
+        self.table_ViewStockLoad()
     def OpenTodoList(self):
         self.ui.mainBody.setCurrentIndex(6)
         self.showInTodoTable()
+    def table_ViewStockLoad(self):
+        
+        row=0
+        n=self.calculateRow()
+        if(n>10):
+            self.ui.table_ViewStock.setRowCount(n)
+        else:
+            self.ui.table_ViewStock.setRowCount(10)
+            
+        
+        for bucket in (self.inventory.getInventoryStock()):
+            for prod in bucket:
+                if(prod!=None):
+                    self.ui.table_ViewStock.setItem(row, 0, QtWidgets.QTableWidgetItem(str(prod[1].getprodID())))
+                    self.ui.table_ViewStock.setItem(row, 1, QtWidgets.QTableWidgetItem(str(prod[1].getProductCategory())))
+                    self.ui.table_ViewStock.setItem(row, 2, QtWidgets.QTableWidgetItem(str(prod[1].getBuyPrice())))
+                    if(prod[1].getSellPrice()==0):
+                        self.ui.table_ViewStock.setItem(row, 3, QtWidgets.QTableWidgetItem("None"))
+                    else:
+                        self.ui.table_ViewStock.setItem(row, 3, QtWidgets.QTableWidgetItem(str(prod[1].getSellPrice())))                 
+                    self.ui.table_ViewStock.setItem(row, 4, QtWidgets.QTableWidgetItem(str(prod[1].getColor())))
+                    
+                    row +=1
+    def calculateRow(self):
+        
+        stockCount =0
+        for i in self.inventory.getInventoryStock():
+            for j in i:
+                if(j!=None):
+                    stockCount +=1
+        return stockCount
     def showInTodoTable(self):
         import datetime as datetime
         orders=self.orderDL.getList()
@@ -412,17 +445,14 @@ class RiderMainWindow(QMainWindow):
         m = folium.Map(location=mst[0],zoom_start=1000)
         for i in mst:
             folium.Marker(location=[i[0],i[1]], popup=" ").add_to(m)
-        folium.PolyLine(path1, color='red', weight=3, opacity=0.6).add_to(m)
+        folium.PolyLine(path1, color='red', weight=10, opacity=1.2).add_to(m)
         m.save('map.html')
         from PyQt5.QtWidgets import QApplication, QWidget
-        app = QApplication([])
         self.ui.window = QMainWindow()
         webview = QWebEngineView()
-        self.window = QMainWindow()
-        self.window.setCentralWidget(webview)
+        self.ui.window.setCentralWidget(webview)
         webview.load(QUrl.fromLocalFile(os.path.abspath('map.html')))
-        window.show()
-        app.exec_()
+        self.ui.window.show()
         
         
         # Load a webpage

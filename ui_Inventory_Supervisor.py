@@ -1815,7 +1815,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.LeftMenu.setCurrentIndex(0)
-        self.mainBody.setCurrentIndex(0)
+        self.mainBody.setCurrentIndex(5)
         self.btn_InventoryReport.toggled['bool'].connect(self.widget_43.setVisible) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -1954,9 +1954,9 @@ class Ui_MainWindow(object):
         item = self.tableWidget_History.horizontalHeaderItem(1)
         item.setText(_translate("MainWindow", "Category"))
         item = self.tableWidget_History.horizontalHeaderItem(2)
-        item.setText(_translate("MainWindow", "Quantity"))
+        item.setText(_translate("MainWindow", "Color"))
         item = self.tableWidget_History.horizontalHeaderItem(3)
-        item.setText(_translate("MainWindow", "Total Amount"))
+        item.setText(_translate("MainWindow", "Amount"))
         item = self.tableWidget_History.horizontalHeaderItem(4)
         item.setText(_translate("MainWindow", "Order Date"))
         item = self.tableWidget_History.horizontalHeaderItem(5)

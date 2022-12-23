@@ -5,7 +5,7 @@ class Graph:
     def add_node(self, node, weight, data):
         self.graph[node] = (weight, data)
     
-    def make_complete(self):
+    def makecomplete(self):
         for node1 in self.graph:
             for node2 in self.graph:
                 if node1 != node2:
@@ -16,7 +16,7 @@ class Graph:
     def prinT(self):
         print(self.graph)
     
-    def minimum_spanning_tree(self):
+    def mst(self):
         mst = []
         visited = set()
         current_node = next(iter(self.graph))
@@ -39,10 +39,10 @@ class Graph:
         
         return mst
 
-# g = Graph()
-# g.add_node(11, 1, [])
-# g.add_node(12, 2, [])
-# g.add_node(13, 3, [])
-# g.make_complete()
-# print(g.prinT())
-# print(g.minimum_spanning_tree())  
+g = Graph()
+g.add_node(11, 1, [])
+g.add_node(12, 2, [])
+g.add_node(13, 3, [])
+g.makecomplete()
+print(g.prinT())
+print(g.mst())  
