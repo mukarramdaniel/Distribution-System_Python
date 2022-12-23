@@ -5,6 +5,7 @@ class ProducList:
         self.date=date
         self.ShoeList=ShoeList
         self.riderID=None
+        self.shopID=None
     def addShoeInList(self,shoe):
         self.ShoeList.append(shoe)
     def getShoeList(self):
@@ -25,5 +26,10 @@ class ProducList:
         return self.riderID
     def setriderID(self,riderID):
         self.riderID=riderID
-    
+    def calculatePrice(self):
+        total=0
+        for i in self.ShoeList:
+            total +=float(i.getSellPrice())
+        return total
+            
          

@@ -19,7 +19,8 @@ class RiderOrders:
     
     def is_empty(self):
         return not bool(self.queue)
-
+    def getList(self):
+        return self.queue
     
     def loadFromTable(self):
         import mysql.connector
@@ -34,10 +35,9 @@ class RiderOrders:
 
         my = list(mycursor.fetchall())
         myprods = list(map(list , my))
-        print(myprods)
         for prod in myprods :
-            order=prod[8]
-            if (order != None) :
+            shop=prod[12]
+            if (shop != None) :
                 status=prod[10]
                 riderID=prod[11]
                 shopID=prod[12]
@@ -47,8 +47,8 @@ class RiderOrders:
             else:
                 order=None
             for j in myprods :
-                if (prod[8]== order and prod[8]!=None) :
-                    prod[8] = None
+                if (j[12]== shop and j[12]!=None) :
+                    j[12] = None
                     order.addShoeInList(Shoe(prod[0],prod[1],prod[2],prod[3],prod[4],prod[5],prod[6],prod[7]))
             if(order!=None)        :
                 self.enqueue(order)

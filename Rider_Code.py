@@ -15,12 +15,17 @@ from PyQt5.QtGui import (QColor)
 from datetime import datetime
 from DL.Inventory import Inventory
 from DL.OrderCRUD import *
-
+from Maps.Graph import Graph
+import folium
+import os
+from PyQt5.QtCore import QUrl
+from PyQt5.QtWebEngineWidgets import QWebEngineView
+from PyQt5.QtWidgets import QApplication, QMainWindow
 class RiderMainWindow(QMainWindow):
     def __init__(self,parent=None):
         QMainWindow.__init__(self)
         self.ui=Ui_RiderWindow()
-        riderID=4
+        self.riderID="3130258066433"
         
         self.orderDL=RiderOrders()
         self.orderDL.loadFromTable()
@@ -34,7 +39,6 @@ class RiderMainWindow(QMainWindow):
         self.inventory.readFromTable()
         self.cartProducts=None
         self.Shoes=None
-        self.riderID=3130258066433
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(20)
         self.shadow.setXOffset(0)
@@ -139,7 +143,7 @@ class RiderMainWindow(QMainWindow):
         self.ui.btn_Dashboard.clicked.connect(lambda: self.OpenDashBoard())
         self.ui.btn_AddShop.clicked.connect(lambda: self.OpenAddShop())
         self.ui.btn_TakeOrder.clicked.connect(lambda: self.OpenTakeOrder())
-        self.ui.btn_DeliverOrder.clicked.connect(lambda: self.OpenDeliverOrder())
+        #self.ui.btn_DeliverOrder.clicked.connect(lambda: self.OpenDeliverOrder())
         self.ui.btn_ViewStock_2.clicked.connect(lambda: self.OpenViewStock())
         self.ui.btn_FuelDetails.clicked.connect(lambda: self.OpenFuelDetails())
         self.ui.btn_ToDoList.clicked.connect(lambda: self.OpenTodoList())
@@ -150,9 +154,22 @@ class RiderMainWindow(QMainWindow):
         self.ui.btn_AddtoCart_2.clicked.connect(lambda: self.addToCart())
         self.ui.comboBox.currentIndexChanged.connect(self.showShopSummary)
         self.ui.btn_ConfirmOrder_2.clicked.connect(self.confirmOrder)
+        self.ui.btn_deliverOrder.clicked.connect(self.deliverOrder)
+        self.ui.btn_viewlocation.clicked.connect(lambda: self.todayRoute())
+        
+        
+        
+        
+        
         
         
         self.show()
+    def deliverOrder(self):
+        pass
+    
+    def todayRoute(self):
+        routeList=self.makeShortestRoute()
+        self.todayMap(routeList)   
     def confirmOrder(self):
         prodsCart=[]
         if(len(self.temp)!=0):#temp is list the cart item of that shop to avoid again checkking of shop ordercart
@@ -230,7 +247,7 @@ class RiderMainWindow(QMainWindow):
         openTime=self.ui.timeEdit.text()
         closeTime=self.ui.timeEdit_2.text()
         now = datetime.now()
-        created_on = now.strftime("%d-%m-%Y %H:%M:%S")
+        created_on = now.strftime("%Y-%m-%d %H:%M:%S")
         shop=Shop(self.riderID,name,cnic,email,location,PhoneNumber,AccountNo,Area,shopName,openTime,closeTime,created_on)
         self.shopDL.Insert(shop)
         self.shopDL.updateTable()
@@ -312,6 +329,29 @@ class RiderMainWindow(QMainWindow):
         self.ui.mainBody.setCurrentIndex(2)
     def OpenTodoList(self):
         self.ui.mainBody.setCurrentIndex(6)
+        self.showInTodoTable()
+    def showInTodoTable(self):
+        import datetime as datetime
+        orders=self.orderDL.getList()
+        today = datetime.date.today()
+        yesterday = today - datetime.timedelta(days=1)
+        self.ui.tableWidget_ToDoList.setRowCount(len(orders))
+        row=0
+        for order in orders:
+            if(order.getDate().split(" ")[0]==str(yesterday) and order.getriderID()==self.riderID):
+                info=self.shopDL.getShopName(order.shopID)#info name annd phione
+                if(info):
+                    self.ui.tableWidget_ToDoList.setItem(row, 0, QtWidgets.QTableWidgetItem(str(info[0])))
+                    self.ui.tableWidget_ToDoList.setItem(row, 1, QtWidgets.QTableWidgetItem(str(order.getDate())))
+                    self.ui.tableWidget_ToDoList.setItem(row, 2, QtWidgets.QTableWidgetItem(str(info[1])))
+                    total=order.calculatePrice()
+                    self.ui.tableWidget_ToDoList.setItem(row, 3, QtWidgets.QTableWidgetItem(str(info[2])))
+                    self.ui.tableWidget_ToDoList.setItem(row, 4, QtWidgets.QTableWidgetItem(str(total)))
+
+                row +=1
+                    
+                
+            
     def OpenHistory(self):
         self.ui.mainBody.setCurrentIndex(5)   
     def slideLeftMenu(self):
@@ -340,6 +380,53 @@ class RiderMainWindow(QMainWindow):
         self.animation.setEndValue(newWidth)#end value is the new menu width
         self.animation.setEasingCurve(QtCore.QEasingCurve.Type.InOutQuart)
         self.animation.start()
+    def makeShortestRoute(self):
+        graph=Graph()
+        
+        for order in self.orderDL.getList():
+            if(order.riderID==self.riderID):
+                coords=self.shopDL.getLatiLongi(order.shopID)
+                if(coords):
+                    graph.addNode(coords.getLatitude(),coords.getLongitude())
+        graph.makeCompleteGraph()
+        graph.calculateMST()
+        mst=graph.returnMST()
+        return mst
+                
+
+    def todayMap(self,mst):
+        import folium
+        api_key = 'AIzaSyBebwTrA8E0hXbyw8R2dUQRTFOg7q517U0'
+        start = mst[0]
+        end = mst[len(mst)-1]
+        
+        #waypoints = [(float(31.57552403504949), float(74.35429530639927)), (float(31.55043477797966), float(74.31304116179827))]
+        gmaps = googlemaps.Client(key=api_key)
+        route = gmaps.directions(start, end, waypoints=mst, mode='driving')
+        polyline = route[0]['overview_polyline']['points']
+        path = googlemaps.convert.decode_polyline(polyline)
+        path1=[]
+        for i in path:
+            coord_list = [(lng, lat) for lng, lat in i.items()]
+            path1.append((coord_list[0][1],coord_list[1][1]))
+        m = folium.Map(location=mst[0],zoom_start=1000)
+        for i in mst:
+            folium.Marker(location=[i[0],i[1]], popup=" ").add_to(m)
+        folium.PolyLine(path1, color='red', weight=3, opacity=0.6).add_to(m)
+        m.save('map.html')
+        from PyQt5.QtWidgets import QApplication, QWidget
+        app = QApplication([])
+        self.ui.window = QMainWindow()
+        webview = QWebEngineView()
+        self.window = QMainWindow()
+        self.window.setCentralWidget(webview)
+        webview.load(QUrl.fromLocalFile(os.path.abspath('map.html')))
+        window.show()
+        app.exec_()
+        
+        
+        # Load a webpage
+
 
 if __name__=="__main__":
     app=QApplication(sys.argv)

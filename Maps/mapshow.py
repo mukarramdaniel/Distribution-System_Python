@@ -54,18 +54,10 @@ class MapWindow(QMainWindow):
 
         # Add the route to the map
         folium.PolyLine(path1, color='red', weight=3, opacity=0.5).add_to(m)
-        path = [
-        {'lat': 31.58060073946487, 'lng': 74.35624319553045},
-        {'lat': 31.573996, 'lng': 74.345461},
-        {'lat': 31.573996, 'lng': 74.345461},
-        {'lat': 31.578237, 'lng': 74.360331}
-        ]
+       
 
 # Load the HTML template
-        template = jinja2.Template(html)
-
-        # Render the template with the list passed as a variable
-        output = template.render(path=path)
+        
         
 
         # Load a map from the Google Maps API
@@ -77,21 +69,17 @@ class MapWindow(QMainWindow):
             <script>
               function initMap() {
                 var map = new google.maps.Map(document.getElementById('map'), {
-                  zoom: 100,
+                  zoom: 50,
                   center: {lat: 31.58060073946487, lng: 74.35624319553045}
                 });
 
-                var path = [
-                  {lat: 31.58060073946487, lng: 74.35624319553045},
-                  {lat: 31.573996, lng: 74.345461},
-                  {lat: 31.573996, lng: 74.345461},
-                  {lat: 31.578237, lng: 74.360331}
-                  
-                ];
-
+                var path = "{{ path|tojson }}";
                 var pathCoordinates = [];
-                for (var i = 0; i < path.length; i++) {
-                  pathCoordinates.push(new google.maps.LatLng(path[i].lat, path[i].lng));
+                var pathArray=JSON.parse(path);
+                
+                
+                for (var i = 0; i < pathArray.length; i++) {
+                  pathCoordinates.push(new google.maps.LatLng(pathArray[i].lat, pathArray[i].lng));
                 }
 
                 var pathLine = new google.maps.Polyline({
@@ -108,6 +96,10 @@ class MapWindow(QMainWindow):
           </head>
           <body>
             <div id="map" style="width:600px;height:400px;"></div'''
+        template = jinja2.Template(html)
+
+        # Render the template with the list passed as a variable
+        output = template.render(path=path)
         self.webview.setHtml(html)
         
 

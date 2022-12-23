@@ -43,7 +43,21 @@ class ShopCRUD:
             last=last.next
         last.next=New_Node
         New_Node.prev=last
-    
+    def getShopName(self,shopCnic):
+        shops=self.head
+        
+        while(shops!=None):
+            if(shops.getData().getCnic()==shopCnic ):
+                return shops.getData().getShopName(),shops.getData().getlocation().getaddress(),shops.getData().getphoneNum()
+            shops=shops.next
+        return None
+    def getLatiLongi(self,shopCnic):
+        shops=self.head
+        while(shops!=None):
+            if(shops.getData().getCnic()==shopCnic ):
+                return shops.getData().getlocation()
+            shops=shops.next
+        return None
     def Insert_btw_Nodes(self,prev_Node,val):
         if(prev_Node==None):
             print("Previous node cannot be empty")
