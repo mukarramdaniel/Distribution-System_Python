@@ -52,7 +52,7 @@ class MainWindow(QMainWindow):
                     self.Open_Inventory_Window(retrive)
                 elif(retrive.userRole==2):
                     self.Open_SaleAgent_Window()
-                elif(retrive.userRole==2):
+                elif(retrive.userRole=='3'):
                     self.Open_Rider_Window()
 
         else:

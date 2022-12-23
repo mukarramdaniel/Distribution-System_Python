@@ -565,7 +565,7 @@ background-color:#f5f5f5;
        <number>1</number>
       </property>
       <property name="currentIndex">
-       <number>8</number>
+       <number>4</number>
       </property>
       <widget class="QWidget" name="Home_Widget">
        <property name="styleSheet">
@@ -3730,15 +3730,12 @@ background-color:#ececec;
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLineEdit" name="txt_Age">
+                  <widget class="QDateEdit" name="dateAge">
                    <property name="minimumSize">
                     <size>
                      <width>0</width>
-                     <height>30</height>
+                     <height>25</height>
                     </size>
-                   </property>
-                   <property name="placeholderText">
-                    <string>   Age</string>
                    </property>
                   </widget>
                  </item>

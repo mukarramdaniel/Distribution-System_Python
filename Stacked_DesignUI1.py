@@ -1694,10 +1694,10 @@ class Ui_MainWindow(object):
         self.txt_Name.setObjectName("txt_Name")
         self.horizontalLayout_37.addWidget(self.txt_Name)
         self.verticalLayout_25.addWidget(self.widget_Name)
-        self.txt_Age = QtWidgets.QLineEdit(self.widget_22)
-        self.txt_Age.setMinimumSize(QtCore.QSize(0, 30))
-        self.txt_Age.setObjectName("txt_Age")
-        self.verticalLayout_25.addWidget(self.txt_Age)
+        self.dateAge = QtWidgets.QDateEdit(self.widget_22)
+        self.dateAge.setMinimumSize(QtCore.QSize(0, 25))
+        self.dateAge.setObjectName("dateAge")
+        self.verticalLayout_25.addWidget(self.dateAge)
         self.txt_Cnic = QtWidgets.QLineEdit(self.widget_22)
         self.txt_Cnic.setMinimumSize(QtCore.QSize(0, 30))
         self.txt_Cnic.setObjectName("txt_Cnic")
@@ -2771,7 +2771,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.LeftMenu.setCurrentIndex(0)
-        self.mainBody.setCurrentIndex(8)
+        self.mainBody.setCurrentIndex(4)
         self.btn_AccountFinanace.toggled['bool'].connect(self.widget_13.setVisible) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -2897,7 +2897,6 @@ class Ui_MainWindow(object):
         self.btn_Update.setText(_translate("MainWindow", "Update"))
         self.appHeader_3.setText(_translate("MainWindow", "Add Employee"))
         self.txt_Name.setPlaceholderText(_translate("MainWindow", "   Name"))
-        self.txt_Age.setPlaceholderText(_translate("MainWindow", "   Age"))
         self.txt_Cnic.setPlaceholderText(_translate("MainWindow", "   CNIC"))
         self.txt_Email.setPlaceholderText(_translate("MainWindow", "   Email"))
         self.txt_PhoneNumber.setPlaceholderText(_translate("MainWindow", "   Phone Number #"))
