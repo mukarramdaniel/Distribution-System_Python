@@ -563,7 +563,7 @@ background-color:#ececec;
                      <number>30</number>
                     </property>
                     <item>
-                     <widget class="QPushButton" name="btn_MarkAttendance">
+                     <widget class="QPushButton" name="btn_StockReport">
                       <property name="minimumSize">
                        <size>
                         <width>0</width>
@@ -578,7 +578,7 @@ background-color:#ececec;
                        </font>
                       </property>
                       <property name="text">
-                       <string>Mark Attendance</string>
+                       <string>Stock Report</string>
                       </property>
                       <property name="icon">
                        <iconset resource="Resource.qrc">
@@ -3356,7 +3356,7 @@ background-color:qlineargradient(spread:pad,x1:0,y1:0.505682,x2:1,y2:0.477,stop:
       </widget>
       <widget class="QWidget" name="ViewHistory_page">
        <property name="styleSheet">
-        <string notr="true">#HeaderFrame_11{
+        <string notr="true">#HeaderFrame_11,#btn_StockReport{
 background-color:qlineargradient(spread:pad,x1:0,y1:0.505682,x2:1,y2:0.477,stop:0 rgba(20,47,78,219),stop:1 rgba(85,98,112,150));
  border-radius: 20px;
 }
@@ -3364,10 +3364,12 @@ background-color:qlineargradient(spread:pad,x1:0,y1:0.505682,x2:1,y2:0.477,stop:
 background-color:#fff;
  border-radius: 15px;
 }
-#accountBtn_12:hover{
+
+#accountBtn_12:hover,btn_StockReport:hover{
 border-radius: 20px;
 background-color:#ececec;
-}</string>
+}
+</string>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_12">
         <item>

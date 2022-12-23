@@ -53,7 +53,7 @@ class InventoryMainWindow(QMainWindow):
         self.ui.btn_AddtoCart.clicked.connect(lambda: self.AddToCart_Stock())
         self.ui.btn_RequestOrder.clicked.connect(lambda: self.orderStockFromCart())
         self.ui.btn_ViewHistory.clicked.connect(lambda: self.openViewHistory())
-
+        self.ui.btn_StockReport.clicked.connect(lambda: self.generate_report_cost())
         self.ui.btn_CheckIn.clicked.connect(lambda: self.checkInStock())
         self.ui.btn_MarkAttendance_2.clicked.connect(lambda: self.mark_attendance())
         self.ui.calendarWidget.clicked.connect(lambda: self.printDate())
@@ -344,7 +344,36 @@ class InventoryMainWindow(QMainWindow):
         presents = self.get_presents(attendanceDL)
         absents = currentday - presents
         return absents        
-    
+    def generate_report_cost (self) :
+        from fpdf import FPDF
+        pdf = FPDF ()
+        pdf.add_page()
+        pdf.set_font("Arial" ,"B" ,size= 20)
+        page_width = pdf.w - 2 *  pdf.l_margin
+        cell_height = pdf.font_size
+        pdf.cell(page_width,0.0,"Report Cost",ln=10,align="C")
+        pdf.ln(10)
+        pdf.set_font("Arial" ,"B" ,size= 8)
+        pdf.cell(32,cell_height, "Category")
+        pdf.cell(32,cell_height, "Buying Price")
+        pdf.cell(32,cell_height, "Color")
+        pdf.cell(32,cell_height, "Shoe Size")
+        pdf.cell(32,cell_height, "Selling Price")
+        pdf.line(x1 = 10, y1 = 27.5, x2 = 200, y2 = 27.5)
+        pdf.set_font("Arial" ,size= 8)
+        pdf.ln(cell_height+1)
+        stock=self.orderStockDL.getDLinklist()
+        while(stock!=None):
+            s=stock.getData() 
+            for x in s.getShoeList(): 
+                pdf.cell(32,cell_height,str(x.getProductCategory()))
+                pdf.cell(32,cell_height,str(x.getBuyPrice()))
+                pdf.cell(32,cell_height,str(x.getColor()))
+                pdf.cell(32,cell_height,str(x.getShoeSize()))
+                pdf.cell(32,cell_height,str(x.getSellPrice()))
+                pdf.ln(cell_height+1)
+            stock=stock.next
+        pdf.output("sample1.pdf" , "F")
 
         
 
