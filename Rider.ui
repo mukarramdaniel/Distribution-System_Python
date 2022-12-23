@@ -589,7 +589,7 @@ background-color:#ececec;
        <number>1</number>
       </property>
       <property name="currentIndex">
-       <number>6</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="page_DeliverOrder">
        <property name="styleSheet">
@@ -2479,18 +2479,7 @@ border-radius:20px;
                    </column>
                    <column>
                     <property name="text">
-                     <string>Name</string>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <weight>75</weight>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                   </column>
-                   <column>
-                    <property name="text">
-                     <string>Available</string>
+                     <string>Buying Price</string>
                     </property>
                     <property name="font">
                      <font>
@@ -2502,28 +2491,6 @@ border-radius:20px;
                    <column>
                     <property name="text">
                      <string>Selling Price</string>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <weight>75</weight>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                   </column>
-                   <column>
-                    <property name="text">
-                     <string>Availability</string>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <weight>75</weight>
-                      <bold>true</bold>
-                     </font>
-                    </property>
-                   </column>
-                   <column>
-                    <property name="text">
-                     <string>Size</string>
                     </property>
                     <property name="font">
                      <font>
@@ -2835,7 +2802,7 @@ background-color:#ececec;
                     </font>
                    </property>
                    <property name="text">
-                    <string>Mark Attendance:</string>
+                    <string>Calender</string>
                    </property>
                   </widget>
                  </item>
@@ -2871,23 +2838,6 @@ background-color:#ececec;
                       </property>
                      </widget>
                     </item>
-                    <item>
-                     <widget class="QPushButton" name="btn_MarkAttendance_2">
-                      <property name="font">
-                       <font>
-                        <weight>75</weight>
-                        <bold>true</bold>
-                       </font>
-                      </property>
-                      <property name="text">
-                       <string>Mark Attendance</string>
-                      </property>
-                      <property name="icon">
-                       <iconset resource="Resource.qrc">
-                        <normaloff>:/White Icons/Graphics/featherBlack/checking-attendance.png</normaloff>:/White Icons/Graphics/featherBlack/checking-attendance.png</iconset>
-                      </property>
-                     </widget>
-                    </item>
                    </layout>
                   </widget>
                  </item>
@@ -2911,92 +2861,7 @@ background-color:#ececec;
                     </property>
                     <item>
                      <widget class="QWidget" name="widget_8" native="true">
-                      <layout class="QHBoxLayout" name="horizontalLayout_4">
-                       <item>
-                        <widget class="QPushButton" name="pushButton">
-                         <property name="maximumSize">
-                          <size>
-                           <width>18</width>
-                           <height>18</height>
-                          </size>
-                         </property>
-                         <property name="text">
-                          <string/>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLabel" name="label_3">
-                         <property name="font">
-                          <font>
-                           <weight>75</weight>
-                           <bold>true</bold>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>Presents:</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLineEdit" name="lineEdit">
-                         <property name="font">
-                          <font>
-                           <weight>75</weight>
-                           <bold>true</bold>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>9 days</string>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="QWidget" name="widget_7" native="true">
-                      <layout class="QHBoxLayout" name="horizontalLayout_5">
-                       <item>
-                        <widget class="QPushButton" name="pushButton_2">
-                         <property name="maximumSize">
-                          <size>
-                           <width>18</width>
-                           <height>18</height>
-                          </size>
-                         </property>
-                         <property name="text">
-                          <string/>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLabel" name="label_4">
-                         <property name="font">
-                          <font>
-                           <weight>75</weight>
-                           <bold>true</bold>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>Absents:</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLineEdit" name="lineEdit_3">
-                         <property name="font">
-                          <font>
-                           <weight>75</weight>
-                           <bold>true</bold>
-                          </font>
-                         </property>
-                         <property name="text">
-                          <string>3 days</string>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
+                      <layout class="QHBoxLayout" name="horizontalLayout_4"/>
                      </widget>
                     </item>
                    </layout>
@@ -3046,29 +2911,6 @@ background-color:#ececec;
                    </property>
                   </widget>
                  </item>
-                 <item alignment="Qt::AlignRight">
-                  <widget class="QPushButton" name="btn_details">
-                   <property name="font">
-                    <font>
-                     <weight>75</weight>
-                     <bold>true</bold>
-                    </font>
-                   </property>
-                   <property name="text">
-                    <string>Details</string>
-                   </property>
-                   <property name="icon">
-                    <iconset resource="Resource.qrc">
-                     <normaloff>:/Black Icons/Graphics/featherBlack/clipboard.svg</normaloff>:/Black Icons/Graphics/featherBlack/clipboard.svg</iconset>
-                   </property>
-                   <property name="iconSize">
-                    <size>
-                     <width>20</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </widget>
-                 </item>
                 </layout>
                </widget>
               </item>
@@ -3105,17 +2947,7 @@ background-color:#ececec;
                    <row/>
                    <column>
                     <property name="text">
-                     <string>New Column</string>
-                    </property>
-                   </column>
-                   <column>
-                    <property name="text">
-                     <string>Client</string>
-                    </property>
-                   </column>
-                   <column>
-                    <property name="text">
-                     <string>Order No</string>
+                     <string>ShopName</string>
                     </property>
                    </column>
                    <column>
@@ -3125,12 +2957,12 @@ background-color:#ececec;
                    </column>
                    <column>
                     <property name="text">
-                     <string>New Column</string>
+                     <string>Location</string>
                     </property>
                    </column>
                    <column>
                     <property name="text">
-                     <string>Status</string>
+                     <string>Phone No</string>
                     </property>
                    </column>
                    <column>
