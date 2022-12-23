@@ -20,7 +20,7 @@ from DL.UserCRUD import UserCRUD
 from DL.AttendenceCRUD import AttendenceCRUD
 from DL.VehicleCRUD import VehicleCRUD
 from DL.NotificationDL import Notifications
-
+from DL.StockOrder_DL import StockOrder_DL
 from random import randint
 from datetime import date , datetime
 
@@ -38,8 +38,8 @@ class ManaMainWindow(QMainWindow):
         self.AttendanceDL = AttendenceCRUD()
         self.AttendanceDL.readData()
 
-        self.noti=Notifications()
-        self.noti.GetNotification()
+        self.Notification_DL=Notifications()
+        self.Notification_DL.loadFromTable()
 
         self.shadow = QGraphicsDropShadowEffect(self)
         self.shadow.setBlurRadius(20)
@@ -197,16 +197,41 @@ class ManaMainWindow(QMainWindow):
         self.LoadNotificationTable()
     def LoadNotificationTable(self):
         row=0
-        self.ui.table_Notification.setRowCount(5)
-        for i in range(5):
-            btn_Edit = QPushButton()
-            btn_Edit.setText("Confirm")
+        Row_Count=len(self.Notification_DL.GetNotification())
+        self.ui.table_Notification.setRowCount(Row_Count)
+        for noti in self.Notification_DL.GetNotification():
+            self.ui.table_Notification.setItem(row,0,QtWidgets.QTableWidgetItem(str(noti.GetorderId())))
+            self.ui.table_Notification.setItem(row,1,QtWidgets.QTableWidgetItem(str(noti.GetDetail())))
+            btn_Edit = QPushButton('Accept')
+            #btn_Edit.setText("Confirm")
+            btn_Edit.clicked.connect(lambda: self.handleButtonClick(row, 2))
             self.ui.table_Notification.setCellWidget(row,2,btn_Edit)
-            btn_Delete=QPushButton()
-            btn_Delete.setText("Reject")
+            btn_Delete=QPushButton('Decline')   
+            btn_Delete.clicked.connect(lambda: self.handleButtonClick(row, 3))
             self.ui.table_Notification.setCellWidget(row,3,btn_Delete)
             row+=1
+    def handleButtonClick(self,row, col):
+        tableRow=self.ui.table_Notification.currentRow()
+        OrderID = self.ui.table_Notification.item(tableRow, 0).text()
+        print(OrderID,col)
+        self.orderStockDL=StockOrder_DL()
+        self.orderStockDL.loadFromTable()
+        DlinkList=self.orderStockDL.getDLinklist()
+        while(DlinkList!=None):
+            id=DlinkList.data.getOrderID()
+            if(id==int(OrderID)):
+                if(col==2):
+                    DlinkList.data.setStatus(1)
+                elif(col==3):
+                    DlinkList.data.setStatus(4)
+                self.orderStockDL.UpdateTable()
+                self.Notification_DL.Pop_Up(int(OrderID))
+                self.LoadNotificationTable()
+                self.Notification_DL.updateTable()
+
+            DlinkList=DlinkList.next
             
+            #if(DlinkList.data.getStatus()==1):
     def OpenSalaryPage(self):
         self.ui.mainBody.setCurrentIndex(6)
         self.Load_SalaryTable()

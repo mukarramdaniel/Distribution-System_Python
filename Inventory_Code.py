@@ -18,6 +18,8 @@ from random import randint
 from DL.UserCRUD import UserCRUD
 from DL.NotificationDL import Notifications
 #import Login_Code
+from email.message import EmailMessage
+import smtplib
 from datetime import datetime,date
 
 
@@ -34,6 +36,8 @@ class InventoryMainWindow(QMainWindow):
         self.orderStockDL=StockOrder_DL()
         self.orderStockDL.loadFromTable()
         self.Notification_DL=Notifications()
+        self.Notification_DL.loadFromTable()
+
         self.temp_OrderList=[]
         self.total = 0
         self.row_cart=[]    #esy database mai store bhe krvana ha abhi
@@ -139,16 +143,59 @@ class InventoryMainWindow(QMainWindow):
     def orderStockFromCart(self):
         now = datetime.now()
         date = now.strftime("%d-%m-%Y %H:%M:%S")
-        order=ProducList(self.orderStockDL.generateOrderID(),date,self.temp_OrderList,0)
+        OrderID=self.orderStockDL.generateOrderID()
+        order=ProducList(OrderID,date,self.temp_OrderList,0)
         self.orderStockDL.Insert(order)
+        self.orderStockDL.UpdateTable()
         self.row_cart.clear()
         self.emptyTableAndList()
-        n=Notific(order, "Order is placed. Kindly check Email for Further Details")
+        n=Notific(OrderID, "Order is placed. Kindly check Email for Further Details")
         self.Notification_DL.Add_Notification(n)
+        self.Notification_DL.updateTable()
+        self.send_mail(order)
         if(len(self.row_cart)==0):
             self.ui.btn_RequestOrder.setEnabled(0)
         else:
             self.ui.btn_RequestOrder.setEnabled(1)
+    
+    def send_mail(self,order) :
+        listt = []
+        list2=[]
+        list3=[]
+        list4=[]
+        for i in order.getShoeList():
+            listt.append(i.getShoeSize())
+            list2.append(i.getColor())
+            list3.append(i.getBuyPrice())
+            list4.append(i.getProductCategory())
+        sizes = set(listt)
+        color=set(list2)
+        price=set(list3)
+        ctype=set(list4)
+        email_sender = "rasheedrayan514@gmail.com"
+        email_password = 'zpzsrqeasritevbu' 
+        email_receiver="ammadaslam07@gmail.com"
+        subject = "Products Purchasing"
+        body = '''
+        Dear Manager,
+        Please check your notification for confirmation of the order '''+ str(order.getOrderID())+ ''' from ADIDAS New York.
+        The details are given below:
+        • Quantity:'''+str(len(order.getShoeList())) + '''pieces
+        • Size:'''+str(sizes)+ ''' 
+        • Color:'''+str(color)+'''
+        • Type:'''+str(ctype)+'''
+        • Price:'''+str(price)+''' per piece
+        Regards,
+        Inventory Supervisor
+        '''
+        em = EmailMessage()
+        em['from'] = email_sender
+        em['to'] = email_receiver
+        em['Subject'] = subject
+        em.set_content(body)
+        with smtplib.SMTP_SSL('smtp.gmail.com' , 465 ) as smtp:
+            smtp.login(email_sender , email_password)
+            smtp.sendmail(email_sender , email_receiver , em.as_string())
     def emptyTableAndList(self):
         self.ui.Table_BuyCartStock.clearContents()
         self.temp_OrderList=[]
@@ -229,6 +276,7 @@ class InventoryMainWindow(QMainWindow):
             QMessageBox.information(self,"ADDED" ,"Product Added")
         else:
             QMessageBox.warning(self,"Invalid" ,"Invalid Input")
+            self.clearField()
     def clearField(self):
         self.ui.cmb_Category.clearEditText()
         self.ui.spb_Quantity.cleanText()
@@ -236,8 +284,11 @@ class InventoryMainWindow(QMainWindow):
         self.ui.cmb_Color.clearEditText()
         self.ui.txt_PriceperShoes.clear()
     def generateProdID(self):
-        import random
-        return "%0.12d" % random.randint(0,999999999999)
+        from random import randint
+        start = 10**(6-1)
+        end = (10**6)-1
+        code = str(randint(start,end))
+        return code
 
     def loadUpdate_tableWidget(self,t_price):
         row=0

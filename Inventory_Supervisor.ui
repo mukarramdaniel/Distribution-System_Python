@@ -617,7 +617,7 @@ background-color:#ececec;
        <number>1</number>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="page_BuyStock">
        <property name="styleSheet">
@@ -3534,7 +3534,7 @@ background-color:#ececec;
                    </column>
                    <column>
                     <property name="text">
-                     <string>Quantity</string>
+                     <string>Color</string>
                     </property>
                     <property name="font">
                      <font>
@@ -3545,7 +3545,7 @@ background-color:#ececec;
                    </column>
                    <column>
                     <property name="text">
-                     <string>Total Amount</string>
+                     <string>Amount</string>
                     </property>
                     <property name="font">
                      <font>

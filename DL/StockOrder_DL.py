@@ -8,6 +8,8 @@ class Node:
         self.data=val
         self.next=None
         self.prev=None
+    def getData(self):
+        return self.data
 
 class StockOrder_DL:
     def __init__(self):
@@ -108,7 +110,32 @@ class StockOrder_DL:
             if(flag==False):
                 break
             id +=1       
-            mydb.close()
+        mydb.close()
+
+    def UpdateTable(self):
+        import mysql.connector
+        mydb = mysql.connector.connect(
+        host="localhost",
+        user="user1",
+        password="Rosepetal514@",
+        database="dbarm"
+        )
+
+        mycursor = mydb.cursor()    
+        mycursor.execute("TRUNCATE TABLE stock_order_crud")
+        mydb.commit()
+        sql = "INSERT stock_order_crud(prodCategory,buyPrice,profitMargin,shoeSize,selPrice,color,type,orderID,date,status) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)  "
+        Stock=self.head
+        while(Stock!=None):
+            s=Stock.getData()  
+            for x in s.getShoeList():
+                val = (x.getProductCategory(),float(x.getBuyPrice()),float(x.getProfirMargin()),float(x.getShoeSize()),float(x.getSellPrice()),x.getColor(),x.getType(),int(s.getOrderID()),s.getDate(),int(s.getStatus()))
+                mycursor.execute(sql,val)
+                mydb.commit()
+            Stock=Stock.next
+            
+        mydb.close()
+
     def generateOrderID(self):
         count=0
         alter=self.head
