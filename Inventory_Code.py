@@ -140,7 +140,9 @@ class InventoryMainWindow(QMainWindow):
                 # for prod in DlinkList.data.getShoeList():
                 #     self.inventory.setProduct(prod.getProductCategory(),prod)
                 DlinkList.data.setStatus(2)
+                
             DlinkList=DlinkList.next
+        self.orderStockDL.UpdateTable()
         
 
     def orderStockFromCart(self):
