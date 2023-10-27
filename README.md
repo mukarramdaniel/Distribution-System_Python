@@ -1,92 +1,83 @@
-# CS261F22FinalPID05
 
+## Getting 
 
+https://github.com/mukarramdaniel/Distribution-System_Python/assets/148665151/0669f4cb-b66c-437d-9ba0-a0a180e4f8a7
 
-## Getting started
+started
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## Description: 
+We are facing not just a challenging business environment but a rapidly changing one. There
+is always room for improvement. Running a Distribution System without a proper application
+can lead to many problems. In the warehouse, by not managing your stock count, cost price
+changes and not being able to view your stock position can have drastic consequences. The
+company has no way of knowing how much stock is left in your warehouses and how much
+you’ve sold out. If you don’t know how much you have left, you can’t restock your inventory
+which will cause delays and frustrate your customers. It is important to track your inventory
+so that you can plan ahead effectively. The company is unable to keep a record of its employees,
+day-to-day sales and profits, customer information and transportation cost. Searching
+a 10-year-old record for the company is extremely challenging. Speed is also critical when
+ensuring that you get the correct items picked, packed and distributed to the correct address
+and client. Understanding the right approach to solving these challenges is essential for distributors
+to adapt, transform and differentiate themselves in this new challenging business
+landscape.
+We are all aware that we live in an increasing electronic world. Simply put if the Distribution
+Company is not using a proper, well-managed application then it is facing commercial suicide.
+So, our Project aims to develop such an application for the Company that can address all
+the above problems and help the company improve the distribution system and management
+of the company processes.
+The administrator of the application is the General Manager of the company. He can hire the
+company employees (sales agent), riders (to deliver the packages) and an inventory Manager.
+He is in the charge of each module. Each employee would have their individual accounts.
+The inventory Manager is in charge of the warehouse, keeping the record of the product as
+being delivered by the Manufacturing Company. The sales agent will deal with the clients,
+their orders and assign the delivery task to the riders depending upon the location assigned
+to them. The rider would be a given a specific area in which he would have to deliver all the
+goods and complete all its orders in the given time. Further bonuses will be given according
+to the statistic chart at the end of the month.
+The Distribution Company that we have plumped for is the Shoe Distribution Company. A
+well-recognized shoe Manufacturing Company ADIDAS is our manufacturer. The implementation
+of this application will work with a company called ARM. As a distribution company
+we deliver the products to numerous retailers, wholesalers, concept stores, buyers and agents
+all over the Lahore. It operates on its own as it is an independent company establishing a
+connection between the products and the client.
+The Record and performance are also evaluated automatically in order to provide the appraisal.
+The company established the excellent track record for the best customer satisfaction. As a
+footwear sourcing company, we also provide sustainable material sourcing options to help our
+clients choose a greener path. An organization’s main focus must be to satisfy its customers
+and in order to do so we are providing a refund policy for the client and email verification
+after the order had been sent to them. Sometimes, the rider doesn’t deliver the parcel to the
+exact location. So, to overcome this problem we provide the rider with the exact location of client on Google map. The client should place the minimum required order then the sales
+agent would request the inventory manager for the confirmation of the stock. The application
+also maintains the daily attendance of the employees, the scheduling of the riders and fuel
+consumption cost. The clients would also be informed of the special offers. Our system is
+cited as the most efficient tool that is at the company’s disposal.
+The application offers three modes.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+• Manager authorized mode.
 
-## Add your files
+• Sales Agent authorized mode.
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+• Inventory Supervisor mode
 
-```
-cd existing_repo
-git remote add origin https://gitlab.com/armlimited/cs261f22finalpid05.git
-git branch -M main
-git push -uf origin main
-```
+• Rider authorized mode.
 
-## Integrate with your tools
+## Project Features:
+• User interface screen will be operated according to the role of the person who signs in.
 
-- [ ] [Set up project integrations](https://gitlab.com/armlimited/cs261f22finalpid05/-/settings/integrations)
+• Client can pay in installments or pay in advance.
 
-## Collaborate with your team
+• Rider will be informed with the stock availability during placing orders. If the required order
+of the client is out of stock, order could not be placed and an email would be sent to the
+Inventory Supervisor to inform about stock unavailability.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+• Sales Agent will assign the location of decided area to the Rider. The rider will take order
+and will be delivered the very next day.
 
-## Test and Deploy
+• Rider have facility of using maps that give the route of minimum journey to deliver all the
+orders.
 
-Use the built-in continuous integration in GitLab.
+• Maintain record of Attendance of all employees.
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+• Management of salaries and bonuses for employees.
 
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+• Password reset feature for users account via Email.
