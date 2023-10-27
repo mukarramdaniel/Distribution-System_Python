@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="White Icons">
+    <file>../../../../../Semester 4/db_Lab/Final_Project/Final_Project/db2021finalprojectg-1/Docs/Resources/corporate.png</file>
+    <file>../../../../../Semester 4/db_Lab/Final_Project/Final_Project/db2021finalprojectg-1/Docs/Logo.png</file>
     <file>Graphics/featherBlack/more.png</file>
     <file>Graphics/featherBlack/money.png</file>
     <file>Graphics/featherBlack/electricity.png</file>

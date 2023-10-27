@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="Login">
+    <file>../../../../../Semester 4/db_Lab/Final_Project/Final_Project/db2021finalprojectg-1/Docs/Logo.png</file>
     <file>Graphics/Login/ARM_LOGO_Crop-removebg-preview.png</file>
     <file>Graphics/Login/icons8-enter-48.png</file>
     <file>Graphics/Login/output-onlinepngtools.png</file>

@@ -128,11 +128,20 @@ border-radius:0px;
            </item>
            <item>
             <widget class="QLabel" name="label">
+             <property name="maximumSize">
+              <size>
+               <width>200</width>
+               <height>100</height>
+              </size>
+             </property>
              <property name="text">
               <string/>
              </property>
              <property name="pixmap">
-              <pixmap resource="../login.qrc">:/Login/Graphics/Login/ARM_LOGO_Crop-removebg-preview.png</pixmap>
+              <pixmap resource="../login.qrc">:/Login/Semester 4/db_Lab/Final_Project/Final_Project/db2021finalprojectg-1/Docs/Logo.png</pixmap>
+             </property>
+             <property name="scaledContents">
+              <bool>true</bool>
              </property>
              <property name="alignment">
               <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
@@ -439,16 +448,6 @@ border-radius:5px;
               <enum>QFrame::Raised</enum>
              </property>
              <layout class="QFormLayout" name="formLayout">
-              <item row="0" column="1">
-               <widget class="QLabel" name="logolbl">
-                <property name="text">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/reset/Graphics/Login/ARM_LOGO_Crop-removebg-preview.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                </property>
-               </widget>
-              </item>
               <item row="1" column="1">
                <widget class="QLabel" name="mainlbl">
                 <property name="text">
@@ -639,6 +638,65 @@ border-radius:5px;
                 </layout>
                </widget>
               </item>
+              <item row="0" column="1">
+               <widget class="QFrame" name="frame_18">
+                <layout class="QHBoxLayout" name="horizontalLayout_18">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <spacer name="horizontalSpacer_32">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeType">
+                    <enum>QSizePolicy::Expanding</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>345</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="logolbl">
+                   <property name="maximumSize">
+                    <size>
+                     <width>200</width>
+                     <height>100</height>
+                    </size>
+                   </property>
+                   <property name="layoutDirection">
+                    <enum>Qt::LeftToRight</enum>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="pixmap">
+                    <pixmap resource="../login.qrc">:/Login/Semester 4/db_Lab/Final_Project/Final_Project/db2021finalprojectg-1/Docs/Logo.png</pixmap>
+                   </property>
+                   <property name="scaledContents">
+                    <bool>true</bool>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
              </layout>
             </widget>
            </item>
@@ -740,12 +798,65 @@ border-radius:5px;
                <number>0</number>
               </property>
               <item row="0" column="1">
-               <widget class="QLabel" name="logolbl_2">
+               <widget class="QWidget" name="widget_18" native="true">
+                <layout class="QHBoxLayout" name="horizontalLayout_19">
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>9</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>0</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <spacer name="horizontalSpacer_33">
+                   <property name="orientation">
+                    <enum>Qt::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="logolbl_2">
+                   <property name="maximumSize">
+                    <size>
+                     <width>200</width>
+                     <height>100</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="pixmap">
+                    <pixmap resource="../login.qrc">:/Login/Semester 4/db_Lab/Final_Project/Final_Project/db2021finalprojectg-1/Docs/Logo.png</pixmap>
+                   </property>
+                   <property name="scaledContents">
+                    <bool>true</bool>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QLabel" name="resetlbl">
                 <property name="text">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/reset/Graphics/Login/ARM_LOGO_Crop-removebg-preview.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/reset/Graphics/reser/icons8-forgot-password-30.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 <set>Qt::AlignCenter</set>
                 </property>
                </widget>
               </item>
@@ -1116,16 +1227,6 @@ border-radius:5px;
                   </spacer>
                  </item>
                 </layout>
-               </widget>
-              </item>
-              <item row="1" column="1">
-               <widget class="QLabel" name="resetlbl">
-                <property name="text">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/reset/Graphics/reser/icons8-forgot-password-30.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
                </widget>
               </item>
              </layout>
